@@ -18,6 +18,6 @@ This is my home page UI:
 
 ![ui_home_page](images/UI_home_page.png)
 
-As you can see the UI is divided into parts which makes the interface clean and not cluttered. By clicking on any of the button/icons you will be directed to the corresponding tabs.
+As you can see the UI is divided into parts which makes the interface **clean and not cluttered**. By clicking on any of the button/icons you will be **redirected to the corresponding tabs**.
 
 This is the lights tab:
