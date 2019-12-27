@@ -9,4 +9,7 @@ First and foremost **thank you** for finding you way to my Home Assistant repo. 
 
 ### Lovelace UI
 Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be simple, although it might be cool to know if th [ISS](https://www.home-assistant.io/integrations/iss/) is above your house, it is definitely unnecessary.
+
+This is my home page UI:
+
 ![ui_home_page](images/UI_home_page.png)
