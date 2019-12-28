@@ -9,14 +9,10 @@ First and foremost ***thank you*** for finding you way to my Home Assistant repo
 **For now this repo is only forcusing on the Lovelace UI**
 
 ## Lovelace UI
-Lovelace is the primary interface for Home Assistant, it is used to **display all sorts of information**. My take on Lovelace is for it to be ***simple***. Although it might be cool to know if the [ISS](https://www.home-assistant.io/integrations/iss/) is above your house, it is definitely unnecessary. 
+Lovelace is the primary interface for Home Assistant, it is used to **display all sorts of information**. My take on Lovelace is for it to be ***simple***. 
 
 **My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media)**
 
-This is my home page UI:
-
 ![ui_home_page](images/UI_home_page.png)
 
-As you can see the UI is divided into parts which makes the interface **clean and not cluttered**. By clicking on any of the button/icons you will be **redirected to the corresponding tabs**.
 
-This is the lights tab:
