@@ -1,4 +1,4 @@
-# Home Assistant Config ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) 
+# Home Assistant Config ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![maintenance](https://img.shields.io/maintenance/yes/2020?style=flat-square) 
 
 ***Hello! 您好! Hola! Bonjour! Goedendag! नमस्कार! Hallo! Olá!***
 
