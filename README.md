@@ -18,8 +18,17 @@ Thanks for taking you time to visit my repo! I have posted the yaml for my Lovel
 This is a step by step guide on how you can implement elements or everything in my UI into yours.
 
 ### Prerequisites
-You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read their documentations and install the following cards.
+You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install the following cards.
+
+#### Required
 
 * [**Custom Header**](https://github.com/maykar/custom-header), by **@maykar**
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
+
+#### Optional
+
+* [**Search Card**](https://github.com/postlund/search-card) and [**Card Tools**](https://github.com/thomasloven/lovelace-card-tools), by **@postlund** and **@thomasloven**
+* [**Simple Weather Card**](https://github.com/kalkih/simple-weather-card), by **@kalkih**
+* [**Mini Media Player**](https://github.com/kalkih/mini-media-player), by **@kalkih**
+* [**Mini Graph Card**](https://github.com/kalkih/mini-graph-card), also by **@kalkih**
