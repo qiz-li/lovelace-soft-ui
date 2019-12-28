@@ -1,4 +1,4 @@
-# Home Assistant Config ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![maintenance](https://img.shields.io/maintenance/yes/2020?style=flat-square)
+# Home Assistant Config ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
 
 ## Introduction
 
