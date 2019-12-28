@@ -1,10 +1,8 @@
-# Home Assistant Config ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
+# Lovelace Soft UI ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
 
 ## Introduction
 
-First and foremost **thank you** for finding you way to my Home Assistant repo. This is the [Home Assistant](https://github.com/home-assistant/home-assistant) configuration for our smart home. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to help inspire and find ideas about a smart home! **Enjoy**! 
-
-**For now this repo is only forcusing on the Lovelace UI**
+First and foremost **thank you** for finding you way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to inspire and potentially be implemented into you UI! **Enjoy**! 
 
 ## Lovelace UI
 Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be **simple**. I'm trying to make it easy for **you** to implement my UI into yours! Look below for further details. 
