@@ -43,7 +43,7 @@ If you would like to use the light/dark automatic version, pleas make sure you h
 sun:
 ```
 ## Themes
-Themes can also be installed with [HACS](https://hacs.xyz), manual installation docs are [here](https://www.home-assistant.io/integrations/frontend/). @JuanMTech also made a great [video](https://www.youtube.com/watch?v=3Xpd4zB2eRM) explaining how to setup themes. 
+Themes can also be installed with [HACS](https://hacs.xyz), manual installation docs are [here](https://www.home-assistant.io/integrations/frontend/). **@JuanMTech** also made a great [video](https://www.youtube.com/watch?v=3Xpd4zB2eRM) explaining how to setup themes. 
 
 ### Light Themes
 Any light theme consisting a **milky white background** should work.
