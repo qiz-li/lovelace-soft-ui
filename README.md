@@ -17,7 +17,10 @@ Thanks for taking you time to visit my repo! I have posted the yaml for my Lovel
 ## Step by Step Guide
 This is a step by step guide on how you can implement elements or everything in my UI into yours.
 
-### Prerequisites
+## Prerequisites
+These are some of the things you need before getting started.
+
+### Custom Cards
 You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install the following cards.
 
 #### Required
@@ -32,3 +35,11 @@ You will need the following custom cards to be installed, it is easily done via 
 * [**Simple Weather Card**](https://github.com/kalkih/simple-weather-card), by **@kalkih**
 * [**Mini Media Player**](https://github.com/kalkih/mini-media-player), by **@kalkih**
 * [**Mini Graph Card**](https://github.com/kalkih/mini-graph-card), also by **@kalkih**
+
+## sun.sun
+If you would like to use the light/dark automatic version, pleas make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
+
+``` markdown
+# Example configuration.yaml entry
+sun:
+```
