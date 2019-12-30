@@ -203,16 +203,6 @@ cards:
         type: markdown
     type: vertical-stack
 type: vertical-stack
-
-
-            font-size: 20px;
-            font-weight: bold;
-            font-family: Helvetica;
-            letter-spacing: '-0.01em';
-          }
-        type: markdown
-    type: vertical-stack
-type: vertical-stack
 ```
 
 ## Vertical Buttons Card
