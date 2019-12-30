@@ -113,3 +113,10 @@ custom_header:
 Finally we've arrived on how to configure the cards themselves.
 
 ## Text Header Card
+</p>
+<p align="left">
+  <img src="images/text_header_card_light_theme.png" alt="Text header card light theme" width="425">
+  <img src="images/text_header_card_dark_theme.png" alt="Text header card dark theme" width="425">
+  <br>
+  <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
+</p>
