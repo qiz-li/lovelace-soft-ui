@@ -53,6 +53,14 @@ Any light theme consisting a **milky white background** should work.
 
 **Please note the background cannot be pure white.**
 
+<p align="left">
+  <img src="images/google_light_theme_UI.png" alt="Slate theme UI" width="425">
+  <img src="images/clear_theme_UI.png" alt="Grey Night theme UI" width="425">
+  <br>
+  <a href="https://github.com/liri/lovelace-themes"><b>Google Home Light theme</b></a> and
+  <a href="https://github.com/naofireblade/clear-theme"><b>Clear theme</b></a>, by <b>@liri</b> and <b>@naofireblade</b>
+</p>
+
 ## Dark Themes
 Any dark theme consisting a **dark grey/black background** should work.
 
