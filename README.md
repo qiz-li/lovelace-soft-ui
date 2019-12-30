@@ -15,7 +15,7 @@ My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft
 ![ui_home_page](images/UI_home_page.png)
 
 ### Advanced Users
-Thanks for taking you time to visit my repo! I have posted the yaml for my Lovelace and themes above, I have also listed the custom cards I used below. If you require further assistance, please check below.
+Thanks for taking you time to visit my repo! I have posted the yaml for my Lovelace above, I have also listed the custom cards I used below. If you require further assistance, please check below.
 
 # Prerequisites
 This is the first part of the **step by step guide**. 
@@ -39,7 +39,7 @@ You will need the following custom cards to be installed, it is easily done via 
 * [**Mini Graph Card**](https://github.com/kalkih/mini-graph-card), also by **@kalkih**
 
 ## sun.sun
-If you would like to use the light/dark automatic version, pleas make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
+For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
 
 ``` markdown
 # Example configuration.yaml entry
