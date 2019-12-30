@@ -130,15 +130,12 @@ Add the following:
 cards:
   - cards:
       - content: |
-# Enter what you want to display here
           # Enter what you want to display here
         style: |
-# This make the background transparent
           ha-card {
              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
              box-shadow: 2px 2px rgba(0,0,0,0.0);
           }
-# This can be tunned to user's liking
           h1 {
             font-size: 20px;
             font-weight: bold;
