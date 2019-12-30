@@ -167,24 +167,16 @@ cards:
           # Enter what you want to display here
         style: |
           ha-card {
-             --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-             box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-          h1 {cards:
-  - cards:
-      - content: |
-          # Enter what you want to display here
-        style: |
-          ha-card {
-             --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-             box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-          h1 {
-            font-size: 20px;
-            font-weight: bold;
-            font-family: Helvetica;
-            letter-spacing: '-0.01em';
-          }
+              height: 20px;
+              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+              box-shadow: 2px 2px rgba(0,0,0,0.0);
+                }
+            h1 {
+                 font-size: 20px;
+                 font-weight: bold;
+                 font-family: Helvetica;
+                 letter-spacing: '-0.01em';
+               }
         type: markdown
       - content: |
           # Enter what you want to display here
