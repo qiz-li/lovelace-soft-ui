@@ -56,10 +56,19 @@ Any light theme consisting a **milky white background** should work.
 ### Dark Themes
 Any dark theme consisting a **dark grey/black background** should work.
 
-**Please note the background cannot be compeletly black.**
+**Please note the background of the theme cannot be compeletly black.** 
+
+**The following themes are available in [HACS](https://hacs.xyz).**
+
 <p align="left">
   <img src="images/slate_theme_UI.png" alt="Slate theme UI" width="425">
   <img src="images/grey_night_theme_UI.png" alt="Grey Night theme UI" width="425">
   <br>
-  <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> and <a href="https://github.com/home-assistant-community-themes/grey-night"><b>Grey Night theme</b></a>, by <b>seangreen2</b> and <b>@ksya</b>
+  <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> and <a href="https://github.com/home-assistant-community-themes/grey-night"><b>Grey Night theme</b></a>, by <b>@seangreen2</b> and <b>@ksya</b>
+</p>
+<p align="left">
+  <img src="images/midnight_theme_UI.png" alt="Midnight theme UI" width="425">
+  <img src="images/dark_mint_theme_UI.png" alt="Dark Mint theme UI" width="425">
+  <br>
+  <a href="https://github.com/home-assistant-community-themes/midnight"><b>Midnight theme</b></a> and <a href="https://github.com/home-assistant-community-themes/dark-mint"><b>Dark Mint theme</b></a>, by <b>@Marcel Hoffs</b> and <b>@lambtho</b>
 </p>
