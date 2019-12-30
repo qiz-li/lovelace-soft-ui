@@ -215,13 +215,13 @@ type: vertical-stack
 type: vertical-stack
 ```
 
-## Horizontal Buttons Card
+## Vertical Buttons Card
 </p>
 <p align="left">
-  <img src="images/horizontal_button_card_light_theme.png" alt="Horizontal button card light theme" width="425">
-  <img src="images/horizontal_button_card_dark_theme.png" alt="Horizontal button card dark theme" width="425">
+  <img src="images/vertical_button_card_light_theme.png" alt="Vertical button card light theme" width="425">
+  <img src="images/vertical_button_card_dark_theme.png" alt="Vertical button card dark theme" width="425">
   <br>
-  <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
+  <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
