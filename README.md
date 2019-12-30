@@ -130,6 +130,7 @@ Add the following:
 cards:
   - cards:
       - content: |
+# Enter what you want to display here
           # Enter what you want to display here
         style: |
 # This make the background transparent
