@@ -46,12 +46,12 @@ sun:
 # Themes
 Themes can also be installed with [HACS](https://hacs.xyz), manual installation docs are [here](https://www.home-assistant.io/integrations/frontend/). **@JuanMTech** also made a great [video](https://www.youtube.com/watch?v=3Xpd4zB2eRM) explaining how to setup themes. 
 
-### Light Themes
+## Light Themes
 Any light theme consisting a **milky white background** should work.
 
 **Please note the background cannot be pure white.**
 
-### Dark Themes
+## Dark Themes
 Any dark theme consisting a **dark grey/black background** should work.
 
 **Please note the background of the theme cannot be compeletly black.** 
@@ -71,7 +71,7 @@ The following themes are available in [**HACS**](https://hacs.xyz).
   <a href="https://github.com/home-assistant-community-themes/midnight"><b>Midnight theme</b></a> and <a href="https://github.com/home-assistant-community-themes/dark-mint"><b>Dark Mint theme</b></a>, by <b>@Marcel Hoffs</b> and <b>@lambtho</b>
 </p>
 
-### Comapct Header
+## Comapct Header
 You can either have the header match the background color or display it's own color.
 </p>
 <p align="left">
