@@ -57,3 +57,9 @@ Any light theme consisting a **milky white background** should work.
 Any dark theme consisting a **dark grey/black background** should work.
 
 **Please note the background cannot be compeletly black.**
+<p align="left">
+  <img src="images/slate_theme_UI.png" alt="Slate theme UI" width="425">
+  <img src="images/grey_night_theme_UI.png" alt="Grey Night theme UI" width="425">
+  <br>
+  <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> and <a href="https://github.com/home-assistant-community-themes/grey-night"><b>Grey Night theme</b></a>, by <b>seangreen2</b> and <b>@ksya</b>
+</p>
