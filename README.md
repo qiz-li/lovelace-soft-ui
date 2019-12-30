@@ -1,5 +1,7 @@
 # Lovelace Soft UI ![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
 
+![lovelace_soft_UI](images/lovelace_soft_UI.jpg)
+
 ## Introduction
 
 First and foremost **thank you** for finding you way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to inspire and potentially be implemented into you UI! **Enjoy**! 
