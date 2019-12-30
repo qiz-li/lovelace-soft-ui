@@ -58,7 +58,7 @@ Any dark theme consisting a **dark grey/black background** should work.
 
 **Please note the background of the theme cannot be compeletly black.** 
 
-**The following themes are available in [HACS](https://hacs.xyz).**
+The following themes are available in [**HACS**](https://hacs.xyz).
 
 <p align="left">
   <img src="images/slate_theme_UI.png" alt="Slate theme UI" width="425">
