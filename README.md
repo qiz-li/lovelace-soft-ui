@@ -115,8 +115,36 @@ Finally we've arrived on how to configure the cards themselves.
 ## Text Header Card
 </p>
 <p align="left">
-  <img src="images/text_header_card_light_theme.png" alt="Text header card light theme" width="425">
-  <img src="images/text_header_card_dark_theme.png" alt="Text header card dark theme" width="425">
+  <img src="images/text_header_card_light_theme.png" alt="Text header card light theme" width="200">
+  <img src="images/text_header_card_dark_theme.png" alt="Text header card dark theme" width="200">
   <br>
   <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
+
+To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
+
+Add the following:
+
+``` markdown
+# Example entry
+cards:
+  - cards:
+      - content: |
+          # Enter what you want to display here
+        style: |
+# This make the background transparent
+          ha-card {
+             --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+             box-shadow: 2px 2px rgba(0,0,0,0.0);
+          }
+# This can be tunned to user's liking
+          h1 {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Helvetica;
+            letter-spacing: '-0.01em';
+          }
+        type: markdown
+    type: vertical-stack
+type: vertical-stack
+```
