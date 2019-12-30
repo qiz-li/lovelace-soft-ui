@@ -495,3 +495,257 @@ cards:
     type: vertical-stack
 type: vertical-stack
 ```
+
+## Horizontal Buttons Card
+</p>
+<p align="left">
+  <img src="images/horizontal_button_card_light_theme.png" alt="Horizontal button card light theme" width="425">
+  <img src="images/horizontal_button_card_dark_theme.png" alt="Horizontal button card dark theme" width="425">
+  <br>
+  <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
+</p>
+
+To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
+
+Add the following:
+
+``` markdown
+# Example entry
+cards:
+  - cards:
+      - show_icon: false
+        show_name: false
+        style: |
+          ha-card {
+            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+            box-shadow: 2px 2px rgba(0,0,0,0.0);
+          }
+        styles:
+          card:
+            - width: 5px
+            - height: 10px
+        type: 'custom:button-card'  
+      - cards:
+          - cards:
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 60px
+                type: 'custom:button-card'
+              - entity: switch.family_room_lamp
+                icon: 'mdi:lamp'
+                show_icon: true
+                show_name: false
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                      {% else %}
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                      {% endif %}                        
+                  }
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: toggle
+                type: 'custom:button-card'
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 60px
+                type: 'custom:button-card'
+              - entity: switch.kitchen_island_lights
+                icon: 'mdi:vanity-light'
+                show_icon: true
+                show_name: false
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                      {% else %}
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                      {% endif %}                        
+                  }
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: toggle
+                type: 'custom:button-card'
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 60px
+                type: 'custom:button-card'
+              - entity: switch.dining_area
+                icon: 'mdi:ceiling-light'
+                show_icon: true
+                show_name: false
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                      {% else %}
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                      {% endif %}                        
+                  }
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: toggle
+                type: 'custom:button-card'
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 60px
+                type: 'custom:button-card'
+              - entity: light.family_room_dimmer
+                icon: 'mdi:light-switch'
+                show_icon: true
+                show_name: false
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                      {% else %}
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                      {% endif %}                        
+                  }
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: toggle
+                type: 'custom:button-card'
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 60px
+                type: 'custom:button-card'
+              - entity: switch.dining_table
+                icon: 'mdi:table-chair'
+                show_icon: true
+                show_name: false
+                state:
+                  - styles:
+                      icon:
+                        - color: 'var(--paper-item-icon-active-color)  '
+                    value: 'on'
+                style: |
+                  ha-card {
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                      {% else %}
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                      {% endif %}                        
+                  }
+                styles:
+                  card:
+                    - width: 60px
+                    - height: 60px
+                    - border-radius: 15px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: toggle
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - show_icon: false
+        show_name: false
+        style: |
+          ha-card {
+            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+            box-shadow: 2px 2px rgba(0,0,0,0.0);
+          }
+        styles:
+          card:
+            - width: 5px
+            - height: 10px
+        type: 'custom:button-card' 
+    type: vertical-stack
+type: vertical-stack
+```
