@@ -146,7 +146,7 @@ cards:
     type: vertical-stack
 type: vertical-stack
 ```
-### Text Header Card with Subheader
+## Text Header Card with Subheader
 </p>
 <p align="left">
   <img src="images/text_subheader_card_light_theme.png" alt="Text subheader card light theme" width="425">
