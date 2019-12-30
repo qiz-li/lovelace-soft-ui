@@ -82,3 +82,21 @@ You can either have the header match the background color or display it's own co
   <br>
   <a href="https://github.com/home-assistant-community-themes/dark-mint"><b>Dark Mint theme</b></a> header with and without color.
 </p>
+
+Go to `Configure UI` then `Raw config editor`. 
+
+Add the following if you would like the header to match the background color:
+
+``` markdown
+# Example entry
+custom_header:
+  background: var(--primary-background-color);
+  compact_mode: true
+```
+Only add the following if you would like the header to display it's own color:
+
+``` markdown
+# Example entry
+custom_header:
+  compact_mode: true
+```
