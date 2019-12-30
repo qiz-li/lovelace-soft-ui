@@ -72,3 +72,13 @@ The following themes are available in [**HACS**](https://hacs.xyz).
   <br>
   <a href="https://github.com/home-assistant-community-themes/midnight"><b>Midnight theme</b></a> and <a href="https://github.com/home-assistant-community-themes/dark-mint"><b>Dark Mint theme</b></a>, by <b>@Marcel Hoffs</b> and <b>@lambtho</b>
 </p>
+
+### Comapct Header
+You can either have the header match the background color or display it's own color.
+</p>
+<p align="left">
+  <img src="images/dark_mint_w:color_header.png" alt="Dark mint theme with color header" width="425">
+  <img src="images/dark_mint_no_color_header.png" alt="Dark mint theme without color header" width="425">
+  <br>
+  <a href="https://github.com/home-assistant-community-themes/dark-mint"><b>Dark Mint theme</b></a> header with and without color.
+</p>
