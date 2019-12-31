@@ -1,5 +1,5 @@
 # Lovelace Soft UI 
- ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
+![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
 
 ![lovelace_soft_UI](images/lovelace_soft_UI.jpg)
 
