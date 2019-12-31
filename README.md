@@ -851,3 +851,25 @@ cards:
     type: vertical-stack
 type: vertical-stack
 ```
+# Other Cards
+To have a simple Soft UI look on other cards, what you have to do is set the card background as the same as the theme background as well as round the corners then adding a dark and light shadow. It can be done (with [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod)) like this:
+
+``` markdown
+# Example entry
+style: |
+   ha-card {
+     background-color: var(--primary-background-color);
+     border-radius: 15px;
+     box-shadow: 
+       {% if is_state('sun.sun', 'above_horizon') %}
+         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+       {% else %}
+         -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+       {% endif %}    
+   }       
+```
+
+## Some other card examples
+
+### [Search Card](https://github.com/postlund/search-card) and [Card Tools](https://github.com/thomasloven/lovelace-card-tools), by @postlund and @thomasloven
+
