@@ -234,7 +234,7 @@ cards:
             letter-spacing: '-0.01em';
           }
         type: markdown
- # Enter what you want to display in the small text
+# Enter what you want to display in the small text
       - content: |
           # Enter what you want to display here
         style: |
@@ -267,7 +267,9 @@ To add this card, click on the three dots on the top right, then go to `Configur
 
 Add the following:
 
-The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You change the icons, names, redirect tabs, and texts.
+The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. 
+
+**You change the icons, names, redirect tabs, and texts.**
 
 ``` markdown
 # Example entry
@@ -588,7 +590,9 @@ type: vertical-stack
   <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
+To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . The code below will setup five button cards horizontally (just like in the picture).
+
+**You change the icons, and entity_ids.**
 
 Add the following:
 
@@ -622,6 +626,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
+# You can change the entity_id and icon of the first button here
               - entity: switch.family_room_lamp
                 icon: 'mdi:lamp'
                 show_icon: true
@@ -663,6 +668,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
+# You can change the entity_id and icon of the second button here                
               - entity: switch.kitchen_island_lights
                 icon: 'mdi:vanity-light'
                 show_icon: true
@@ -704,6 +710,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
+# You can change the entity_id and icon of the third button here                 
               - entity: switch.dining_area
                 icon: 'mdi:ceiling-light'
                 show_icon: true
@@ -745,6 +752,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
+# You can change the entity_id and icon of the fourth button here                 
               - entity: light.family_room_dimmer
                 icon: 'mdi:light-switch'
                 show_icon: true
@@ -786,6 +794,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
+# You can change the entity_id and icon of the fifth button here 
               - entity: switch.dining_table
                 icon: 'mdi:table-chair'
                 show_icon: true
