@@ -7,6 +7,10 @@
 
 First and foremost thank you for finding you way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to inspire and potentially be implemented into you UI! Enjoy! 
 
+## Home Assistant Community
+
+Home Assistant forum discussions are here (https://github.com/home-assistant/home-assistant) 
+
 ## Pictures
 Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be simple. I'm trying to make it easy for you to implement my UI into yours! Look below for further details. 
 
