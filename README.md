@@ -164,7 +164,7 @@ custom_header:
 ```
 
 # Cards
-Finally we've arrived on how to configure the cards themselves.
+Finally we've arrived on how to configure the cards themselves. All the cards below will be able to adjust to dark/light themes depending on if the sun is above or below the horizon.
 
 ## Text Header Card
 </p>
