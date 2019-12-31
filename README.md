@@ -871,11 +871,11 @@ style: |
 
 ## Some other card examples
 
-![Search Card](search_card.png)
+![Search Card](images/search_card.png)
 
 ### [Search Card](https://github.com/postlund/search-card) and [Card Tools](https://github.com/thomasloven/lovelace-card-tools), by @postlund and @thomasloven
 
-![Mini-media-player](mini-media-player_card.png)
+![Mini-media-player](images/mini-media-player_card.png)
 
 ### [Mini Media Player](https://github.com/kalkih/mini-media-player), by @kalkih
 
