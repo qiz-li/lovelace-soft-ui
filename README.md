@@ -264,6 +264,8 @@ To add this card, click on the three dots on the top right, then go to `Configur
 
 Add the following:
 
+The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You change the icons, names, redirect tabs, and texts.
+
 ``` markdown
 # Example entry
 cards:
@@ -293,6 +295,8 @@ cards:
                 - width: 5px
                 - height: 80px
             type: 'custom:button-card'
+# This is first button with the light bulb icon
+# Change this to an icon you want
           - icon: 'mdi:lightbulb-multiple'
             show_icon: true
             show_name: false
@@ -315,10 +319,14 @@ cards:
                 - color: var(--primary-text-color)
             tap_action:
               action: navigate
+# This is the tab that the first button redirets to 
+# Change this to the tab you want the button to rediret to
               navigation_path: /lovelace/lights
             type: 'custom:button-card'
           - cards:
               - content: |
+# This is the text beside the first button
+# Change this to what you want it to say
                   # Lights
                 style: |
                   ha-card {
@@ -334,6 +342,8 @@ cards:
                   }
                 type: markdown
               - content: >
+# This is the smaller text beside the first button
+# Change this to what you want it to say              
                   # There are  {% if is_state('sensor.lights_on', '0') %}
                   currently no  {% else %}  {{states('sensor.lights_on')}}  {%
                   endif %} lights on
@@ -376,6 +386,8 @@ cards:
                 - width: 5px
                 - height: 80px
             type: 'custom:button-card'
+# This is second button with the alarm clock icon
+# Change this to an icon you want
           - icon: 'mdi:alarm'
             show_icon: true
             show_name: false
@@ -398,10 +410,14 @@ cards:
                 - color: var(--primary-text-color)
             tap_action:
               action: navigate
+# This is the tab that the second button redirets to 
+# Change this to the tab you want the button to rediret to              
               navigation_path: /lovelace/alarm
             type: 'custom:button-card'
           - cards:
               - content: |
+# This is the text beside the second button
+# Change this to what you want it to say              
                   # Alarm clock
                 style: |
                   ha-card {
@@ -417,6 +433,8 @@ cards:
                   }
                 type: markdown
               - content: >
+# This is the smaller text beside the second button
+# Change this to what you want it to say              
                   # The weekday alarm is  {% if
                   is_state('input_boolean.sleep_cycle_weekday', 'on') and
                   is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
@@ -463,6 +481,8 @@ cards:
                 - width: 5px
                 - height: 80px
             type: 'custom:button-card'
+# This is third button with the pine tree icon
+# Change this to an icon you want            
           - icon: 'mdi:pine-tree'
             show_icon: true
             show_name: false
@@ -485,10 +505,14 @@ cards:
                 - color: var(--primary-text-color)
             tap_action:
               action: navigate
+# This is the tab that the third button redirets to 
+# Change this to the tab you want the button to rediret to
               navigation_path: /lovelace/sprinklers/
             type: 'custom:button-card'
           - cards:
               - content: |
+# This is the text beside the third button
+# Change this to what you want it to say              
                   # Irrigation
                 style: |
                   ha-card {
@@ -504,6 +528,8 @@ cards:
                   }
                 type: markdown
               - content: |
+# This is the smaller text beside the third button
+# Change this to what you want it to say              
                   # The irrigation system is not activated
                 style: |
                   ha-card {
