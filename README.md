@@ -871,5 +871,7 @@ style: |
 
 ## Some other card examples
 
+![Search Card in action](search_card.mp4)
+
 ### [Search Card](https://github.com/postlund/search-card) and [Card Tools](https://github.com/thomasloven/lovelace-card-tools), by @postlund and @thomasloven
 
