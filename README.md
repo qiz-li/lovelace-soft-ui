@@ -183,6 +183,7 @@ Add the following:
 # Example entry
 cards:
   - cards:
+# Enter what you want to display
       - content: |
           # Enter what you want to display here
         style: |
@@ -217,6 +218,7 @@ Add the following:
 # Example entry
 cards:
   - cards:
+# Enter what you want to display
       - content: |
           # Enter what you want to display here
         style: |
@@ -232,6 +234,7 @@ cards:
             letter-spacing: '-0.01em';
           }
         type: markdown
+ # Enter what you want to display in the small text
       - content: |
           # Enter what you want to display here
         style: |
@@ -324,9 +327,9 @@ cards:
               navigation_path: /lovelace/lights
             type: 'custom:button-card'
           - cards:
-              - content: |
 # This is the text beside the first button
-# Change this to what you want it to say
+# Change this to what you want it to say          
+              - content: |
                   # Lights
                 style: |
                   ha-card {
@@ -341,9 +344,9 @@ cards:
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-              - content: >
 # This is the smaller text beside the first button
-# Change this to what you want it to say              
+# Change this to what you want it to say                
+              - content: >              
                   # There are  {% if is_state('sensor.lights_on', '0') %}
                   currently no  {% else %}  {{states('sensor.lights_on')}}  {%
                   endif %} lights on
@@ -415,9 +418,9 @@ cards:
               navigation_path: /lovelace/alarm
             type: 'custom:button-card'
           - cards:
-              - content: |
 # This is the text beside the second button
-# Change this to what you want it to say              
+# Change this to what you want it to say   
+              - content: |           
                   # Alarm clock
                 style: |
                   ha-card {
@@ -432,9 +435,9 @@ cards:
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-              - content: >
 # This is the smaller text beside the second button
-# Change this to what you want it to say              
+# Change this to what you want it to say  
+              - content: >            
                   # The weekday alarm is  {% if
                   is_state('input_boolean.sleep_cycle_weekday', 'on') and
                   is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
@@ -510,9 +513,9 @@ cards:
               navigation_path: /lovelace/sprinklers/
             type: 'custom:button-card'
           - cards:
-              - content: |
 # This is the text beside the third button
-# Change this to what you want it to say              
+# Change this to what you want it to say 
+              - content: |             
                   # Irrigation
                 style: |
                   ha-card {
@@ -527,9 +530,9 @@ cards:
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-              - content: |
 # This is the smaller text beside the third button
-# Change this to what you want it to say              
+# Change this to what you want it to say    
+              - content: |          
                   # The irrigation system is not activated
                 style: |
                   ha-card {
