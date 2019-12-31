@@ -45,6 +45,60 @@ For the cards to switch automatically to a dark/light theme, please make sure yo
 # Example configuration.yaml entry
 sun:
 ```
+## Theme Switching Automation
+You would have to have an automation setup for automatically switching to a dark theme at sunset and back to a light them at sunrise. If you don't have one please add the following to your `automations.yaml`.
+
+``` markdown
+# Example automations.yaml entry
+- alias: "Light theme after Sunrise"
+  trigger:
+    platform: sun
+    event: sunrise
+  action:
+    - service: frontend.set_theme
+      data:
+# Change this to the name of your light theme
+        name: Light
+
+- alias: "Dark theme after Sunset"
+  trigger:
+    platform: sun
+    event: sunset
+  action:
+    - service: frontend.set_theme
+      data:
+# Change this to the name of your light theme
+        name: Dark
+
+  - alias: 'Light theme after reboot in day'
+    trigger:
+      platform: homeassistant
+      event: start
+    condition:
+      - condition: state
+        entity_id: sun.sun
+        state: 'above_horizon'
+    action:
+      service: frontend.set_theme
+      data:
+# Change this to the name of your light theme
+        name: Light
+
+  - alias: 'Dark theme after reboot in night'
+    trigger:
+      platform: homeassistant
+      event: start
+    condition:
+      condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+    action:
+      service: frontend.set_theme
+      data:
+# Change this to the name of your light theme
+        name: Dark
+```
+
 # Themes
 Themes can also be installed with [HACS](https://hacs.xyz), manual installation docs are [here](https://www.home-assistant.io/integrations/frontend/). **@JuanMTech** also made a great [video](https://www.youtube.com/watch?v=3Xpd4zB2eRM) explaining how to setup themes. 
 
