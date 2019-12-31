@@ -1,0 +1,585 @@
+# Lovelace Soft UI lights view by @N-l1
+
+  - badges: []
+    cards:
+      - cards:
+          - cards:
+              - content: |
+                  # Most used
+                style: |
+                  ha-card {
+                    height: 20px;
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
+                type: markdown
+              - content: |
+                  # There are  {% if is_state('sensor.lights_on', '0') %}
+                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
+                  endif %} lights on
+                style: |
+                  ha-card {
+                    height: 50px;
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                  h1 {
+                    font-size: 15px;
+                    font-weight: thin;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
+                type: markdown
+              - cards:
+                  - cards:
+                      - show_icon: false
+                        show_name: false
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+
+                          }
+                        styles:
+                          card:
+                            - width: 5px
+                            - height: 60px
+                        type: 'custom:button-card'
+                      - entity: switch.family_room_lamp
+                        icon: 'mdi:lamp'
+                        show_icon: true
+                        show_name: false
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)  '
+                            value: 'on'
+                        style: |
+                          ha-card {
+                            box-shadow: 
+                              {% if is_state('sun.sun', 'above_horizon') %}
+                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                              {% else %}
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                              {% endif %}                        
+                          }
+                        styles:
+                          card:
+                            - width: 60px
+                            - height: 60px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                          icon:
+                            - color: var(--primary-text-color)
+                        tap_action:
+                          action: toggle
+                        type: 'custom:button-card'
+                      - show_icon: false
+                        show_name: false
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+
+                          }
+                        styles:
+                          card:
+                            - width: 5px
+                            - height: 60px
+                        type: 'custom:button-card'
+                      - entity: switch.kitchen_island_lights
+                        icon: 'mdi:vanity-light'
+                        show_icon: true
+                        show_name: false
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)  '
+                            value: 'on'
+                        style: |
+                          ha-card {
+                            box-shadow: 
+                              {% if is_state('sun.sun', 'above_horizon') %}
+                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                              {% else %}
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                              {% endif %}                        
+                          }
+                        styles:
+                          card:
+                            - width: 60px
+                            - height: 60px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                          icon:
+                            - color: var(--primary-text-color)
+                        tap_action:
+                          action: toggle
+                        type: 'custom:button-card'
+                      - show_icon: false
+                        show_name: false
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+
+                          }
+                        styles:
+                          card:
+                            - width: 5px
+                            - height: 60px
+                        type: 'custom:button-card'
+                      - entity: switch.dining_area
+                        icon: 'mdi:ceiling-light'
+                        show_icon: true
+                        show_name: false
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)  '
+                            value: 'on'
+                        style: |
+                          ha-card {
+                            box-shadow: 
+                              {% if is_state('sun.sun', 'above_horizon') %}
+                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                              {% else %}
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                              {% endif %}                        
+                          }
+                        styles:
+                          card:
+                            - width: 60px
+                            - height: 60px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                          icon:
+                            - color: var(--primary-text-color)
+                        tap_action:
+                          action: toggle
+                        type: 'custom:button-card'
+                      - show_icon: false
+                        show_name: false
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+
+                          }
+                        styles:
+                          card:
+                            - width: 5px
+                            - height: 60px
+                        type: 'custom:button-card'
+                      - entity: light.family_room_dimmer
+                        icon: 'mdi:light-switch'
+                        show_icon: true
+                        show_name: false
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)  '
+                            value: 'on'
+                        style: |
+                          ha-card {
+                            box-shadow: 
+                              {% if is_state('sun.sun', 'above_horizon') %}
+                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                              {% else %}
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                              {% endif %}                        
+                          }
+                        styles:
+                          card:
+                            - width: 60px
+                            - height: 60px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                          icon:
+                            - color: var(--primary-text-color)
+                        tap_action:
+                          action: toggle
+                        type: 'custom:button-card'
+                      - show_icon: false
+                        show_name: false
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+
+                          }
+                        styles:
+                          card:
+                            - width: 5px
+                            - height: 60px
+                        type: 'custom:button-card'
+                      - entity: switch.dining_table
+                        icon: 'mdi:table-chair'
+                        show_icon: true
+                        show_name: false
+                        state:
+                          - styles:
+                              icon:
+                                - color: 'var(--paper-item-icon-active-color)  '
+                            value: 'on'
+                        style: |
+                          ha-card {
+                            box-shadow: 
+                              {% if is_state('sun.sun', 'above_horizon') %}
+                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                              {% else %}
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                              {% endif %}                        
+                          }
+                        styles:
+                          card:
+                            - width: 60px
+                            - height: 60px
+                            - border-radius: 15px
+                            - background-color: var(--primary-background-color)
+                          icon:
+                            - color: var(--primary-text-color)
+                        tap_action:
+                          action: toggle
+                        type: 'custom:button-card'
+                    type: horizontal-stack
+                type: vertical-stack
+            type: vertical-stack
+          - cards:
+              - content: |
+                  # Scenes
+                style: |
+                  ha-card {
+                     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                   h1 {
+                    font-size: 20px;
+                       }
+                type: markdown
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 80px
+                    type: 'custom:button-card'
+                  - entity: script.dinner
+                    icon: 'mdi:silverware-fork-knife'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}    
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: toggle
+                    type: 'custom:button-card'
+                  - cards:
+                      - content: |
+                          # Dinner
+                        style: |
+                          ha-card {
+                           height: 20px;                  
+                           --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                           box-shadow: 2px 2px rgba(0,0,0,0.0);
+                                }
+                             h1 {
+
+                           font-size: 20px;
+                           font-weight: bold;
+                           font-family: Helvetica;
+                          letter-spacing: '-0.01em';
+                               }
+                        type: markdown
+                      - content: |
+                          # Sets lights and notifies it is dinner time
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 15px;
+                           font-weight: thin;
+                           font-family: Helvetica;
+                           letter-spacing: '-0.01em';
+                              }
+                        type: markdown
+                    type: vertical-stack
+                type: horizontal-stack
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                       box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 0.1px;
+                           font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                              }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 80px
+                    type: 'custom:button-card'
+                  - entity: script.movie
+                    icon: 'mdi:movie-open'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}    
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: toggle
+                    type: 'custom:button-card'
+                  - cards:
+                      - content: |
+                          # Movie
+                        style: |
+                          ha-card {
+                           height: 20px;                  
+                           --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                           box-shadow: 2px 2px rgba(0,0,0,0.0);
+                                }
+                             h1 {
+
+                           font-size: 20px;
+                           font-weight: bold;
+                           font-family: Helvetica;
+                          letter-spacing: '-0.01em';
+                               }
+                        type: markdown
+                      - content: |
+                          # Turns off all the lights and turns on the TV
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 15px;
+                           font-weight: thin;
+                           font-family: Helvetica;
+                           letter-spacing: '-0.01em';
+                              }
+                        type: markdown
+                    type: vertical-stack
+                type: horizontal-stack
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                       box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 0.1px;
+                           font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                              }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 80px
+                    type: 'custom:button-card'
+                  - entity: script.television
+                    icon: 'mdi:television'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}    
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: toggle
+                    type: 'custom:button-card'
+                  - cards:
+                      - content: |
+                          # Television
+                        style: |
+                          ha-card {
+                           height: 20px;                  
+                           --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                           box-shadow: 2px 2px rgba(0,0,0,0.0);
+                                }
+                             h1 {
+
+                           font-size: 20px;
+                           font-weight: bold;
+                           font-family: Helvetica;
+                          letter-spacing: '-0.01em';
+                               }
+                        type: markdown
+                      - content: |
+                          # Toggles the family room televsion
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 15px;
+                           font-weight: thin;
+                           font-family: Helvetica;
+                           letter-spacing: '-0.01em';
+                              }
+                        type: markdown
+                    type: vertical-stack
+                type: horizontal-stack
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                   box-shadow: 2px 2px rgba(0,0,0,0.0);
+                         }
+                       h1 {
+                       
+                       font-size: 0.1px;
+                       font-weight: thin;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                          }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                       box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 0.1px;
+                           font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                              }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 10px
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+        type: vertical-stack
+    icon: 'mdi:lightbulb-multiple'
+    path: lights
+    title: Lights

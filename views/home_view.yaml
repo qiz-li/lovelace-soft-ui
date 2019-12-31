@@ -1,0 +1,361 @@
+# Lovelace Soft UI home view by @N-l1
+
+  - badges: []
+    cards:
+      - cards:
+          - cards:
+              - content: |
+                  # Search
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
+                type: markdown
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 5px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                    type: 'custom:button-card'
+                  - style: |
+                      ha-card {
+                        background-color: var(--primary-background-color);
+                        border-radius: 15px;
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}    
+                      }         
+                    type: 'custom:search-card'
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+          - cards:
+              - content: |
+                  # Home
+                style: |
+                  ha-card {
+                     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                  h1 {
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: Helvetica;
+                    letter-spacing: '-0.01em';
+                  }
+                type: markdown
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 80px
+                    type: 'custom:button-card'
+                  - icon: 'mdi:lightbulb-multiple'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}                
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: navigate
+                      navigation_path: /lovelace/lights
+                    type: 'custom:button-card'
+                  - cards:
+                      - content: |
+                          # Lights
+                        style: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                        type: markdown
+                      - content: >
+                          # There are  {% if is_state('sensor.lights_on', '0')
+                          %} currently no  {% else %} 
+                          {{states('sensor.lights_on')}}  {% endif %} lights on
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                          h1 {
+                            font-size: 15px;
+                            font-weight: thin;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                        type: markdown
+                    type: vertical-stack
+                type: horizontal-stack
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                         --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                         box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 80px
+                    type: 'custom:button-card'
+                  - icon: 'mdi:alarm'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}   
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: navigate
+                      navigation_path: /lovelace/alarm
+                    type: 'custom:button-card'
+                  - cards:
+                      - content: |
+                          # Alarm clock
+                        style: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                        type: markdown
+                      - content: >
+                          # The weekday alarm is  {% if
+                          is_state('input_boolean.sleep_cycle_weekday', 'on')
+                          and is_state('input_boolean.alarm_weekday_enabled',
+                          'on')%}  on sleep cycle mode   {% elif
+                          is_state('input_boolean.alarm_weekday_enabled', 'on')
+                          %}   set for {{states('sensor.alarm_weekday_time')}} 
+                          {% else %}  not set  {% endif %}
+                        style: |
+                          ha-card {
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                          h1 {
+                            font-size: 15px;
+                            font-weight: thin;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                        type: markdown
+                    type: vertical-stack
+                type: horizontal-stack
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                       box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 80px
+                    type: 'custom:button-card'
+                  - icon: 'mdi:pine-tree'
+                    show_icon: true
+                    show_name: false
+                    style: |
+                      ha-card {
+                        box-shadow: 
+                          {% if is_state('sun.sun', 'above_horizon') %}
+                            -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                          {% else %}
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                          {% endif %}   
+                      }
+                    styles:
+                      card:
+                        - width: 80px
+                        - height: 80px
+                        - border-radius: 15px
+                        - background-color: var(--primary-background-color)
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: navigate
+                      navigation_path: /lovelace/sprinklers/
+                    type: 'custom:button-card'
+                  - cards:
+                      - content: |
+                          # Irrigation
+                        style: |
+                          ha-card {
+                            height: 20px;                  
+                            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                            box-shadow: 2px 2px rgba(0,0,0,0.0);
+                          }
+                          h1 {
+                            font-size: 20px;
+                            font-weight: bold;
+                            font-family: Helvetica;
+                            letter-spacing: '-0.01em';
+                          }
+                        type: markdown
+                      - content: |
+                          # The irrigation system is not activated
+                        style: >
+                          ha-card {
+
+                          --paper-card-background-color: 'rgba(11, 11, 11,
+                          0.00)';
+
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                             }
+                           h1 {
+                           
+                           font-size: 15px;
+                           font-weight: thin;
+                           font-family: Helvetica;
+                           letter-spacing: '-0.01em';
+                              }
+                        type: markdown
+                    type: vertical-stack
+                type: horizontal-stack
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                    box-shadow: 2px 2px rgba(0,0,0,0.0);
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    style: |
+                      ha-card {
+                        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                        box-shadow: 2px 2px rgba(0,0,0,0.0);
+                      }
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 10px
+                    type: 'custom:button-card'
+                type: horizontal-stack
+            type: vertical-stack
+        type: vertical-stack
+    icon: 'mdi:home'
+    path: home
+    title: Home

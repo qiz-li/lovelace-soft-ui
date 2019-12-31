@@ -1,0 +1,31 @@
+# Lovelace Soft UI by @N-l1
+
+# Custom header config
+custom_header:
+  background: var(--primary-background-color);
+  compact_mode: true
+  hide_help: true
+
+# Custom cards
+resources:
+  - type: module
+    url: /community_plugin/lovelace-card-mod/card-mod.js
+  - type: module
+    url: /community_plugin/custom-header/custom-header.js
+  - type: module
+    url: /community_plugin/button-card/button-card.js
+  - type: module
+    url: /community_plugin/search-card/search-card.js
+  - type: module
+    url: /community_plugin/lovelace-card-tools/card-tools.js
+  - type: module
+    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
+  - type: module
+    url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
+
+# Lovelace title
+title: My home
+
+# Lovelace views, all the views are inside the views folder
+views: 
+  !include_dir_merge_list views/
