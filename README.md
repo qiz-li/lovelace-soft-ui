@@ -20,12 +20,17 @@ My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft
 ![ui_alarm_clock_page_dark_theme](images/alarm_page_dark_theme.png)
 
 ### Advanced Users
-Thanks for taking you time to visit my repo! I have posted the yaml for my Lovelace above, I have also listed the custom cards I used below. If you require further assistance, please check below.
+Thanks for taking you time to visit my repo! I have posted the YAML for my Lovelace above, I have also listed the custom cards I used below. If you require further assistance, please check below.
 
 # Prerequisites
 This is the first part of the **step by step guide**. 
 
 These are some of the things you need before getting started.
+
+## Lovelace UI mode
+### The following is only intended for users using Lovelace UI mode
+
+### If you use Lovelace YAML mode, I have posted my YAML above.
 
 ## Custom Cards
 You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install the following cards.
