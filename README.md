@@ -5,10 +5,10 @@
 
 ## Introduction
 
-First and foremost **thank you** for finding you way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to inspire and potentially be implemented into you UI! **Enjoy**! 
+First and foremost thank you for finding you way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to inspire and potentially be implemented into you UI! Enjoy! 
 
 ## Pictures
-Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be **simple**. I'm trying to make it easy for **you** to implement my UI into yours! Look below for further details. 
+Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be simple. I'm trying to make it easy for you to implement my UI into yours! Look below for further details. 
 
 My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media)
 
@@ -26,11 +26,6 @@ Thanks for taking you time to visit my repo! I have posted the YAML for my Lovel
 This is the first part of the **step by step guide**. 
 
 These are some of the things you need before getting started.
-
-## Lovelace UI mode
-### The following is only intended for users using Lovelace UI mode
-
-### If you use Lovelace YAML mode, I have posted my YAML above.
 
 ## Custom Cards
 You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install the following cards.
@@ -56,7 +51,7 @@ For the cards to switch automatically to a dark/light theme, please make sure yo
 sun:
 ```
 ## Theme Switching Automation
-You would have to have an automation setup for automatically switching to a dark theme at sunset and back to a light them at sunrise. If you don't have one please add the following to your `automations.yaml`.
+You would need to have an automation setup for automatically switching to a dark theme at sunset and back to a light them at sunrise. If you don't have one please add the following to your `automations.yaml`.
 
 ``` markdown
 # Example automations.yaml entry
@@ -175,6 +170,11 @@ custom_header:
 
 # Cards
 Finally we've arrived on how to configure the cards themselves. All the cards below will be able to adjust to dark/light themes depending on if the sun is above or below the horizon.
+
+## Lovelace UI mode
+### The following adding of cards uses the UI editor.
+
+### If you use Lovelace YAML mode, I have posted my YAML above.
 
 ## Text Header Card
 </p>
