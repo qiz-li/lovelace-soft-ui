@@ -68,7 +68,7 @@ You would have to have an automation setup for automatically switching to a dark
   action:
     - service: frontend.set_theme
       data:
-# Change this to the name of your light theme
+# Change this to the name of your dark theme
         name: Dark
 
   - alias: 'Light theme after reboot in day'
@@ -96,7 +96,7 @@ You would have to have an automation setup for automatically switching to a dark
     action:
       service: frontend.set_theme
       data:
-# Change this to the name of your light theme
+# Change this to the name of your dark theme
         name: Dark
 ```
 
