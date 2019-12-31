@@ -14,6 +14,8 @@ My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft
 
 ![ui_home_page](images/UI_home_page.png)
 ![ui_home_page_dark_theme](images/UI_home_page_dark_theme.png)
+![ui_lights_page](images/UI_lights_page.png)
+![ui_lights_page_dark_theme](images/UI_lights_page_dark_theme.png)
 
 ### Advanced Users
 Thanks for taking you time to visit my repo! I have posted the yaml for my Lovelace above, I have also listed the custom cards I used below. If you require further assistance, please check below.
