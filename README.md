@@ -871,7 +871,14 @@ style: |
 
 ## Some other card examples
 
-![Search Card in action](search_card.mp4)
+![Search Card](search_card.png)
 
 ### [Search Card](https://github.com/postlund/search-card) and [Card Tools](https://github.com/thomasloven/lovelace-card-tools), by @postlund and @thomasloven
 
+![Mini-media-player](mini-media-player_card.png)
+
+### [Mini Media Player](https://github.com/kalkih/mini-media-player), by @kalkih
+
+# Thank you!
+This repository is maintained and developed by
+## @N-l1
