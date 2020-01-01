@@ -886,3 +886,5 @@ style: |
 # Thank you!
 This repository is maintained and developed by
 ## @N-l1
+
+A star 💫 would be greatly appreciated!
