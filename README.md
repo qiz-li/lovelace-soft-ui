@@ -606,12 +606,13 @@ type: vertical-stack
 
 To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . The code below will setup five button cards horizontally (just like in the picture).
 
+When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
+
 **You change the icons, and entity_ids.**
 
 Add the following:
 
 ``` markdown
-# Example entry
 cards:
   - cards:
       - show_icon: false
@@ -625,7 +626,7 @@ cards:
           card:
             - width: 5px
             - height: 10px
-        type: 'custom:button-card'  
+        type: 'custom:button-card'
       - cards:
           - cards:
               - show_icon: false
@@ -640,7 +641,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
-# You can change the entity_id and icon of the first button here
+# You can change the entity_id and icon of the first button here   
               - entity: switch.family_room_lamp
                 icon: 'mdi:lamp'
                 show_icon: true
@@ -650,13 +651,18 @@ cards:
                       icon:
                         - color: 'var(--paper-item-icon-active-color)  '
                     value: 'on'
+# You also have to change the entity_ids in the following template
                 style: |
                   ha-card {
                     box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
+                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'on') %}
+                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'off') %}                      
                         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% else %}
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'on') %}                      
+                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'off') %}   
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
                       {% endif %}                        
                   }
                 styles:
@@ -682,7 +688,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
-# You can change the entity_id and icon of the second button here                
+# You can change the entity_id and icon of the second button here   
               - entity: switch.kitchen_island_lights
                 icon: 'mdi:vanity-light'
                 show_icon: true
@@ -692,14 +698,19 @@ cards:
                       icon:
                         - color: 'var(--paper-item-icon-active-color)  '
                     value: 'on'
+# You also have to change the entity_ids in the following template
                 style: |
                   ha-card {
                     box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
+                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'on') %}
+                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'off') %}                      
                         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% else %}
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                      {% endif %}                        
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'on') %}                      
+                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'off') %}   
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                      {% endif %}                         
                   }
                 styles:
                   card:
@@ -724,7 +735,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
-# You can change the entity_id and icon of the third button here                 
+# You can change the entity_id and icon of the third button here   
               - entity: switch.dining_area
                 icon: 'mdi:ceiling-light'
                 show_icon: true
@@ -734,14 +745,19 @@ cards:
                       icon:
                         - color: 'var(--paper-item-icon-active-color)  '
                     value: 'on'
+# You also have to change the entity_ids in the following template
                 style: |
                   ha-card {
                     box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
+                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
+                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
                         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% else %}
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                      {% endif %}                        
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
+                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                      {% endif %}                           
                   }
                 styles:
                   card:
@@ -766,7 +782,7 @@ cards:
                     - width: 5px
                     - height: 60px
                 type: 'custom:button-card'
-# You can change the entity_id and icon of the fourth button here                 
+# You can change the entity_id and icon of the fourth button here   
               - entity: light.family_room_dimmer
                 icon: 'mdi:light-switch'
                 show_icon: true
@@ -776,14 +792,19 @@ cards:
                       icon:
                         - color: 'var(--paper-item-icon-active-color)  '
                     value: 'on'
+# You also have to change the entity_ids in the following template
                 style: |
                   ha-card {
                     box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
+                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'on') %}
+                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'off') %}                      
                         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% else %}
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                      {% endif %}                        
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'on') %}                      
+                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'off') %}   
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                      {% endif %}     
                   }
                 styles:
                   card:
@@ -818,14 +839,19 @@ cards:
                       icon:
                         - color: 'var(--paper-item-icon-active-color)  '
                     value: 'on'
+# You also have to change the entity_ids in the following template
                 style: |
                   ha-card {
                     box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') %}
+                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
+                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
                         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                      {% else %}
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                      {% endif %}                        
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
+                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
+                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                      {% endif %}     
                   }
                 styles:
                   card:
@@ -851,7 +877,7 @@ cards:
           card:
             - width: 5px
             - height: 10px
-        type: 'custom:button-card' 
+        type: 'custom:button-card'
     type: vertical-stack
 type: vertical-stack
 ```
