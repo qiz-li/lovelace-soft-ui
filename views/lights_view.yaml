@@ -19,8 +19,9 @@
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-              - content: |
+              - content: >
                   # There are  {% if is_state('sensor.lights_on', '0') %}
+
                   currently no  {% else %}  {{states('sensor.lights_on')}}  {%
                   endif %} lights on
                 style: |
@@ -36,6 +37,8 @@
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
+            type: vertical-stack
+          - cards:
               - cards:
                   - cards:
                       - show_icon: false
@@ -66,10 +69,14 @@
                         style: |
                           ha-card {
                             box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
+                              {% if is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'on') %}
+                                inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                              {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'off') %}                      
                                 -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% else %}
-                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'on') %}                      
+                                inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'off') %}   
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
                               {% endif %}                        
                           }
                         styles:
@@ -111,11 +118,15 @@
                         style: |
                           ha-card {
                             box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
+                              {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'on') %}
+                                inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                              {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'off') %}                      
                                 -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% else %}
-                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                              {% endif %}                        
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'on') %}                      
+                                inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'off') %}   
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                              {% endif %}                         
                           }
                         styles:
                           card:
@@ -156,11 +167,15 @@
                         style: |
                           ha-card {
                             box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
+                              {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
+                                inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                              {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
                                 -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% else %}
-                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                              {% endif %}                        
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
+                                inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                              {% endif %}                           
                           }
                         styles:
                           card:
@@ -201,11 +216,15 @@
                         style: |
                           ha-card {
                             box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
+                              {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'on') %}
+                                inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                              {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'off') %}                      
                                 -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% else %}
-                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                              {% endif %}                        
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'on') %}                      
+                                inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'off') %}   
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                              {% endif %}     
                           }
                         styles:
                           card:
@@ -246,11 +265,15 @@
                         style: |
                           ha-card {
                             box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
+                              {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
+                                inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                              {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
                                 -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% else %}
-                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
-                              {% endif %}                        
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
+                                inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                              {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
+                                -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                              {% endif %}     
                           }
                         styles:
                           card:
@@ -301,7 +324,7 @@
                           {% if is_state('sun.sun', 'above_horizon') %}
                             -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
                           {% else %}
-                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
                           {% endif %}    
                       }
                     styles:
@@ -374,7 +397,7 @@
                              }
                            h1 {
                            
-                           font-size: 0.1px;
+                           font-size: 0.3px;
                            font-weight: thin;
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
@@ -394,7 +417,7 @@
                           {% if is_state('sun.sun', 'above_horizon') %}
                             -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
                           {% else %}
-                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
                           {% endif %}    
                       }
                     styles:
@@ -467,7 +490,7 @@
                              }
                            h1 {
                            
-                           font-size: 0.1px;
+                           font-size: 0.3px;
                            font-weight: thin;
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
@@ -487,7 +510,7 @@
                           {% if is_state('sun.sun', 'above_horizon') %}
                             -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
                           {% else %}
-                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+                            -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
                           {% endif %}    
                       }
                     styles:
@@ -547,7 +570,7 @@
                          }
                        h1 {
                        
-                       font-size: 0.1px;
+                       font-size: 0.3px;
                        font-weight: thin;
                     font-family: Helvetica;
                     letter-spacing: '-0.01em';
@@ -567,7 +590,7 @@
                              }
                            h1 {
                            
-                           font-size: 0.1px;
+                           font-size: 0.3px;
                            font-weight: thin;
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
