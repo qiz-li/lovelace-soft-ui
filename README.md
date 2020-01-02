@@ -144,7 +144,7 @@ The following themes are available in [**HACS**](https://hacs.xyz).
   <a href="https://github.com/home-assistant-community-themes/midnight"><b>Midnight theme</b></a> and <a href="https://github.com/home-assistant-community-themes/dark-mint"><b>Dark Mint theme</b></a>, by <b>@Marcel Hoffs</b> and <b>@lambtho</b>
 </p>
 
-## Comapct Header
+## Compact Header
 You can either have the header match the background color or display it's own color.
 </p>
 <p align="left">
@@ -338,8 +338,8 @@ cards:
                 - color: var(--primary-text-color)
             tap_action:
               action: navigate
-# This is the tab that the first button redirets to 
-# Change this to the tab you want the button to rediret to
+# This is the tab that the first button redirects to 
+# Change this to the tab you want the button to redirect to
               navigation_path: /lovelace/lights
             type: 'custom:button-card'
           - cards:
@@ -429,8 +429,8 @@ cards:
                 - color: var(--primary-text-color)
             tap_action:
               action: navigate
-# This is the tab that the second button redirets to 
-# Change this to the tab you want the button to rediret to              
+# This is the tab that the second button redirects to 
+# Change this to the tab you want the button to redirect to              
               navigation_path: /lovelace/alarm
             type: 'custom:button-card'
           - cards:
@@ -524,8 +524,8 @@ cards:
                 - color: var(--primary-text-color)
             tap_action:
               action: navigate
-# This is the tab that the third button redirets to 
-# Change this to the tab you want the button to rediret to
+# This is the tab that the third button redirects to 
+# Change this to the tab you want the button to redirect to
               navigation_path: /lovelace/sprinklers/
             type: 'custom:button-card'
           - cards:
