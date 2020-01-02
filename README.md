@@ -79,33 +79,33 @@ You would need to have an automation setup for automatically switching to a dark
 # Change this to the name of your dark theme
         name: Dark
 
-  - alias: 'Light theme after reboot in day'
-    trigger:
-      platform: homeassistant
-      event: start
-    condition:
-      - condition: state
-        entity_id: sun.sun
-        state: 'above_horizon'
-    action:
-      service: frontend.set_theme
-      data:
-# Change this to the name of your light theme
-        name: Light
-
-  - alias: 'Dark theme after reboot in night'
-    trigger:
-      platform: homeassistant
-      event: start
-    condition:
-      condition: state
+- alias: 'Light theme after reboot in day'
+  trigger:
+    platform: homeassistant
+    event: start
+  condition:
+    - condition: state
       entity_id: sun.sun
-      state: 'below_horizon'
-    action:
-      service: frontend.set_theme
-      data:
+      state: 'above_horizon'
+  action:
+    service: frontend.set_theme
+    data:
+# Change this to the name of your light theme
+      name: Light
+
+- alias: 'Dark theme after reboot in night'
+  trigger:
+    platform: homeassistant
+    event: start
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+  action:
+    service: frontend.set_theme
+    data:
 # Change this to the name of your dark theme
-        name: Dark
+      name: Dark
 ```
 
 # Themes
