@@ -127,7 +127,7 @@ Any light theme consisting a **milky white background** should work.
 ## Dark Themes
 Any dark theme consisting a **dark grey/black background** should work.
 
-**Please note the background of the theme cannot be compeletly black.** 
+**Please note the background of the theme cannot be completely black.** 
 
 The following themes are available in [**HACS**](https://hacs.xyz).
 
