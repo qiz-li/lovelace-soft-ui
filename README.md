@@ -894,7 +894,7 @@ style: |
        {% if is_state('sun.sun', 'above_horizon') %}
          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
        {% else %}
-         -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.1);
+         -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
        {% endif %}    
    }       
 ```
