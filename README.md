@@ -913,4 +913,4 @@ style: |
 This repository is maintained and developed by
 ## @N-l1
 
-A star 💫 would be greatly appreciated!
+A star 💫 would be greatly appreciated and will trigger an awesome automation!
