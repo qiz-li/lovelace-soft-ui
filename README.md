@@ -178,8 +178,7 @@ This is the third part of the **step by step guide**.
 
 Finally we've arrived on how to configure the cards themselves. All the cards below will be able to adjust to dark/light themes depending on if the sun is above or below the horizon.
 
-## Lovelace UI mode
-#### The following adding of cards uses the UI editor.
+**The following adding of cards uses the UI editor. If you use YAML mode, my YAML is above.**
 
 To add cards using the UI editor, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` 
 
