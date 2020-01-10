@@ -23,11 +23,10 @@ My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft
 ![ui_alarm_clock_page](images/alarm_page.png)
 ![ui_alarm_clock_page_dark_theme](images/alarm_page_dark_theme.png)
 
-### Advanced Users
-Thanks for taking you time to visit my repo! I have posted the YAML for my Lovelace above, I have also listed the custom cards I used below. If you require further assistance, please check below.
-
 # Prerequisites
 This is the first part of the **step by step guide**. 
+
+**Please note I have posted my YAML above, if you prefer that instead.**
 
 These are some of the things you need before getting started.
 
@@ -109,6 +108,8 @@ You would need to have an automation setup for automatically switching to a dark
 ```
 
 # Themes
+This is the second part of the **step by step guide**. 
+
 Themes can also be installed with [HACS](https://hacs.xyz), manual installation docs are [here](https://www.home-assistant.io/integrations/frontend/). **@JuanMTech** also made a great [video](https://www.youtube.com/watch?v=3Xpd4zB2eRM) explaining how to setup themes. 
 
 ## Light Themes
@@ -173,12 +174,16 @@ custom_header:
 ```
 
 # Cards
+This is the third part of the **step by step guide**. 
+
 Finally we've arrived on how to configure the cards themselves. All the cards below will be able to adjust to dark/light themes depending on if the sun is above or below the horizon.
 
 ## Lovelace UI mode
-### The following adding of cards uses the UI editor.
+#### The following adding of cards uses the UI editor.
 
-### If you use Lovelace YAML mode, I have posted my YAML above.
+To add cards using the UI editor, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` 
+
+Paste in the appropriate text for each card.
 
 ## Text Header Card
 </p>
@@ -189,9 +194,13 @@ Finally we've arrived on how to configure the cards themselves. All the cards be
   <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
+#### Custom cards needed
 
-Add the following:
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
+
+This card displays a text with transparent background.
+
+Paste the following:
 
 ``` markdown
 # Example entry
@@ -224,9 +233,13 @@ type: vertical-stack
   <b>Text header cards with subheader</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
+#### Custom cards needed
 
-Add the following:
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
+
+This card displays a text with smaller text underneath with transparent background.
+
+Paste the following:
 
 ``` markdown
 # Example entry
@@ -277,13 +290,14 @@ type: vertical-stack
   <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . 
+#### Custom cards needed
 
-Add the following:
+* [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. 
+The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, redirect tabs, and texts beside them.
 
-**You change the icons, names, redirect tabs, and texts.**
+Paste the following:
 
 ``` markdown
 # Example entry
@@ -604,13 +618,14 @@ type: vertical-stack
   <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-To add this card, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` . The code below will setup five button cards horizontally (just like in the picture).
+#### Custom cards needed
 
-When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
+* [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-**You change the icons, and entity_ids.**
+The code below will setup five button cards horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
 
-Add the following:
+Paste the following:
 
 ``` markdown
 cards:
