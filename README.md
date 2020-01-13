@@ -11,7 +11,7 @@ First and foremost thank you for finding your way to my Home Assistant repo. Thi
 
 ## Home Assistant Community
 
-Home Assistant forum discussions are here (https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
+Home Assistant forum discussions are [here](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
 
 ## Pictures
 Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be simple. I'm trying to make it easy for you to implement my UI into yours! Look below for further details. 
