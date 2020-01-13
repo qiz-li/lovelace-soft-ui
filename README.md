@@ -33,6 +33,8 @@ These are some of the things you need before getting started.
 ## Custom Cards
 You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install the following cards.
 
+<details><summary><b>Click here</b></summary>
+<p>
 #### Required
 
 * [**Custom Header**](https://github.com/maykar/custom-header), by **@maykar**
@@ -45,6 +47,10 @@ You will need the following custom cards to be installed, it is easily done via 
 * [**Simple Weather Card**](https://github.com/kalkih/simple-weather-card), by **@kalkih**
 * [**Mini Media Player**](https://github.com/kalkih/mini-media-player), by **@kalkih**
 * [**Mini Graph Card**](https://github.com/kalkih/mini-graph-card), also by **@kalkih**
+</p>
+</details>
+
+
 
 ## sun.sun
 For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
