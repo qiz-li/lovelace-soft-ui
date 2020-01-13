@@ -1061,7 +1061,7 @@ cards:
 
 * [**Browser Mod**](https://github.com/thomasloven/hass-browser_mod), by **@thomasloven**
 
-This is a quite special card. It will pop up when you long press on an entity. For example, you can make it pop-up when you hold on your TV entity. 
+This is a quite special card. Each button on it can be used to control your TV/device. It will pop up when you long press on an entity. For example, you can make it pop-up when you hold on your TV entity. 
 
 To add this card, click on the three dots on the top right, then go to `Configure UI` then click the three dots on the top right again, then select `Raw config editor`  
 
