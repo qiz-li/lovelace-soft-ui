@@ -1624,7 +1624,7 @@ popup_cards:
 
 Then for it to pop-up when you are holding a button.
 
-Add the following to any button-card config:
+Add the following to the button-card config of the entity you want to hold to get the remote:
 
 ``` markdown
 hold_action:
