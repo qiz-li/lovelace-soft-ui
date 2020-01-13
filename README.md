@@ -1664,5 +1664,3 @@ This section is dedicated to UIs other have created using this repo. If you woul
 # Thank you!
 This repository is maintained and developed by
 ## @N-l1
-
-A star 💫 would be greatly appreciated and will trigger an awesome automation at our house!
