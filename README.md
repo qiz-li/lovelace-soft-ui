@@ -7,14 +7,13 @@
 
 ## Introduction
 
-First and foremost thank you for finding your way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy! This repo is to inspire and potentially be implemented into you UI! Enjoy! 
+First and foremost thank you for finding your way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy!
+
+Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. Sometimes though an excessive amount of information is displayed. My take on Lovelace is for it to be simple and drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media). I've tried to make this easy enough for even a very new user to able to implement it :) 
 
 **Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
 
-## Pictures
-Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. My take on Lovelace is for it to be simple. I'm trying to make it easy for you to implement my UI into yours! Look below for further details. 
-
-My theme of the UI is based on [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media)
+Here are some pictures:
 
 ![ui_home_page](images/UI_home_page.png)
 ![ui_home_page_dark_theme](images/UI_home_page_dark_theme.png)
@@ -35,6 +34,7 @@ You will need the following custom cards to be installed, it is easily done via 
 
 <details><summary><b>Click here</b></summary>
 <p>
+  
 #### Required
 
 * [**Custom Header**](https://github.com/maykar/custom-header), by **@maykar**
