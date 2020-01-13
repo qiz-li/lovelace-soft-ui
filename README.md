@@ -56,7 +56,7 @@ sun:
 ## Theme Switching Automation
 You would need to have an automation setup for automatically switching to a dark theme at sunset and back to a light them at sunrise. If you don't have one please add the following to your `automations.yaml`.
 
-<details><summary><b>Add the following:</b></summary>
+<details><summary><b>Click here</b></summary>
 <p>
 
 ``` markdown
@@ -204,7 +204,9 @@ Paste in the appropriate text for each card.
 
 This card displays a text with transparent background.
 
-<details><summary><b>Paste the following:</b></summary>
+Add the following:
+
+<details><summary><b>Click here</b></summary>
 <p>
 
 ``` markdown
@@ -247,7 +249,9 @@ type: vertical-stack
 
 This card displays a text with smaller text underneath with transparent background.
 
-<details><summary><b>Paste the following:</b></summary>
+Add the following:
+
+<details><summary><b>Click here</b></summary>
 <p>
 
 ``` markdown
@@ -308,7 +312,9 @@ type: vertical-stack
 
 The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, redirect tabs, and texts beside them.
 
-<details><summary><b>Paste the following:</b></summary>
+Add the following:
+
+<details><summary><b>Click here</b></summary>
 <p>
 
 ``` markdown
@@ -639,7 +645,9 @@ type: vertical-stack
 
 The code below will setup five button cards horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
 
-<details><summary><b>Paste the following:</b></summary>
+Add the following:
+
+<details><summary><b>Click here</b></summary>
 <p>
 
 ``` markdown
@@ -930,9 +938,9 @@ type: vertical-stack
 
 The code below will setup a text input for you to TTS to a desired media player. If you require further assistance on this card, check the TTS section of the [Mini Media Player](https://github.com/kalkih/mini-media-player) card. 
 
+Add the following:
 
-
-<details><summary><b>Paste the following:</b></summary>
+<details><summary><b>Click here</b></summary>
 <p>
   
 ``` markdown
@@ -1057,7 +1065,9 @@ This is a quite special card. It will pop up when you long press on an entity. F
 
 To add this card, click on the three dots on the top right, then go to `Configure UI` then click the three dots on the top right again, then select `Raw config editor`  
 
-<details><summary><b>Paste the following to the first line of the Raw config editor:</b></summary>
+Add the following to the first line:
+
+<details><summary><b>Click here</b></summary>
 <p>
 
 ``` markdown
@@ -1614,18 +1624,12 @@ popup_cards:
 
 Then for it work when you are holding a button.
 
-<details><summary><b>Add the following to any button-card config:</b></summary>
-<p>
+Add the following to any button-card config:
 
 ``` markdown
 hold_action:
   action: more-info
 ```
-</p>
-</details>
-
-
-
 # Other Cards
 To have a simple Soft UI look on other cards, what you have to do is set the card background as the same as the theme background as well as round the corners then adding a dark and light shadow. It can be done (with [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod)) like this:
 
