@@ -1622,7 +1622,7 @@ popup_cards:
 </p>
 </details>
 
-Then for it work when you are holding a button.
+Then for it to pop-up when you are holding a button.
 
 Add the following to any button-card config:
 
