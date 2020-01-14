@@ -1664,9 +1664,6 @@ style: |
 
 ### [Mini Media Player](https://github.com/kalkih/mini-media-player), by @kalkih
 
-## Examples by YOU!
-This section is dedicated to UIs other have created using this repo. If you would like to share your UI, either message me on the forums or sumbit a pull request.
-
 # Thank you!
 This repository is maintained and developed by
 ## @N-l1 ✨
