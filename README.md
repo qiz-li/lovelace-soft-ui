@@ -355,9 +355,9 @@ cards:
                 box-shadow: 
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
-                  {% endif %}                
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}                 
               }
             styles:
               card:
@@ -446,9 +446,9 @@ cards:
                 box-shadow: 
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
-                  {% endif %}   
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}    
               }
             styles:
               card:
@@ -541,8 +541,8 @@ cards:
                 box-shadow: 
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
                   {% endif %}   
               }
             styles:
@@ -693,13 +693,13 @@ cards:
                   ha-card {
                     box-shadow: 
                       {% if is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'off') %}                      
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'on') %}                      
-                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'off') %}   
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                       {% endif %}                        
                   }
                 styles:
@@ -740,13 +740,13 @@ cards:
                   ha-card {
                     box-shadow: 
                       {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'off') %}                      
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'on') %}                      
-                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'off') %}   
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                       {% endif %}                         
                   }
                 styles:
@@ -787,13 +787,13 @@ cards:
                   ha-card {
                     box-shadow: 
                       {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
-                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                       {% endif %}                           
                   }
                 styles:
@@ -834,13 +834,13 @@ cards:
                   ha-card {
                     box-shadow: 
                       {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'off') %}                      
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'on') %}                      
-                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'off') %}   
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                       {% endif %}     
                   }
                 styles:
@@ -881,13 +881,13 @@ cards:
                   ha-card {
                     box-shadow: 
                       {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.7), inset 4px 4px 8px 0 rgba(0,0,0,.07);
+                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
-                        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
-                        inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
                       {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
-                        -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
+                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
                       {% endif %}     
                   }
                 styles:
@@ -1629,9 +1629,17 @@ Add the following to the button-card config of the entity you want to hold to ge
 hold_action:
   action: more-info
 ```
-# Other Cards
+## Other Cards
+
+![Search Card](images/search_card.png)
+
+[Search Card](https://github.com/postlund/search-card) and [Card Tools](https://github.com/thomasloven/lovelace-card-tools), by @postlund and @thomasloven
+
 To have a simple Soft UI look on other cards, what you have to do is set the card background as the same as the theme background as well as round the corners then adding a dark and light shadow. It can be done (with [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod)) like this:
 
+<details><summary><b>Click here</b></summary>
+<p>
+  
 ``` markdown
 # Example entry
 style: |
@@ -1642,20 +1650,12 @@ style: |
        {% if is_state('sun.sun', 'above_horizon') %}
          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
        {% else %}
-         -8px -8px 8px 0 rgba(77, 77, 77,.5),8px 8px 8px 0 rgba(0,0,0,.3);
-       {% endif %}    
+         -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+       {% endif %}   
    }       
 ```
-
-## Some other card examples
-
-![Search Card](images/search_card.png)
-
-### [Search Card](https://github.com/postlund/search-card) and [Card Tools](https://github.com/thomasloven/lovelace-card-tools), by @postlund and @thomasloven
-
-![Mini-media-player](images/mini-media-player_card.png)
-
-### [Mini Media Player](https://github.com/kalkih/mini-media-player), by @kalkih
+</p>
+</details>
 
 # Thank you!
 This repository is maintained and developed by
