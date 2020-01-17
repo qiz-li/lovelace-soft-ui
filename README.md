@@ -1131,7 +1131,7 @@ popup_cards:
                                         {% if is_state('sun.sun', 'above_horizon') %}
                                           -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
                                         {% else %}
-                                          -5px -5px 5px 0 rgba(77, 77, 77,.5),5px 5px 5px 0 rgba(0,0,0,.3);
+                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
                                         {% endif %}                
                                     }                
                                   styles:
@@ -1253,7 +1253,7 @@ popup_cards:
                                                 {% if is_state('sun.sun', 'above_horizon') %}
                                                   -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
                                                 {% else %}
-                                                  -4px -4px 4px 0 rgba(77, 77, 77,.5),4px 4px 4px 0 rgba(0,0,0,.3);
+                                                  -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
                                                 {% endif %}                
                                             }
                                           styles:
@@ -1337,7 +1337,7 @@ popup_cards:
                                         {% if is_state('sun.sun', 'above_horizon') %}
                                           inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
                                         {% else %}
-                                          inset -4px -4px 12px 0 rgba(77, 77, 77,.5), inset 4px 4px 12px 0 rgba(0,0,0,.7); 
+                                          inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
                                         {% endif %}                    
                                       border-radius: 30px;
                                       background-color: var(--primary-background-color)
@@ -1459,7 +1459,7 @@ popup_cards:
                                         {% if is_state('sun.sun', 'above_horizon') %}
                                            -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
                                         {% else %}
-                                          -5px -5px 5px 0 rgba(77, 77, 77,.5),5px 5px 5px 0 rgba(0,0,0,.3);
+                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
                                         {% endif %}                
                                       border-radius: 30px;
                                       background-color: var(--primary-background-color)
@@ -1489,7 +1489,7 @@ popup_cards:
                                         {% if is_state('sun.sun', 'above_horizon') %}
                                           -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
                                         {% else %}
-                                          -5px -5px 5px 0 rgba(77, 77, 77,.5),5px 5px 5px 0 rgba(0,0,0,.3);
+                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
                                         {% endif %}                
                                     }
                                   styles:
@@ -1520,7 +1520,7 @@ popup_cards:
                                       - width: 5px
                                       - height: 60px
                                   type: 'custom:button-card'
-# The first button in the bottom, you can change the icon here. In my case it is 'return'                                    
+# The second button in the bottom, you can change the icon here. In my case it is 'return'                                    
                                 - icon: 'mdi:keyboard-return'
                                   show_icon: true
                                   show_name: false
@@ -1528,10 +1528,10 @@ popup_cards:
                                     ha-card {
                                       box-shadow: 
                                         {% if is_state('sun.sun', 'above_horizon') %}
-                                          -6px -6px 6px 0 rgba(255,255,255,.5),6px 6px 6px 0 rgba(0,0,0,.03);
+                                          -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
                                         {% else %}
-                                          -6px -6px 6px 0 rgba(77, 77, 77,.5),6px 6px 6px 0 rgba(0,0,0,.3);
-                                        {% endif %}                
+                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                                        {% endif %}               
                                     }
                                   styles:
                                     card:
@@ -1561,7 +1561,7 @@ popup_cards:
                                       - width: 5px
                                       - height: 60px
                                   type: 'custom:button-card'
-# The first button in the bottom, you can change the icon here. In my case it is a set top box.                                    
+# The third button in the bottom, you can change the icon here. In my case it is a set top box.                                    
                                 - icon: 'mdi:set-top-box'
                                   show_icon: true
                                   show_name: false
@@ -1571,7 +1571,7 @@ popup_cards:
                                         {% if is_state('sun.sun', 'above_horizon') %}
                                           -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
                                         {% else %}
-                                          -5px -5px 5px 0 rgba(77, 77, 77,.5),5px 5px 5px 0 rgba(0,0,0,.3);
+                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
                                         {% endif %}                
                                     }
                                   styles:
