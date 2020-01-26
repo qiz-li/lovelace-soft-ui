@@ -1,7 +1,7 @@
 # Lovelace Soft UI 
 #### A new user friendly, simple and clean Lovelace configuration
 
-![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)
+![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) ![maintainer](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
 ![lovelace_soft_UI](images/lovelace_soft_UI.jpg)
 
@@ -301,6 +301,11 @@ type: vertical-stack
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
+
+#### Template used to count how many lights are on
+``` markdown
+{{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
+```
 
 The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, redirect tabs, and texts beside them.
 
