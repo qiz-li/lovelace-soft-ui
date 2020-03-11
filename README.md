@@ -159,6 +159,8 @@ Add the following if you would like the header to match the background color:
 ``` markdown
 # Example entry
 custom_header:
+  elements_color: var(--primary-text-color);
+  tab_indicator_color: var(--primary-text-color);
   background: var(--primary-background-color);
   compact_mode: true
 ```
