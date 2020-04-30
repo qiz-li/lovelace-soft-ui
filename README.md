@@ -1637,25 +1637,21 @@ hold_action:
 
 To have a simple Soft UI look on other cards, what you have to do is set the card background as the same as the theme background as well as round the corners then adding a dark and light shadow. It can be done (with [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod)) like this:
 
-<details><summary><b>Click here</b></summary>
-<p>
-  
 ``` markdown
 # Example entry
 style: |
-   ha-card {
-     background-color: var(--primary-background-color);
-     border-radius: 15px;
-     box-shadow: 
-       {% if is_state('sun.sun', 'above_horizon') %}
-         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-       {% else %}
-         -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-       {% endif %}   
-   }       
+  ha-card {
+      background-color: var(--primary-background-color);
+      border-radius: 15px;
+      margin: 20px;
+      box-shadow: 
+        {% if is_state('sun.sun', 'above_horizon') %}
+          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        {% else %}
+          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+        {% endif %}   
+   }      
 ```
-</p>
-</details>
 
 # Thank you!
 This repository is maintained and developed by
