@@ -1,9 +1,9 @@
 # Lovelace Soft UI 
 #### A new user friendly, simple and clean Lovelace configuration
 
-![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) ![maintainer](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
+![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![This is user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) ![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
-![lovelace_soft_UI](images/lovelace_soft_UI.jpg)
+![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
 
 ## Introduction
 
@@ -15,12 +15,12 @@ Lovelace is the primary interface for Home Assistant, it is used to display all 
 
 Here are some pictures:
 
-![ui_home_page](images/UI_home_page.png)
-![ui_home_page_dark_theme](images/UI_home_page_dark_theme.png)
-![ui_lights_page](images/UI_lights_page.png)
-![ui_lights_page_dark_theme](images/UI_lights_page_dark_theme.png)
-![ui_alarm_clock_page](images/alarm_page.png)
-![ui_alarm_clock_page_dark_theme](images/alarm_page_dark_theme.png)
+![UI home page with weather, lights, alarm clock, and irragation. Light theme](images/UI_home_page.png)
+![UI home page, dark theme](images/UI_home_page_dark_theme.png)
+![UI lights control page, light theme](images/UI_lights_page.png)
+![UI lights control page, dark theme](images/UI_lights_page_dark_theme.png)
+![UI alarm clock control page, light theme](images/alarm_page.png)
+![UI alarm clock control page, dark theme](images/alarm_page_dark_theme.png)
 
 # Prerequisites
 This is the first part of the **step by step guide**. 
