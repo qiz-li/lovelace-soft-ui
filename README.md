@@ -1,9 +1,9 @@
 # Lovelace Soft UI 
 #### A new user friendly, simple and clean Lovelace configuration
 
-![license](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) ![maintainer](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
+![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) ![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
-![lovelace_soft_UI](images/lovelace_soft_UI.jpg)
+![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
 
 ## Introduction
 
@@ -15,12 +15,12 @@ Lovelace is the primary interface for Home Assistant, it is used to display all 
 
 Here are some pictures:
 
-![ui_home_page](images/UI_home_page.png)
-![ui_home_page_dark_theme](images/UI_home_page_dark_theme.png)
-![ui_lights_page](images/UI_lights_page.png)
-![ui_lights_page_dark_theme](images/UI_lights_page_dark_theme.png)
-![ui_alarm_clock_page](images/alarm_page.png)
-![ui_alarm_clock_page_dark_theme](images/alarm_page_dark_theme.png)
+![UI home page with weather, lights, alarm clock, and irragation. Light theme](images/UI_home_page.png)
+![UI home page, dark theme](images/UI_home_page_dark_theme.png)
+![UI lights control page, light theme](images/UI_lights_page.png)
+![UI lights control page, dark theme](images/UI_lights_page_dark_theme.png)
+![UI alarm clock control page, light theme](images/alarm_page.png)
+![UI alarm clock control page, dark theme](images/alarm_page_dark_theme.png)
 
 # Prerequisites
 This is the first part of the **step by step guide**. 
@@ -124,7 +124,7 @@ Any light theme consisting a **milky white background** should work.
 <p align="left">
   <img src="images/UI_lights_page.png" alt="Google Home Light theme UI" width="425">
   <img src="images/clear_theme_UI.png" alt="Clear theme UI" width="425">
-  <br>
+  <br/>
   <a href="https://github.com/liri/lovelace-themes"><b>Google Home Light theme</b></a> and
   <a href="https://github.com/naofireblade/clear-theme"><b>Clear theme</b></a>, by <b>@liri</b> and <b>@naofireblade</b>
 </p>
@@ -139,16 +139,16 @@ The following themes are available in [**HACS**](https://hacs.xyz).
 <p align="left">
   <img src="images/slate_theme_UI.png" alt="Slate theme UI" width="425">
   <img src="images/grey_night_theme_UI.png" alt="Grey Night theme UI" width="425">
-  <br>
+  <br/>
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> and <a href="https://github.com/home-assistant-community-themes/grey-night"><b>Grey Night theme</b></a>, by <b>@seangreen2</b> and <b>@ksya</b>
 
 ## Compact Header
-You can either have the header match the background color or display it's own color.
+You can either have the header match the background color or display its own color.
 </p>
 <p align="left">
   <img src="images/slate_theme_with_colored_header.png" alt="Dark mint theme with color header" width="425">
   <img src="images/slate_theme_UI.png" alt="Dark mint theme without color header" width="425">
-  <br>
+  <br/>
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
 </p>
 
@@ -164,7 +164,7 @@ custom_header:
   background: var(--primary-background-color);
   compact_mode: true
 ```
-Only add the following if you would like the header to display it's own color:
+Only add the following if you would like the header to display its own color:
 
 ``` markdown
 # Example entry
@@ -179,7 +179,7 @@ Finally we've arrived on how to configure the cards themselves. All the cards be
 
 **The following adding of cards uses the UI editor. If you use YAML mode, my YAML is above.**
 
-To add cards using the UI editor, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD` 
+To add cards using the UI editor, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
 
 Paste in the appropriate text for each card.
 
@@ -188,7 +188,7 @@ Paste in the appropriate text for each card.
 <p align="left">
   <img src="images/text_header_card_light_theme.png" alt="Text header card light theme" width="425">
   <img src="images/text_header_card_dark_theme.png" alt="Text header card dark theme" width="425">
-  <br>
+  <br/>
   <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
@@ -233,7 +233,7 @@ type: vertical-stack
 <p align="left">
   <img src="images/text_subheader_card_light_theme.png" alt="Text subheader card light theme" width="425">
   <img src="images/text_subheader_card_dark_theme.png" alt="Text subheader card dark theme" width="425">
-  <br>
+  <br/>
   <b>Text header cards with subheader</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
@@ -295,7 +295,7 @@ type: vertical-stack
 <p align="left">
   <img src="images/vertical_button_card_light_theme.png" alt="Vertical button card light theme" width="425">
   <img src="images/vertical_button_card_dark_theme.png" alt="Vertical button card dark theme" width="425">
-  <br>
+  <br/>
   <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
@@ -633,7 +633,7 @@ type: vertical-stack
 <p align="left">
   <img src="images/horizontal_button_card_light_theme.png" alt="Horizontal button card light theme" width="425">
   <img src="images/horizontal_button_card_dark_theme.png" alt="Horizontal button card dark theme" width="425">
-  <br>
+  <br/>
   <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
@@ -926,7 +926,7 @@ type: vertical-stack
 <p align="left">
   <img src="images/tts_card_light_theme.png" alt="TTS card light theme" width="425">
   <img src="images/tts_card_dark_theme.png" alt="TTS card dark theme" width="425">
-  <br>
+  <br/>
   <b>Text to speech card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
@@ -1047,7 +1047,7 @@ cards:
 <p align="left">
   <img src="images/remote_card_light_theme.png" alt="Remote card light theme" width="425">
   <img src="images/remote_card_dark_theme.png" alt="Remote card dark theme" width="425">
-  <br>
+  <br/>
   <b>Remote pop-up card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
