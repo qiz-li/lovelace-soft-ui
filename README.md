@@ -7,7 +7,6 @@
 
 ![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
 
-## Introduction
 First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. 
 
 Hope you like it!
@@ -21,7 +20,7 @@ Hope you like it!
   <a><b>Home page - light and dark theme</b></a>
 </p>
 
-## Let's do it!
+# Let's do it!
 ### 1. Install card-mod
 You will need [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install it.
 ### 2. sun.sun
@@ -95,7 +94,6 @@ You will need to setup an automation for automatically switching to a dark theme
 ### 5. Done!
 We are done! Use this code to add the Soft UI style to any card. 
 
-For more advanced usage/my personal setup, see below...
 ``` markdown
 # Example entry
 style: |
@@ -111,6 +109,7 @@ style: |
         {% endif %}   
    }      
 ```
+For more advanced usage/my personal setup, see below...
 
 # Advanced Usage
 Here are some cards I created using this style :) 
@@ -120,8 +119,6 @@ All cards are added using the UI: Click on the three dots on the top right, then
 Paste in the appropriate code for each card.
 
 ## Compact Header
-You can either have the header match the background color or display its own color.
-
 <p align="left">
   <img src="images/slate_theme_with_colored_header.png" alt="Dark mint theme with color header" width="425">
   <img src="images/slate_theme_UI.png" alt="Dark mint theme without color header" width="425">
@@ -129,9 +126,13 @@ You can either have the header match the background color or display its own col
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
 </p>
 
-Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor`. 
+#### Custom cards needed
 
-Add the following if you would like the header to match the background color:
+* [**Custom Header**](https://maykar.github.io/compact-custom-header/), by **maykar**
+
+This makes the original Home Assistant header "compact" and matches the background color.
+
+Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
 ``` markdown
 # Example entry
@@ -139,13 +140,6 @@ custom_header:
   elements_color: var(--primary-text-color);
   tab_indicator_color: var(--primary-text-color);
   background: var(--primary-background-color);
-  compact_mode: true
-```
-Only add the following if you would like the header to display its own color:
-
-``` markdown
-# Example entry
-custom_header:
   compact_mode: true
 ```
 
@@ -166,7 +160,7 @@ This card displays a text with transparent background.
 
 Add the following:
 
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -211,7 +205,7 @@ This card displays a text with smaller text underneath with transparent backgrou
 
 Add the following:
 
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -279,7 +273,7 @@ The following code will create three buttons: lights, alarm clock and irrigation
 
 Add the following:
 
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -508,7 +502,7 @@ The code below will setup five button cards horizontally (like the picture). Whe
 
 Add the following:
 
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -743,7 +737,7 @@ To add this card, click on the three dots on the top right, then go to `Configur
 
 Add the following to the first line:
 
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
