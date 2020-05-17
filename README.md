@@ -117,7 +117,7 @@ For more advanced usage/my personal setup, see below...
 # Advanced Usage
 Here are some cards I created using this style :) 
 
-All cards are added using the UI: Click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
+All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
 
 Paste in the appropriate code for each card.
 
@@ -275,7 +275,7 @@ type: vertical-stack
 {{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
 ```
 
-This card contains three buttons line up vertically: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them.
+This card contains three buttons lined up vertically: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them.
 
 <details><summary><b>Show code</b></summary>
 <p>
