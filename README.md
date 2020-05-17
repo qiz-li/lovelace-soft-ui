@@ -5,24 +5,25 @@
 ![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) 
 ![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
-![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
-
-First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. 
-
-Hope you like it!
+First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. Hope you like it!
 
 **Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
+
+![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
 
 <p align="left">
   <img src="docs/images/home_page_light.png" alt="Home page, light theme" width="425">
   <img src="docs/images/home_page_dark.png" alt="Home page, dark theme" width="425">
   <br/>
-  <a><b>Home page - light and dark theme</b></a>
+    <b>Home page</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 # Let's do it!
 ### 1. Install card-mod
-You will need [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install it.
+You will need [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). 
+
+Please read HACS documentations and install it.
+
 ### 2. sun.sun
 For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
 
@@ -31,7 +32,7 @@ For the cards to switch automatically to a dark/light theme, please make sure yo
 sun:
 ```
 ### 3. Themes
-The styling works best with custom themes, they can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well.
+This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well.
 ### 4. Automation
 You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
 
@@ -118,10 +119,17 @@ All cards are added using the UI: Click on the three dots on the top right, then
 
 Paste in the appropriate code for each card.
 
+<p align="left">
+  <img src="docs/images/lights_page_light.png" alt="Lights page, light theme" width="425">
+  <img src="docs/images/lights_page_dark.png" alt="Lights page, dark theme" width="425">
+  <br/>
+    <b>Lights page</b> with the <b>Light</b> and <b>Dark</b> themes.
+</p>
+
 ## Compact Header
 <p align="left">
-  <img src="images/slate_theme_with_colored_header.png" alt="Dark mint theme with color header" width="425">
-  <img src="images/slate_theme_UI.png" alt="Dark mint theme without color header" width="425">
+  <img src="docs/images/slate_theme_with_colored_header.png" alt="Slate theme with color header" width="425">
+  <img src="docs/images/slate_theme.png" alt="Slate theme without color header" width="425">
   <br/>
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
 </p>
@@ -130,7 +138,7 @@ Paste in the appropriate code for each card.
 
 * [**Custom Header**](https://maykar.github.io/compact-custom-header/), by **maykar**
 
-This makes the original Home Assistant header "compact" and matches the background color.
+This makes the original Home Assistant header "compact" and also matching it with the background color.
 
 Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
@@ -146,8 +154,8 @@ custom_header:
 ## Text Header Card
 </p>
 <p align="left">
-  <img src="images/text_header_card_light_theme.png" alt="Text header card light theme" width="425">
-  <img src="images/text_header_card_dark_theme.png" alt="Text header card dark theme" width="425">
+  <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="425">
+  <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="425">
   <br/>
   <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -156,9 +164,7 @@ custom_header:
 
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card displays a text with transparent background.
-
-Add the following:
+This card displays texts with transparent background. 
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -191,8 +197,8 @@ type: vertical-stack
 ## Text Header Card with Subheader
 </p>
 <p align="left">
-  <img src="images/text_subheader_card_light_theme.png" alt="Text subheader card light theme" width="425">
-  <img src="images/text_subheader_card_dark_theme.png" alt="Text subheader card dark theme" width="425">
+  <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="425">
+  <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="425">
   <br/>
   <b>Text header cards with subheader</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -201,9 +207,7 @@ type: vertical-stack
 
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card displays a text with smaller text underneath with transparent background.
-
-Add the following:
+This card displays texts with smaller texts underneath with transparent background.
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -253,8 +257,8 @@ type: vertical-stack
 ## Vertical Buttons Card
 </p>
 <p align="left">
-  <img src="images/vertical_button_card_light_theme.png" alt="Vertical button card light theme" width="425">
-  <img src="images/vertical_button_card_dark_theme.png" alt="Vertical button card dark theme" width="425">
+  <img src="docs/images/vertical_button_card_light.png" alt="Vertical button card light theme" width="425">
+  <img src="docs/images/vertical_button_card_dark.png" alt="Vertical button card dark theme" width="425">
   <br/>
   <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -269,9 +273,7 @@ type: vertical-stack
 {{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
 ```
 
-The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, redirect tabs, and texts beside them.
-
-Add the following:
+This card contains three buttons line up vertically: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them.
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -487,8 +489,8 @@ type: vertical-stack
 ## Horizontal Buttons Card
 </p>
 <p align="left">
-  <img src="images/horizontal_button_card_light_theme.png" alt="Horizontal button card light theme" width="425">
-  <img src="images/horizontal_button_card_dark_theme.png" alt="Horizontal button card dark theme" width="425">
+  <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
+  <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
   <br/>
   <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -498,7 +500,7 @@ type: vertical-stack
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-The code below will setup five button cards horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
+This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
 
 Add the following:
 
@@ -523,6 +525,7 @@ cards:
       ha-card {
         margin: 5px;  
         box-shadow: 
+# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
@@ -563,6 +566,7 @@ cards:
       ha-card {
         margin: 5px;                  
         box-shadow: 
+# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
@@ -603,6 +607,7 @@ cards:
       ha-card {
         margin: 5px;                  
         box-shadow: 
+# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
@@ -643,6 +648,7 @@ cards:
       ha-card {
         margin: 5px;  
         box-shadow: 
+# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
@@ -683,6 +689,7 @@ cards:
       ha-card {
         margin: 5px;              
         box-shadow: 
+# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
@@ -716,8 +723,8 @@ type: horizontal-stack
 ## Remote pop-up card
 </p>
 <p align="left">
-  <img src="images/remote_card_light_theme.png" alt="Remote card light theme" width="425">
-  <img src="images/remote_card_dark_theme.png" alt="Remote card dark theme" width="425">
+  <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
+  <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="425">
   <br/>
   <b>Remote pop-up card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -1300,6 +1307,13 @@ Add the following to the button-card config of the entity you want to hold to ge
 hold_action:
   action: more-info
 ```
+<p align="left">
+  <img src="docs/images/alarm_page_light.png" alt="Alarm page, light theme" width="425">
+  <img src="docs/images/alarm_page_dark.png" alt="Alarm page, dark theme" width="425">
+  <br/>
+    <b>Alarm page</b> with the <b>Light</b> and <b>Dark</b> themes.
+</p>
+
 # Thank you!
 This repository is maintained and developed by
 ## @N-l1 ✨
