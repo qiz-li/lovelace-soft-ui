@@ -9,7 +9,7 @@ First and foremost thank you for finding your way to my Home Assistant repo. Thi
 
 **Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
 
-![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
+![Lovelace Soft UI logo image](docs/images/lovelace_soft_UI.jpg)
 
 <p align="left">
   <img src="docs/images/home_page_light.png" alt="Home page, light theme" width="425">
@@ -1307,13 +1307,6 @@ Add the following to the button-card config of the entity you want to hold to ge
 hold_action:
   action: more-info
 ```
-<p align="left">
-  <img src="docs/images/alarm_page_light.png" alt="Alarm page, light theme" width="425">
-  <img src="docs/images/alarm_page_dark.png" alt="Alarm page, dark theme" width="425">
-  <br/>
-    <b>Alarm page</b> with the <b>Light</b> and <b>Dark</b> themes.
-</p>
-
 # Thank you!
 This repository is maintained and developed by
 ## @N-l1 ✨
