@@ -20,7 +20,7 @@ First and foremost thank you for finding your way to my Home Assistant repo. Thi
 
 # Let's do it!
 ### 1. Install card-mod
-You will need [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). 
+You will need [**card-mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). 
 
 Please read HACS documentations and install it.
 
@@ -501,8 +501,6 @@ type: vertical-stack
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
 This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
-
-Add the following:
 
 <details><summary><b>Show code</b></summary>
 <p>
