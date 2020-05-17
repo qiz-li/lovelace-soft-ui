@@ -32,7 +32,9 @@ For the cards to switch automatically to a dark/light theme, please make sure yo
 sun:
 ```
 ### 3. Themes
-This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well.
+This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well. 
+
+I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**.
 ### 4. Automation
 You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
 
