@@ -7,8 +7,9 @@
 
 First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. Hope you like it!
 
-**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
-
+**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)  
+**Example Soft UI dashboards are** [**here**](docs/inspiration.md)  
+  
 ![Lovelace Soft UI logo image](docs/images/lovelace_soft_UI.jpg)
 
 <p align="left">
