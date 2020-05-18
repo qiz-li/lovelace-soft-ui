@@ -502,7 +502,9 @@ type: vertical-stack
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal). This card can resize based on the width of your screen!
+This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal). 
+
+This card can resize based on the width of your screen!
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -521,12 +523,12 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
         margin: 5px;  
         margin-left: 6.5px;
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
@@ -575,12 +577,12 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
         margin: 5px;  
         margin-left: 6.5px;
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
@@ -629,11 +631,11 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled  
     style: |
       ha-card {
-        margin: 5px;                  
+        margin: 5px;                
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
@@ -682,11 +684,11 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
         margin: 5px;  
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
@@ -735,11 +737,11 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled  
     style: |
       ha-card {
-        margin: 5px;              
+        margin: 5px;            
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
@@ -777,7 +779,7 @@ cards:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
-type: horizontal-stack
+type: horizontal-stack            
 ```
 </p>
 </details>
