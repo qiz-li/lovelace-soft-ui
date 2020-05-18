@@ -1,61 +1,44 @@
 # Lovelace Soft UI 
 #### A new user friendly, simple and clean Lovelace configuration
 
-![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) ![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) ![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
+![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) 
+![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) 
+![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
-![Lovelace Soft UI logo image](images/lovelace_soft_UI.jpg)
-
-## Introduction
-
-First and foremost thank you for finding your way to my Home Assistant repo. This is my [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace user interface configuration. I've been using Home Assistant for a little less than a year now (not so long), and it has brought me a huge amount of joy!
-
-Lovelace is the primary interface for Home Assistant, it is used to display all sorts of information. Sometimes though an excessive amount of information is displayed. My take on Lovelace is for it to be simple and drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media). I've tried to make this easy enough for even a very new user to able to implement it :) 
+First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. Hope you like it!
 
 **Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
 
-Here are some pictures:
+![Lovelace Soft UI logo image](docs/images/lovelace_soft_UI.jpg)
 
-![UI home page with weather, lights, alarm clock, and irragation. Light theme](images/UI_home_page.png)
-![UI home page, dark theme](images/UI_home_page_dark_theme.png)
-![UI lights control page, light theme](images/UI_lights_page.png)
-![UI lights control page, dark theme](images/UI_lights_page_dark_theme.png)
-![UI alarm clock control page, light theme](images/alarm_page.png)
-![UI alarm clock control page, dark theme](images/alarm_page_dark_theme.png)
+<p align="left">
+  <img src="docs/images/home_page_light.png" alt="Home page, light theme" width="425">
+  <img src="docs/images/home_page_dark.png" alt="Home page, dark theme" width="425">
+  <br/>
+    <b>Home page</b> with the <b>Light</b> and <b>Dark</b> themes.
+</p>
 
-# Prerequisites
-This is the first part of the **step by step guide**. 
+# Let's do it!
+### 1. Install card-mod
+You will need [**card-mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). 
 
-**Please note I have posted my YAML above, if you prefer that instead.**
+Please read HACS documentations and install it.
 
-These are some of the things you need before getting started.
-
-## Custom Cards
-You will need the following custom cards to be installed, it is easily done via [**HACS**](https://hacs.xyz). Please read HACS documentations and install the following cards.
-
-#### Required
-
-* [**Custom Header**](https://github.com/maykar/custom-header), by **@maykar**
-* [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
-
-#### Optional
-
-* [**Search Card**](https://github.com/postlund/search-card) and [**Card Tools**](https://github.com/thomasloven/lovelace-card-tools), by **@postlund** and **@thomasloven**
-* [**Simple Weather Card**](https://github.com/kalkih/simple-weather-card), by **@kalkih**
-* [**Mini Media Player**](https://github.com/kalkih/mini-media-player), by **@kalkih**
-* [**Mini Graph Card**](https://github.com/kalkih/mini-graph-card), also by **@kalkih**
-
-## sun.sun
+### 2. sun.sun
 For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
 
 ``` markdown
 # Example configuration.yaml entry
 sun:
 ```
-## Theme Switching Automation
-You would need to have an automation setup for automatically switching to a dark theme at sunset and back to a light them at sunrise. If you don't have one please add the following to your `automations.yaml`.
+### 3. Themes
+This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well. 
 
-<details><summary><b>Click here</b></summary>
+I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**.
+### 4. Automation
+You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
+
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -111,50 +94,55 @@ You would need to have an automation setup for automatically switching to a dark
 </p>
 </details>
 
-# Themes
-This is the second part of the **step by step guide**. 
+### 5. Done!
+We are done! Use this code to add the Soft UI style to any card. 
 
-Themes can also be installed with [HACS](https://hacs.xyz), manual installation docs are [here](https://www.home-assistant.io/integrations/frontend/). **@JuanMTech** also made a great [video](https://www.youtube.com/watch?v=3Xpd4zB2eRM) explaining how to setup themes. 
+``` markdown
+# Example entry
+style: |
+  ha-card {
+      background-color: var(--primary-background-color);
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 
+        {% if is_state('sun.sun', 'above_horizon') %}
+          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        {% else %}
+          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+        {% endif %}   
+   }      
+```
+For more advanced usage/my personal setup, see below...
 
-## Light Themes
-Any light theme consisting a **milky white background** should work.
+# Advanced Usage
+Here are some cards I created using this style :) 
 
-**Please note the background cannot be pure white.**
+All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
+
+Paste in the appropriate code for each card.
 
 <p align="left">
-  <img src="images/UI_lights_page.png" alt="Google Home Light theme UI" width="425">
-  <img src="images/clear_theme_UI.png" alt="Clear theme UI" width="425">
+  <img src="docs/images/lights_page_light.png" alt="Lights page, light theme" width="425">
+  <img src="docs/images/lights_page_dark.png" alt="Lights page, dark theme" width="425">
   <br/>
-  <a href="https://github.com/liri/lovelace-themes"><b>Google Home Light theme</b></a> and
-  <a href="https://github.com/naofireblade/clear-theme"><b>Clear theme</b></a>, by <b>@liri</b> and <b>@naofireblade</b>
+    <b>Lights page</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
-
-## Dark Themes
-Any dark theme consisting a **dark grey/black background** should work.
-
-**Please note the background of the theme cannot be completely black.** 
-
-The following themes are available in [**HACS**](https://hacs.xyz).
-
-<p align="left">
-  <img src="images/slate_theme_UI.png" alt="Slate theme UI" width="425">
-  <img src="images/grey_night_theme_UI.png" alt="Grey Night theme UI" width="425">
-  <br/>
-  <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> and <a href="https://github.com/home-assistant-community-themes/grey-night"><b>Grey Night theme</b></a>, by <b>@seangreen2</b> and <b>@ksya</b>
 
 ## Compact Header
-You can either have the header match the background color or display its own color.
-</p>
 <p align="left">
-  <img src="images/slate_theme_with_colored_header.png" alt="Dark mint theme with color header" width="425">
-  <img src="images/slate_theme_UI.png" alt="Dark mint theme without color header" width="425">
+  <img src="docs/images/slate_theme_with_colored_header.png" alt="Slate theme with color header" width="425">
+  <img src="docs/images/slate_theme.png" alt="Slate theme without color header" width="425">
   <br/>
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
 </p>
 
-Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor`. 
+#### Custom cards needed
 
-Add the following if you would like the header to match the background color:
+* [**Custom Header**](https://maykar.github.io/compact-custom-header/), by **maykar**
+
+This makes the original Home Assistant header "compact" and also matching it with the background color.
+
+Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
 ``` markdown
 # Example entry
@@ -164,30 +152,12 @@ custom_header:
   background: var(--primary-background-color);
   compact_mode: true
 ```
-Only add the following if you would like the header to display its own color:
-
-``` markdown
-# Example entry
-custom_header:
-  compact_mode: true
-```
-
-# Cards
-This is the third part of the **step by step guide**. 
-
-Finally we've arrived on how to configure the cards themselves. All the cards below will be able to adjust to dark/light themes depending on if the sun is above or below the horizon.
-
-**The following adding of cards uses the UI editor. If you use YAML mode, my YAML is above.**
-
-To add cards using the UI editor, click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
-
-Paste in the appropriate text for each card.
 
 ## Text Header Card
 </p>
 <p align="left">
-  <img src="images/text_header_card_light_theme.png" alt="Text header card light theme" width="425">
-  <img src="images/text_header_card_dark_theme.png" alt="Text header card dark theme" width="425">
+  <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="425">
+  <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="425">
   <br/>
   <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -196,11 +166,9 @@ Paste in the appropriate text for each card.
 
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card displays a text with transparent background.
+This card displays texts with transparent background. 
 
-Add the following:
-
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -231,8 +199,8 @@ type: vertical-stack
 ## Text Header Card with Subheader
 </p>
 <p align="left">
-  <img src="images/text_subheader_card_light_theme.png" alt="Text subheader card light theme" width="425">
-  <img src="images/text_subheader_card_dark_theme.png" alt="Text subheader card dark theme" width="425">
+  <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="425">
+  <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="425">
   <br/>
   <b>Text header cards with subheader</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -241,11 +209,9 @@ type: vertical-stack
 
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card displays a text with smaller text underneath with transparent background.
+This card displays texts with smaller texts underneath with transparent background.
 
-Add the following:
-
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -293,8 +259,8 @@ type: vertical-stack
 ## Vertical Buttons Card
 </p>
 <p align="left">
-  <img src="images/vertical_button_card_light_theme.png" alt="Vertical button card light theme" width="425">
-  <img src="images/vertical_button_card_dark_theme.png" alt="Vertical button card dark theme" width="425">
+  <img src="docs/images/vertical_button_card_light.png" alt="Vertical button card light theme" width="425">
+  <img src="docs/images/vertical_button_card_dark.png" alt="Vertical button card dark theme" width="425">
   <br/>
   <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -309,49 +275,23 @@ type: vertical-stack
 {{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
 ```
 
-The following code will create three buttons: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, redirect tabs, and texts beside them.
+This card contains three buttons lined up vertically: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them.
 
-Add the following:
-
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
 # Example entry
 cards:
   - cards:
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 10px
-        type: 'custom:button-card'
       - cards:
-          - show_icon: false
-            show_name: false
-            style: |
-              ha-card {
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-            styles:
-              card:
-                - width: 5px
-                - height: 80px
-            type: 'custom:button-card'
-# This is first button with the light bulb icon
-# Change this to an icon you want
+# Icon to display - First button
           - icon: 'mdi:lightbulb-multiple'
             show_icon: true
             show_name: false
             style: |
               ha-card {
+                margin: 10px;
                 box-shadow: 
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
@@ -367,15 +307,14 @@ cards:
                 - background-color: var(--primary-background-color)
               icon:
                 - color: var(--primary-text-color)
+# Action to perform - First button
             tap_action:
               action: navigate
-# This is the tab that the first button redirects to 
-# Change this to the tab you want the button to redirect to
               navigation_path: /lovelace/lights
+              haptic: light
             type: 'custom:button-card'
           - cards:
-# This is the text beside the first button
-# Change this to what you want it to say          
+# Big text to display - First button       
               - content: |
                   # Lights
                 style: |
@@ -391,8 +330,7 @@ cards:
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-# This is the smaller text beside the first button
-# Change this to what you want it to say                
+# Small text to display - First button             
               - content: >              
                   # There are  {% if is_state('sensor.lights_on', '0') %}
                   currently no  {% else %}  {{states('sensor.lights_on')}}  {%
@@ -411,38 +349,14 @@ cards:
                 type: markdown
             type: vertical-stack
         type: horizontal-stack
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 10px
-        type: 'custom:button-card'
       - cards:
-          - show_icon: false
-            show_name: false
-            style: |
-              ha-card {
-                 --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                 box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-            styles:
-              card:
-                - width: 5px
-                - height: 80px
-            type: 'custom:button-card'
-# This is second button with the alarm clock icon
-# Change this to an icon you want
+# Icon to display - Second button
           - icon: 'mdi:alarm'
             show_icon: true
             show_name: false
             style: |
               ha-card {
+                margin: 10px;
                 box-shadow: 
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
@@ -458,15 +372,14 @@ cards:
                 - background-color: var(--primary-background-color)
               icon:
                 - color: var(--primary-text-color)
+# Action to perform - Second button
             tap_action:
-              action: navigate
-# This is the tab that the second button redirects to 
-# Change this to the tab you want the button to redirect to              
+              action: navigate         
               navigation_path: /lovelace/alarm
+              haptic: light
             type: 'custom:button-card'
           - cards:
-# This is the text beside the second button
-# Change this to what you want it to say   
+# Big text to display - Second button    
               - content: |           
                   # Alarm clock
                 style: |
@@ -482,8 +395,7 @@ cards:
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-# This is the smaller text beside the second button
-# Change this to what you want it to say  
+# Small text to display - Second button   
               - content: >            
                   # The weekday alarm is  {% if
                   is_state('input_boolean.sleep_cycle_weekday', 'on') and
@@ -506,38 +418,14 @@ cards:
                 type: markdown
             type: vertical-stack
         type: horizontal-stack
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 10px
-        type: 'custom:button-card'
       - cards:
-          - show_icon: false
-            show_name: false
-            style: |
-              ha-card {
-              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-               box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-            styles:
-              card:
-                - width: 5px
-                - height: 80px
-            type: 'custom:button-card'
-# This is third button with the pine tree icon
-# Change this to an icon you want            
+# Icon to display - Third button         
           - icon: 'mdi:pine-tree'
             show_icon: true
             show_name: false
             style: |
               ha-card {
+                margin: 10px;
                 box-shadow: 
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
@@ -553,15 +441,14 @@ cards:
                 - background-color: var(--primary-background-color)
               icon:
                 - color: var(--primary-text-color)
+# Action to perform - Third button
             tap_action:
               action: navigate
-# This is the tab that the third button redirects to 
-# Change this to the tab you want the button to redirect to
               navigation_path: /lovelace/sprinklers/
+              haptic: light
             type: 'custom:button-card'
           - cards:
-# This is the text beside the third button
-# Change this to what you want it to say 
+# Big text to display - Third button
               - content: |             
                   # Irrigation
                 style: |
@@ -577,8 +464,7 @@ cards:
                     letter-spacing: '-0.01em';
                   }
                 type: markdown
-# This is the smaller text beside the third button
-# Change this to what you want it to say    
+# Small text to display - Third button      
               - content: |          
                   # The irrigation system is not activated
                 style: |
@@ -596,32 +482,6 @@ cards:
                 type: markdown
             type: vertical-stack
         type: horizontal-stack
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 10px
-        type: 'custom:button-card'
-      - cards:
-          - show_icon: false
-            show_name: false
-            style: |
-              ha-card {
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-            styles:
-              card:
-                - width: 5px
-                - height: 10px
-            type: 'custom:button-card'
-        type: horizontal-stack
     type: vertical-stack
 type: vertical-stack
 ```
@@ -631,8 +491,8 @@ type: vertical-stack
 ## Horizontal Buttons Card
 </p>
 <p align="left">
-  <img src="images/horizontal_button_card_light_theme.png" alt="Horizontal button card light theme" width="425">
-  <img src="images/horizontal_button_card_dark_theme.png" alt="Horizontal button card dark theme" width="425">
+  <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
+  <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
   <br/>
   <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -642,402 +502,220 @@ type: vertical-stack
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-The code below will setup five button cards horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
+This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
 
-Add the following:
-
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
-``` markdown
-cards:
-  - cards:
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 10px
-        type: 'custom:button-card'
-      - cards:
-          - cards:
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                styles:
-                  card:
-                    - width: 5px
-                    - height: 60px
-                type: 'custom:button-card'
-# You can change the entity_id and icon of the first button here   
-              - entity: switch.family_room_lamp
-                icon: 'mdi:lamp'
-                show_icon: true
-                show_name: false
-                state:
-                  - styles:
-                      icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
-                    value: 'on'
-# You also have to change the entity_ids in the following template
-                style: |
-                  ha-card {
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.family_room_lamp', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.family_room_lamp', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}                        
-                  }
-                styles:
-                  card:
-                    - width: 60px
-                    - height: 60px
-                    - border-radius: 15px
-                    - background-color: var(--primary-background-color)
-                  icon:
-                    - color: var(--primary-text-color)
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                styles:
-                  card:
-                    - width: 5px
-                    - height: 60px
-                type: 'custom:button-card'
-# You can change the entity_id and icon of the second button here   
-              - entity: switch.kitchen_island_lights
-                icon: 'mdi:vanity-light'
-                show_icon: true
-                show_name: false
-                state:
-                  - styles:
-                      icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
-                    value: 'on'
-# You also have to change the entity_ids in the following template
-                style: |
-                  ha-card {
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_lights', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_lights', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}                         
-                  }
-                styles:
-                  card:
-                    - width: 60px
-                    - height: 60px
-                    - border-radius: 15px
-                    - background-color: var(--primary-background-color)
-                  icon:
-                    - color: var(--primary-text-color)
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                styles:
-                  card:
-                    - width: 5px
-                    - height: 60px
-                type: 'custom:button-card'
-# You can change the entity_id and icon of the third button here   
-              - entity: switch.dining_area
-                icon: 'mdi:ceiling-light'
-                show_icon: true
-                show_name: false
-                state:
-                  - styles:
-                      icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
-                    value: 'on'
-# You also have to change the entity_ids in the following template
-                style: |
-                  ha-card {
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}                           
-                  }
-                styles:
-                  card:
-                    - width: 60px
-                    - height: 60px
-                    - border-radius: 15px
-                    - background-color: var(--primary-background-color)
-                  icon:
-                    - color: var(--primary-text-color)
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                styles:
-                  card:
-                    - width: 5px
-                    - height: 60px
-                type: 'custom:button-card'
-# You can change the entity_id and icon of the fourth button here   
-              - entity: light.family_room_dimmer
-                icon: 'mdi:light-switch'
-                show_icon: true
-                show_name: false
-                state:
-                  - styles:
-                      icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
-                    value: 'on'
-# You also have to change the entity_ids in the following template
-                style: |
-                  ha-card {
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_dimmer', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_dimmer', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}     
-                  }
-                styles:
-                  card:
-                    - width: 60px
-                    - height: 60px
-                    - border-radius: 15px
-                    - background-color: var(--primary-background-color)
-                  icon:
-                    - color: var(--primary-text-color)
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                styles:
-                  card:
-                    - width: 5px
-                    - height: 60px
-                type: 'custom:button-card'
-# You can change the entity_id and icon of the fifth button here 
-              - entity: switch.dining_table
-                icon: 'mdi:table-chair'
-                show_icon: true
-                show_name: false
-                state:
-                  - styles:
-                      icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
-                    value: 'on'
-# You also have to change the entity_ids in the following template
-                style: |
-                  ha-card {
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}     
-                  }
-                styles:
-                  card:
-                    - width: 60px
-                    - height: 60px
-                    - border-radius: 15px
-                    - background-color: var(--primary-background-color)
-                  icon:
-                    - color: var(--primary-text-color)
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-            type: horizontal-stack
-        type: vertical-stack
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 10px
-        type: 'custom:button-card'
-    type: vertical-stack
-type: vertical-stack
-```
-</p>
-</details>
-
-## Text to Speech card
-</p>
-<p align="left">
-  <img src="images/tts_card_light_theme.png" alt="TTS card light theme" width="425">
-  <img src="images/tts_card_dark_theme.png" alt="TTS card dark theme" width="425">
-  <br/>
-  <b>Text to speech card</b> with the <b>Light</b> and <b>Dark</b> themes.
-</p>
-
-#### Custom cards needed
-
-* [**Mini Media Player**](https://github.com/kalkih/mini-media-player), by **@kalkih**
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
-
-The code below will setup a text input for you to TTS to a desired media player. If you require further assistance on this card, check the TTS section of the [Mini Media Player](https://github.com/kalkih/mini-media-player) card. 
-
-Add the following:
-
-<details><summary><b>Click here</b></summary>
-<p>
-  
 ``` markdown
 # Example entry
-type: vertical-stack
 cards:
-  - type: vertical-stack
-    cards:
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 5px
-        type: 'custom:button-card'
-      - type: horizontal-stack
-        cards:
-          - show_icon: false
-            show_name: false
-            style: |
-              ha-card {
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-            styles:
-              card:
-                - width: 5px
-                - height: 5px
-            type: 'custom:button-card'        
-          - entities:
-              - type: 'custom:mini-media-player'
-# Change this the media player you want to TTS to              
-                entity: media_player.echo_dot
-                group: true
-                hide:
-                  name: true
-                  icon: true
-                  info: true
-                  power: true
-                  source: true
-                  sound_mode: true
-                  controls: true
-                  play_pause: true
-                  play_stop: true
-                  volume: true
-                  mute: true
-                  progress: true
-                  runtime: true
-                  artwork_border: true
-                  power_state: true
-                  icon_state: true
-                  shuffle: true
-                tts:
-# Change this to the platform for your TTS. 
-# For example: tts.google_translate_say would be google_translate 
-                  platform: alexa
-            style: |
-              ha-card {
-                background-color: var(--primary-background-color);
-                box-shadow:
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% else %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %} 
-                border-radius: 10px;
-              }
-            show_header_toggle: false
-            type: entities
-          - show_icon: false
-            show_name: false
-            style: |
-              ha-card {
-                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                box-shadow: 2px 2px rgba(0,0,0,0.0);
-              }
-            styles:
-              card:
-                - width: 5px
-                - height: 5px
-            type: 'custom:button-card'
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 5px 
-        type: 'custom:button-card'           
+# Entity to control - First button
+  - entity: light.family_room_lamp
+# Icon to display - First button
+    icon: 'mdi:lamp'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;  
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}                        
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Second button
+  - entity: switch.kitchen_island_light
+# Icon to display - Second button
+    icon: 'mdi:vanity-light'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;                  
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}                         
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Third button
+  - entity: switch.dining_area
+# Icon to display - Third button
+    icon: 'mdi:ceiling-light'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;                  
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}                           
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Forth button
+  - entity: light.family_room_light
+# Icon to display - Forth button
+    icon: 'mdi:light-switch'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;  
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}     
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Fifth button
+  - entity: switch.dining_table
+# Icon to display - Fifth button
+    icon: 'mdi:table-chair'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;              
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}     
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+type: horizontal-stack
 ```
 </p>
 </details>
@@ -1045,8 +723,8 @@ cards:
 ## Remote pop-up card
 </p>
 <p align="left">
-  <img src="images/remote_card_light_theme.png" alt="Remote card light theme" width="425">
-  <img src="images/remote_card_dark_theme.png" alt="Remote card dark theme" width="425">
+  <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
+  <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="425">
   <br/>
   <b>Remote pop-up card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
@@ -1066,7 +744,7 @@ To add this card, click on the three dots on the top right, then go to `Configur
 
 Add the following to the first line:
 
-<details><summary><b>Click here</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` markdown
@@ -1629,30 +1307,6 @@ Add the following to the button-card config of the entity you want to hold to ge
 hold_action:
   action: more-info
 ```
-## Other Cards
-
-![Search Card](images/search_card.png)
-
-[**Search Card**](https://github.com/postlund/search-card) and [**Card Tools**](https://github.com/thomasloven/lovelace-card-tools), by **@postlund** and **@thomasloven**
-
-To have a simple Soft UI look on other cards, what you have to do is set the card background as the same as the theme background as well as round the corners then adding a dark and light shadow. It can be done (with [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod)) like this:
-
-``` markdown
-# Example entry
-style: |
-  ha-card {
-      background-color: var(--primary-background-color);
-      border-radius: 15px;
-      margin: 20px;
-      box-shadow: 
-        {% if is_state('sun.sun', 'above_horizon') %}
-          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-        {% else %}
-          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-        {% endif %}   
-   }      
-```
-
 # Thank you!
 This repository is maintained and developed by
 ## @N-l1 ✨
