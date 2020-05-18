@@ -275,8 +275,7 @@ type: vertical-stack
 ``` markdown
 {{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
 ```
-
-This card contains three buttons lined up vertically: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them.
+This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them. This card can resize based on the width of your screen!
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -284,207 +283,274 @@ This card contains three buttons lined up vertically: lights, alarm clock and ir
 ``` markdown
 # Example entry
 cards:
-  - cards:
-      - cards:
+# Entity to control - First button
+  - entity: light.family_room_lamp
 # Icon to display - First button
-          - icon: 'mdi:lightbulb-multiple'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}                 
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - First button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/lights
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - First button       
-              - content: |
-                  # Lights
-                style: |
-                  ha-card {
-                    height: 20px;                  
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-# Small text to display - First button             
-              - content: >              
-                  # There are  {% if is_state('sensor.lights_on', '0') %}
-                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
-                  endif %} lights on
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                     }
-                  h1 {
-                    font-size: 15px;
-                    font-weight: thin;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-      - cards:
+    icon: 'mdi:lamp'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;  
+        margin-left: 6.5px;
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+         {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
+           inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+         {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
+           -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}                      
+           inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}   
+           -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+         {% endif %}                      
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Second button
+  - entity: switch.kitchen_island_light
 # Icon to display - Second button
-          - icon: 'mdi:alarm'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}    
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - Second button
-            tap_action:
-              action: navigate         
-              navigation_path: /lovelace/alarm
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - Second button    
-              - content: |           
-                  # Alarm clock
-                style: |
-                  ha-card {
-                    height: 20px;                  
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-# Small text to display - Second button   
-              - content: >            
-                  # The weekday alarm is  {% if
-                  is_state('input_boolean.sleep_cycle_weekday', 'on') and
-                  is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
-                  sleep cycle mode   {% elif
-                  is_state('input_boolean.alarm_weekday_enabled', 'on') %}   set
-                  for {{states('sensor.alarm_weekday_time')}}  {% else %}  not
-                  set  {% endif %}
-                style: |
-                  ha-card {
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 15px;
-                    font-weight: thin;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-      - cards:
-# Icon to display - Third button         
-          - icon: 'mdi:pine-tree'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - Third button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/sprinklers/
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - Third button
-              - content: |             
-                  # Irrigation
-                style: |
-                  ha-card {
-                    height: 20px;                  
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-# Small text to display - Third button      
-              - content: |          
-                  # The irrigation system is not activated
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                     }
-                   h1 {
-                   
-                   font-size: 15px;
-                   font-weight: thin;
-                   font-family: Helvetica;
-                   letter-spacing: '-0.01em';
-                      }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-    type: vertical-stack
-type: vertical-stack
+    icon: 'mdi:vanity-light'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;  
+        margin-left: 6.5px;
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}                      
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Third button
+  - entity: switch.dining_area
+# Icon to display - Third button
+    icon: 'mdi:ceiling-light'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;                  
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}                           
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Forth button
+  - entity: light.family_room_light
+# Icon to display - Forth button
+    icon: 'mdi:light-switch'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;  
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}     
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+# Entity to control - Fifth button
+  - entity: switch.dining_table
+# Icon to display - Fifth button
+    icon: 'mdi:table-chair'
+    show_icon: true
+    show_name: false
+    state:
+      - styles:
+          icon:
+            - color: 'var(--paper-item-icon-active-color)  '
+        value: 'on'
+    style: |
+      ha-card {
+        margin: 5px;              
+        box-shadow: 
+# Please change the entities inside to match the entity to be controlled
+          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
+            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
+            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
+            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+          {% endif %}     
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
+      }
+    styles:
+      card:
+        - width: 60px
+        - height: 60px
+        - border-radius: 15px
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+    tap_action:
+      action: toggle
+      haptic: light      
+    hold_action: 
+      action: more-info
+      haptic: medium
+    type: 'custom:button-card'
+type: horizontal-stack
 ```
 </p>
 </details>
