@@ -7,17 +7,12 @@
 
 First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. Hope you like it!
 
-**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)  
+**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
+
 **Example Soft UI dashboards are** [**here**](docs/inspiration.md)  
   
-![Lovelace Soft UI logo image](docs/images/lovelace_soft_UI.jpg)
-
-<p align="left">
-  <img src="docs/images/home_page_light.png" alt="Home page, light theme" width="425">
-  <img src="docs/images/home_page_dark.png" alt="Home page, dark theme" width="425">
-  <br/>
-    <b>Home page</b> with the <b>Light</b> and <b>Dark</b> themes.
-</p>
+![Lovelace Soft UI light theme](docs/images/soft_ui_light.jpg)
+![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
 
 # Let's do it!
 ### 1. Install card-mod
@@ -121,13 +116,6 @@ Here are some cards I created using this style :)
 All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
 
 Paste in the appropriate code for each card.
-
-<p align="left">
-  <img src="docs/images/lights_page_light.png" alt="Lights page, light theme" width="425">
-  <img src="docs/images/lights_page_dark.png" alt="Lights page, dark theme" width="425">
-  <br/>
-    <b>Lights page</b> with the <b>Light</b> and <b>Dark</b> themes.
-</p>
 
 ## Compact Header
 <p align="left">
