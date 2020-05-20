@@ -5,7 +5,7 @@
 ![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) 
 ![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
-First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. Hope you like it!
+First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from Soft UI AKA Neumorphism. Hope you like it!
 
 **Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
 
@@ -30,7 +30,12 @@ sun:
 ### 3. Themes
 This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well. 
 
-I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**.
+**Please note the background should not be pure white/black** 
+
+I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**. 
+
+If you decide to use the Clear theme, please make sure to remove the ```lovelace-background``` line from the theme YAML.
+
 ### 4. Automation
 You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
 
@@ -108,7 +113,6 @@ style: |
         {% endif %}   
    }      
 ```
-For more advanced usage/my personal setup, see below...
 
 # Advanced Usage
 Here are some cards I created using this style :) 
