@@ -23,7 +23,7 @@ Please read HACS documentations and install it.
 ### 2. sun.sun
 For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
 
-``` markdown
+``` yaml
 # Example configuration.yaml entry
 sun:
 ```
@@ -42,7 +42,7 @@ You will need to setup an automation for automatically switching to a dark theme
 <details><summary><b>Show code</b></summary>
 <p>
 
-``` markdown
+``` yaml
 # Example automations.yaml entry
 - alias: "Light theme after Sunrise"
   trigger:
@@ -98,7 +98,7 @@ You will need to setup an automation for automatically switching to a dark theme
 ### 5. Done!
 We are done! Use this code to add the Soft UI style to any card. 
 
-``` markdown
+``` yaml
 # Example entry
 style: |
   ha-card {
@@ -137,7 +137,7 @@ This makes the original Home Assistant header "compact" and also matching it wit
 
 Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
-``` markdown
+``` yaml
 # Example entry
 custom_header:
   elements_color: var(--primary-text-color);
@@ -161,10 +161,36 @@ custom_header:
 
 This card displays texts with transparent background. 
 
-<details><summary><b>Show code</b></summary>
+<details><summary><b>Show code for 0.111 or above</b></summary>
 <p>
 
-``` markdown
+``` yaml
+# Example entry
+# Enter what you want to display
+content: |
+  # Enter what you want to display here
+style:
+  .: |
+    ha-card {
+      --paper-card-background-color: none !important;
+      box-shadow: none !important;
+    }
+  ha-markdown:
+    $: |
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Helvetica;
+        letter-spacing: '-0.01em';
+      }
+```
+</p>
+</details>
+
+<details><summary><b>Show code for 0.110 or lower</b></summary>
+<p>
+
+``` yaml
 # Example entry
 # Enter what you want to display
 content: |
@@ -200,10 +226,60 @@ type: markdown
 
 This card displays texts with smaller texts underneath with transparent background.
 
-<details><summary><b>Show code</b></summary>
+<details><summary><b>Show code for 0.111 or above</b></summary>
 <p>
 
-``` markdown
+``` yaml
+# Example entry
+cards:
+# Enter what you want to display
+  - content: |
+      # Enter what you want to display here
+    style:
+      .: |
+        ha-card {
+          --paper-card-background-color: none !important;
+          box-shadow: none !important;
+          height: 20px; 
+        }
+      ha-markdown:
+        $: |
+          h1 {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Helvetica;
+            letter-spacing: '-0.01em';
+          }
+    type: markdown
+# Enter what you want to display in the small text
+  - content: |
+      # Enter what you want to display here
+    style:
+      .: |
+        ha-card {
+          --paper-card-background-color: none !important;
+          box-shadow: none !important;
+          height: 50px; 
+        }
+      ha-markdown:
+        $: |
+          h1 {
+            font-size: 15px;
+            font-weight: thin;
+            font-family: Helvetica;
+            letter-spacing: '-0.01em';
+          }
+    type: markdown
+type: vertical-stack
+```
+</p>
+</details>
+
+
+<details><summary><b>Show code for 0.110 or lower</b></summary>
+<p>
+
+``` yaml
 # Example entry
 cards:
 # Enter what you want to display
@@ -263,10 +339,238 @@ type: vertical-stack
 ```
 This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them. 
 
-<details><summary><b>Show code</b></summary>
+<details><summary><b>Show code for 0.111 or above</b></summary>
 <p>
 
-``` markdown
+``` yaml
+# Example entry
+cards:
+  - cards:
+      - cards:
+# Icon to display - First button
+          - icon: 'mdi:lightbulb-multiple'
+            show_icon: true
+            show_name: false
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}                 
+              }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+# Action to perform - First button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/lights
+              haptic: light
+            type: 'custom:button-card'
+          - cards:
+# Big text to display - First button       
+              - content: |
+                  # Lights
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                      height: 20px; 
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown
+# Small text to display - First button             
+              - content: >              
+                  # There are  {% if is_state('sensor.lights_on', '0') %}
+                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
+                  endif %} lights on
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown                   
+            type: vertical-stack
+        type: horizontal-stack
+      - cards:
+# Icon to display - Second button
+          - icon: 'mdi:alarm'
+            show_icon: true
+            show_name: false
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}    
+              }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+# Action to perform - Second button
+            tap_action:
+              action: navigate         
+              navigation_path: /lovelace/alarm
+              haptic: light
+            type: 'custom:button-card'
+          - cards:
+# Big text to display - Second button    
+              - content: |           
+                  # Alarm clock
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                      height: 20px; 
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown
+# Small text to display - Second button   
+              - content: >            
+                  # The weekday alarm is  {% if
+                  is_state('input_boolean.sleep_cycle_weekday', 'on') and
+                  is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
+                  sleep cycle mode   {% elif
+                  is_state('input_boolean.alarm_weekday_enabled', 'on') %}   set
+                  for {{states('sensor.alarm_weekday_time')}}  {% else %}  not
+                  set  {% endif %}
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown  
+            type: vertical-stack
+        type: horizontal-stack
+      - cards:
+# Icon to display - Third button         
+          - icon: 'mdi:pine-tree'
+            show_icon: true
+            show_name: false
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+              }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+# Action to perform - Third button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/sprinklers/
+              haptic: light
+            type: 'custom:button-card'
+          - cards:
+# Big text to display - Third button
+              - content: |             
+                  # Irrigation
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                      height: 20px; 
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown
+# Small text to display - Third button      
+              - content: |          
+                  # The irrigation system is not activated
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown  
+            type: vertical-stack
+        type: horizontal-stack
+    type: vertical-stack
+type: vertical-stack
+```
+</p>
+</details>
+
+<details><summary><b>Show code for 0.110 or lower</b></summary>
+<p>
+
+``` yaml
 # Example entry
 cards:
   - cards:
