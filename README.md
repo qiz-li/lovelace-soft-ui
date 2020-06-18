@@ -183,6 +183,7 @@ style:
         font-family: Helvetica;
         letter-spacing: '-0.01em';
       }
+type: markdown
 ```
 </p>
 </details>
