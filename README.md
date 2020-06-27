@@ -5,19 +5,14 @@
 ![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) 
 ![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
 
-First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from [Soft UI](https://dribbble.com/shots/8027871-Soft-UI/attachments/531358?mode=media) AKA Neumorphism. Hope you like it!
+First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from Soft UI AKA Neumorphism. Hope you like it!
 
-**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)  
+**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
+
 **Example Soft UI dashboards are** [**here**](docs/inspiration.md)  
   
-![Lovelace Soft UI logo image](docs/images/lovelace_soft_UI.jpg)
-
-<p align="left">
-  <img src="docs/images/home_page_light.png" alt="Home page, light theme" width="425">
-  <img src="docs/images/home_page_dark.png" alt="Home page, dark theme" width="425">
-  <br/>
-    <b>Home page</b> with the <b>Light</b> and <b>Dark</b> themes.
-</p>
+![Lovelace Soft UI light theme](docs/images/soft_ui_light.jpg)
+![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
 
 # Let's do it!
 ### 1. Install card-mod
@@ -28,21 +23,26 @@ Please read HACS documentations and install it.
 ### 2. sun.sun
 For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
 
-``` markdown
+``` yaml
 # Example configuration.yaml entry
 sun:
 ```
 ### 3. Themes
 This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well. 
 
-I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**.
+**Please note the background should not be pure white/black** 
+
+I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**. 
+
+If you decide to use the Clear theme, please make sure to remove the ```lovelace-background``` line from the theme YAML.
+
 ### 4. Automation
 You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 <p>
 
-``` markdown
+``` yaml
 # Example automations.yaml entry
 - alias: "Light theme after Sunrise"
   trigger:
@@ -98,7 +98,7 @@ You will need to setup an automation for automatically switching to a dark theme
 ### 5. Done!
 We are done! Use this code to add the Soft UI style to any card. 
 
-``` markdown
+``` yaml
 # Example entry
 style: |
   ha-card {
@@ -113,7 +113,6 @@ style: |
         {% endif %}   
    }      
 ```
-For more advanced usage/my personal setup, see below...
 
 # Advanced Usage
 Here are some cards I created using this style :) 
@@ -121,13 +120,6 @@ Here are some cards I created using this style :)
 All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
 
 Paste in the appropriate code for each card.
-
-<p align="left">
-  <img src="docs/images/lights_page_light.png" alt="Lights page, light theme" width="425">
-  <img src="docs/images/lights_page_dark.png" alt="Lights page, dark theme" width="425">
-  <br/>
-    <b>Lights page</b> with the <b>Light</b> and <b>Dark</b> themes.
-</p>
 
 ## Compact Header
 <p align="left">
@@ -145,7 +137,7 @@ This makes the original Home Assistant header "compact" and also matching it wit
 
 Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
-``` markdown
+``` yaml
 # Example entry
 custom_header:
   elements_color: var(--primary-text-color);
@@ -169,30 +161,53 @@ custom_header:
 
 This card displays texts with transparent background. 
 
-<details><summary><b>Show code</b></summary>
+<details><summary><b>Show code for 0.111 or above</b></summary>
 <p>
 
-``` markdown
+``` yaml
 # Example entry
-cards:
-  - cards:
 # Enter what you want to display
-      - content: |
-          # Enter what you want to display here
-        style: |
-          ha-card {
-             --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-             box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
-          h1 {
-            font-size: 20px;
-            font-weight: bold;
-            font-family: Helvetica;
-            letter-spacing: '-0.01em';
-          }
-        type: markdown
-    type: vertical-stack
-type: vertical-stack
+content: |
+  # Enter what you want to display here
+style:
+  .: |
+    ha-card {
+      --paper-card-background-color: none !important;
+      box-shadow: none !important;
+    }
+  ha-markdown:
+    $: |
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Helvetica;
+        letter-spacing: '-0.01em';
+      }
+type: markdown
+```
+</p>
+</details>
+
+<details><summary><b>Show code for 0.110 or lower</b></summary>
+<p>
+
+``` yaml
+# Example entry
+# Enter what you want to display
+content: |
+  # Enter what you want to display here
+style: |
+  ha-card {
+     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+     box-shadow: 2px 2px rgba(0,0,0,0.0);
+  }
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Helvetica;
+    letter-spacing: '-0.01em';
+  }
+type: markdown
 ```
 </p>
 </details>
@@ -212,46 +227,94 @@ type: vertical-stack
 
 This card displays texts with smaller texts underneath with transparent background.
 
-<details><summary><b>Show code</b></summary>
+<details><summary><b>Show code for 0.111 or above</b></summary>
 <p>
 
-``` markdown
+``` yaml
 # Example entry
 cards:
-  - cards:
 # Enter what you want to display
-      - content: |
-          # Enter what you want to display here
-        style: |
-          ha-card {
-            height: 20px;
-            --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-            box-shadow: 2px 2px rgba(0,0,0,0.0);
-          }
+  - content: |
+      # Enter what you want to display here
+    style:
+      .: |
+        ha-card {
+          --paper-card-background-color: none !important;
+          box-shadow: none !important;
+          height: 20px; 
+        }
+      ha-markdown:
+        $: |
           h1 {
             font-size: 20px;
             font-weight: bold;
             font-family: Helvetica;
             letter-spacing: '-0.01em';
           }
-        type: markdown
+    type: markdown
 # Enter what you want to display in the small text
-      - content: |
-          # Enter what you want to display here
-        style: |
-          ha-card {
-               height: 50px;
-               --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-               box-shadow: 2px 2px rgba(0,0,0,0.0);
-                 }
-             h1 {
-                  font-size: 15px;
-                  font-weight: thin;
-                  font-family: Helvetica;
-                  letter-spacing: '-0.01em';
-                }
-        type: markdown
-    type: vertical-stack
+  - content: |
+      # Enter what you want to display here
+    style:
+      .: |
+        ha-card {
+          --paper-card-background-color: none !important;
+          box-shadow: none !important;
+          height: 50px; 
+        }
+      ha-markdown:
+        $: |
+          h1 {
+            font-size: 15px;
+            font-weight: thin;
+            font-family: Helvetica;
+            letter-spacing: '-0.01em';
+          }
+    type: markdown
+type: vertical-stack
+```
+</p>
+</details>
+
+
+<details><summary><b>Show code for 0.110 or lower</b></summary>
+<p>
+
+``` yaml
+# Example entry
+cards:
+# Enter what you want to display
+  - content: |
+      # Enter what you want to display here
+    style: |
+      ha-card {
+        height: 20px;
+        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+        box-shadow: 2px 2px rgba(0,0,0,0.0);
+      }
+      h1 {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: Helvetica;
+        letter-spacing: '-0.01em';
+      }
+    type: markdown
+# Enter what you want to display in the small text
+  - content: |
+      # Enter what you want to display here
+    style: |
+      ha-card {
+           height: 50px;
+           --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+           box-shadow: 2px 2px rgba(0,0,0,0.0);
+             }
+         h1 {
+              font-size: 15px;
+              font-weight: thin;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+            }
+    type: markdown
 type: vertical-stack
 ```
 </p>
@@ -275,13 +338,240 @@ type: vertical-stack
 ``` markdown
 {{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
 ```
+This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them. 
 
-This card contains three buttons lined up vertically: lights, alarm clock and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them.
-
-<details><summary><b>Show code</b></summary>
+<details><summary><b>Show code for 0.111 or above</b></summary>
 <p>
 
-``` markdown
+``` yaml
+# Example entry
+cards:
+  - cards:
+      - cards:
+# Icon to display - First button
+          - icon: 'mdi:lightbulb-multiple'
+            show_icon: true
+            show_name: false
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}                 
+              }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+# Action to perform - First button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/lights
+              haptic: light
+            type: 'custom:button-card'
+          - cards:
+# Big text to display - First button       
+              - content: |
+                  # Lights
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                      height: 20px; 
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown
+# Small text to display - First button             
+              - content: >              
+                  # There are  {% if is_state('sensor.lights_on', '0') %}
+                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
+                  endif %} lights on
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown                   
+            type: vertical-stack
+        type: horizontal-stack
+      - cards:
+# Icon to display - Second button
+          - icon: 'mdi:alarm'
+            show_icon: true
+            show_name: false
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}    
+              }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+# Action to perform - Second button
+            tap_action:
+              action: navigate         
+              navigation_path: /lovelace/alarm
+              haptic: light
+            type: 'custom:button-card'
+          - cards:
+# Big text to display - Second button    
+              - content: |           
+                  # Alarm clock
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                      height: 20px; 
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown
+# Small text to display - Second button   
+              - content: >            
+                  # The weekday alarm is  {% if
+                  is_state('input_boolean.sleep_cycle_weekday', 'on') and
+                  is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
+                  sleep cycle mode   {% elif
+                  is_state('input_boolean.alarm_weekday_enabled', 'on') %}   set
+                  for {{states('sensor.alarm_weekday_time')}}  {% else %}  not
+                  set  {% endif %}
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown  
+            type: vertical-stack
+        type: horizontal-stack
+      - cards:
+# Icon to display - Third button         
+          - icon: 'mdi:pine-tree'
+            show_icon: true
+            show_name: false
+            style: |
+              ha-card {
+                margin: 10px;
+                box-shadow: 
+                  {% if is_state('sun.sun', 'above_horizon') %}
+                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+                  {% elif is_state('sun.sun', 'below_horizon') %}
+                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+                  {% endif %}   
+              }
+            styles:
+              card:
+                - width: 80px
+                - height: 80px
+                - border-radius: 15px
+                - background-color: var(--primary-background-color)
+              icon:
+                - color: var(--primary-text-color)
+# Action to perform - Third button
+            tap_action:
+              action: navigate
+              navigation_path: /lovelace/sprinklers/
+              haptic: light
+            type: 'custom:button-card'
+          - cards:
+# Big text to display - Third button
+              - content: |             
+                  # Irrigation
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                      height: 20px; 
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown
+# Small text to display - Third button      
+              - content: |          
+                  # The irrigation system is not activated
+                style:
+                  .: |
+                    ha-card {
+                      --paper-card-background-color: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
+                type: markdown  
+            type: vertical-stack
+        type: horizontal-stack
+    type: vertical-stack
+type: vertical-stack
+```
+</p>
+</details>
+
+<details><summary><b>Show code for 0.110 or lower</b></summary>
+<p>
+
+``` yaml
 # Example entry
 cards:
   - cards:
@@ -503,7 +793,9 @@ type: vertical-stack
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal).
+This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal). 
+
+This card can resize based on the width of your screen!
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -522,20 +814,33 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
         margin: 5px;  
+        margin-left: 6.5px;
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
-          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
-            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
-            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}                      
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}   
-            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}                        
+         {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
+           inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+         {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
+           -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
+         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}                      
+           inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}   
+           -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+         {% endif %}                      
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
       }
     styles:
       card:
@@ -563,11 +868,12 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
-        margin: 5px;                  
+        margin: 5px;  
+        margin-left: 6.5px;
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
@@ -576,7 +882,19 @@ cards:
             inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
           {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}   
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}                         
+          {% endif %}                      
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
       }
     styles:
       card:
@@ -604,11 +922,11 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled  
     style: |
       ha-card {
-        margin: 5px;                  
+        margin: 5px;                
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
@@ -618,6 +936,18 @@ cards:
           {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
           {% endif %}                           
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
       }
     styles:
       card:
@@ -645,11 +975,11 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
         margin: 5px;  
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
@@ -659,6 +989,18 @@ cards:
           {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}   
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
           {% endif %}     
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
       }
     styles:
       card:
@@ -686,11 +1028,11 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
+# Please change the entities inside to match the entity to be controlled  
     style: |
       ha-card {
-        margin: 5px;              
+        margin: 5px;            
         box-shadow: 
-# Please change the entities inside to match the entity to be controlled
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
           {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
@@ -700,6 +1042,18 @@ cards:
           {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
           {% endif %}     
+      }
+      @media only screen and (max-width: 600px) {
+         ha-card {
+           margin: 3px; 
+           margin-left: 4px;                   
+         }
+      }
+      @media only screen and (min-width: 1200px) {
+         ha-card {
+           margin: 8px;  
+           margin-left: 11px;               
+         }
       }
     styles:
       card:
@@ -716,7 +1070,7 @@ cards:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
-type: horizontal-stack
+type: horizontal-stack            
 ```
 </p>
 </details>

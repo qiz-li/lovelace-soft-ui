@@ -4,7 +4,9 @@
 custom_header:
   background: var(--primary-background-color);
   compact_mode: true
+  elements_color: var(--primary-text-color);
   hide_help: true
+  tab_indicator_color: var(--primary-text-color);
 
 # Custom cards
 resources:
@@ -20,8 +22,6 @@ resources:
     url: /community_plugin/lovelace-card-tools/card-tools.js
   - type: module
     url: /community_plugin/mini-media-player/mini-media-player-bundle.js
-  - type: module
-    url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
 
 # Lovelace title
 title: My home
