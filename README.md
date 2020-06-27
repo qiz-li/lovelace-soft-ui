@@ -131,7 +131,7 @@ Paste in the appropriate code for each card.
 
 #### Custom cards needed
 
-* [**Custom Header**](https://maykar.github.io/compact-custom-header/), by **maykar**
+* [**Custom Header**](https://maykar.github.io/custom-header), by **maykar**
 
 This makes the original Home Assistant header "compact" and also matching it with the background color.
 
@@ -140,10 +140,10 @@ Click on the three dots on the top right, then go to `Configure UI` then `Raw co
 ``` yaml
 # Example entry
 custom_header:
-  elements_color: var(--primary-text-color);
-  tab_indicator_color: var(--primary-text-color);
-  background: var(--primary-background-color);
   compact_mode: true
+  background: var(--primary-background-color)
+  tab_indicator_color: var(--primary-text-color)
+  elements_color: var(--primary-text-color)
 ```
 
 ## Text Header Card
