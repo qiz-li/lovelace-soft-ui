@@ -1,5 +1,5 @@
 # Lovelace Soft UI 
-#### A new user friendly, simple and clean Lovelace configuration
+#### A new user friendly, simple, and clean Lovelace configuration
 
 ![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) 
 ![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) 
@@ -131,19 +131,19 @@ Paste in the appropriate code for each card.
 
 #### Custom cards needed
 
-* [**Custom Header**](https://maykar.github.io/compact-custom-header/), by **maykar**
+* [**Custom Header**](https://maykar.github.io/custom-header), by **maykar**
 
-This makes the original Home Assistant header "compact" and also matching it with the background color.
+This makes the original Home Assistant header "compact" and also matches it with the background color.
 
 Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
 ``` yaml
 # Example entry
 custom_header:
-  elements_color: var(--primary-text-color);
-  tab_indicator_color: var(--primary-text-color);
-  background: var(--primary-background-color);
   compact_mode: true
+  background: var(--primary-background-color)
+  tab_indicator_color: var(--primary-text-color)
+  elements_color: var(--primary-text-color)
 ```
 
 ## Text Header Card

@@ -2,11 +2,11 @@
 
 # Custom header config
 custom_header:
-  background: var(--primary-background-color);
   compact_mode: true
-  elements_color: var(--primary-text-color);
   hide_help: true
-  tab_indicator_color: var(--primary-text-color);
+  background: var(--primary-background-color)
+  tab_indicator_color: var(--primary-text-color)
+  elements_color: var(--primary-text-color)
 
 # Custom cards
 resources:
