@@ -172,7 +172,7 @@ content: |
 style:
   .: |
     ha-card {
-      --paper-card-background-color: none !important;
+      --ha-card-background: none !important;
       box-shadow: none !important;
     }
   ha-markdown:
@@ -239,7 +239,7 @@ cards:
     style:
       .: |
         ha-card {
-          --paper-card-background-color: none !important;
+          --ha-card-background: none !important;
           box-shadow: none !important;
           height: 20px; 
         }
@@ -258,7 +258,7 @@ cards:
     style:
       .: |
         ha-card {
-          --paper-card-background-color: none !important;
+          --ha-card-background: none !important;
           box-shadow: none !important;
           height: 50px; 
         }
@@ -383,7 +383,7 @@ cards:
                 style:
                   .: |
                     ha-card {
-                      --paper-card-background-color: none !important;
+                      --ha-card-background: none !important;
                       box-shadow: none !important;
                       height: 20px; 
                     }
@@ -404,7 +404,7 @@ cards:
                 style:
                   .: |
                     ha-card {
-                      --paper-card-background-color: none !important;
+                      --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
                   ha-markdown:
@@ -454,7 +454,7 @@ cards:
                 style:
                   .: |
                     ha-card {
-                      --paper-card-background-color: none !important;
+                      --ha-card-background: none !important;
                       box-shadow: none !important;
                       height: 20px; 
                     }
@@ -479,7 +479,7 @@ cards:
                 style:
                   .: |
                     ha-card {
-                      --paper-card-background-color: none !important;
+                      --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
                   ha-markdown:
@@ -529,7 +529,7 @@ cards:
                 style:
                   .: |
                     ha-card {
-                      --paper-card-background-color: none !important;
+                      --ha-card-background: none !important;
                       box-shadow: none !important;
                       height: 20px; 
                     }
@@ -548,7 +548,7 @@ cards:
                 style:
                   .: |
                     ha-card {
-                      --paper-card-background-color: none !important;
+                      --ha-card-background: none !important;
                       box-shadow: none !important;
                     }
                   ha-markdown:
