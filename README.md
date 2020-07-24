@@ -386,6 +386,7 @@ cards:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                       height: 20px; 
+                      margin-top: 15px;
                     }
                   ha-markdown:
                     $: |
@@ -457,6 +458,7 @@ cards:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                       height: 20px; 
+                      margin-top: 15px;
                     }
                   ha-markdown:
                     $: |
@@ -532,6 +534,7 @@ cards:
                       --ha-card-background: none !important;
                       box-shadow: none !important;
                       height: 20px; 
+                      margin-top: 15px;
                     }
                   ha-markdown:
                     $: |
@@ -613,6 +616,7 @@ cards:
                     height: 20px;                  
                     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                    margin-top: 15px;
                   }
                   h1 {
                     font-size: 20px;
@@ -678,6 +682,7 @@ cards:
                     height: 20px;                  
                     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                    margin-top: 15px;
                   }
                   h1 {
                     font-size: 20px;
@@ -747,6 +752,7 @@ cards:
                     height: 20px;                  
                     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
                     box-shadow: 2px 2px rgba(0,0,0,0.0);
+                    margin-top: 15px;
                   }
                   h1 {
                     font-size: 20px;
