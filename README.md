@@ -141,7 +141,7 @@ Click on the three dots on the top right, then go to `Configure UI` then `Raw co
 # Example entry
 custom_header:
   compact_mode: true
-  background: var(--primary-background-color)
+  background: transparent
   tab_indicator_color: var(--primary-text-color)
   elements_color: var(--primary-text-color)
 ```
