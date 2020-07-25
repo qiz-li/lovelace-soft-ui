@@ -44,53 +44,25 @@ You will need to setup an automation for automatically switching to a dark theme
 
 ``` yaml
 # Example automations.yaml entry
-- alias: "Light theme after Sunrise"
+- id: set_theme
+  alias: Set Theme
   trigger:
-    platform: sun
-    event: sunrise
-  action:
-    - service: frontend.set_theme
-      data:
-# Change this to the name of your light theme
-        name: Light
-
-- alias: "Dark theme after Sunset"
-  trigger:
-    platform: sun
-    event: sunset
-  action:
-    - service: frontend.set_theme
-      data:
-# Change this to the name of your dark theme
-        name: Dark
-
-- alias: 'Light theme after reboot in day'
-  trigger:
+  - event: start
     platform: homeassistant
-    event: start
-  condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'above_horizon'
+  - entity_id: sun.sun
+    platform: state
   action:
+  - data_template:
+      # Change the names to your theme names
+      name: >-
+      {% if states('sun.sun') == "above_horizon" %}
+      Light
+      {% else %}
+      Dark
+      {% endif %}
     service: frontend.set_theme
-    data:
-# Change this to the name of your light theme
-      name: Light
-
-- alias: 'Dark theme after reboot in night'
-  trigger:
-    platform: homeassistant
-    event: start
-  condition:
-    condition: state
-    entity_id: sun.sun
-    state: 'below_horizon'
-  action:
-    service: frontend.set_theme
-    data:
-# Change this to the name of your dark theme
-      name: Dark
+  initial_state: true
+  mode: single
 ```
 </p>
 </details>
@@ -144,7 +116,7 @@ custom_header:
   compact_mode: true
   # Makes background transparent
   background: transparent
-  # Hide help (Just another thing that I'd google, not look in my sidebar)
+  # Hide help entry
   hide_help: true
   # Makes tabs the same color as the text color
   elements_color: var(--primary-text-color)
