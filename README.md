@@ -138,12 +138,21 @@ This makes the original Home Assistant header "compact" and also matches it with
 Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
 ``` yaml
-# Example entry
 custom_header:
+  # Makes header compact
   compact_mode: true
+  # Makes background transparent
   background: transparent
-  tab_indicator_color: var(--primary-text-color)
+  # Hide help (Just another thing that I'd google, not look in my sidebar)
+  hide_help: true
+  # Makes tabs the same color as the text color
   elements_color: var(--primary-text-color)
+  # Makes line under selected tab color same as sidebar selected panel color
+  tab_indicator_color: var(--sidebar-selected-icon-color)
+  # Makes selected tab color same as sidebar selected panel color
+  active_tab_color: var(--sidebar-selected-icon-color)
+  # Make mobile view notification dot color same as selected panel color
+  notification_dot_color: var(--sidebar-selected-icon-color)
 ```
 
 ## Text Header Card
