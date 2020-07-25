@@ -1,5 +1,4 @@
 # Lovelace Soft UI 
-#### A new user friendly, simple, and clean Lovelace configuration
 
 [![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square)](https://github.com/N-l1/lovelace-soft-ui/blob/master/LICENSE) 
 [![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
@@ -16,7 +15,7 @@
 
 # Let's do it!
 
-**Note**: If you are looking for a quick and simple way to implement this style universally to all your cards, a better option would be **@KTibow**'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes. The themes are easier to implement and faster to set up, while this repo provides more flexibility and customizability. 
+**Note**: If you are looking for a quick and simple way to implement this style universally to all your cards, a better option would be **@KTibow**'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes. The themes are easier to implement and faster to set up. This repo, however, provides more flexibility and customizability. 
 
 ### 1. Install card-mod
 You will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS [documentations](https://hacs.xyz) and install it.
@@ -29,7 +28,7 @@ For the cards to switch automatically to dark/light themes, please make sure you
 sun:
 ```
 ### 3. Themes
-This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a **milky white background** work well, and dark themes with a **dark grey background** work well. 
+This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark grey background work well. 
 
 The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2** (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
@@ -92,9 +91,7 @@ style: |
 ```
 
 # Advanced Usage
-Here are some cards I created using this style.
-
-All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
+Here are some cards I created using this style. All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
 
 ## Compact Header
 <p align="left">
@@ -106,7 +103,7 @@ All cards are added using the UI. Click on the three dots on the top right, go t
 
 #### This card will not work without installing:
 
-* [**Custom Header**](https://maykar.github.io/custom-header), by **maykar**
+* [**Custom Header**](https://maykar.github.io/custom-header), by **@maykar**
 
 This makes the original Home Assistant header "compact" while also matching it with the background color. To add this card, click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
 
@@ -139,7 +136,6 @@ custom_header:
   <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="425">
   <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="425">
   <br/>
-  <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 #### This card will not work without installing:
@@ -180,7 +176,6 @@ type: markdown
   <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="425">
   <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="425">
   <br/>
-  <b>Text header cards with subheader</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 #### This card will not work without installing:
@@ -242,7 +237,6 @@ type: vertical-stack
   <img src="docs/images/vertical_button_card_light.png" alt="Vertical button card light theme" width="425">
   <img src="docs/images/vertical_button_card_dark.png" alt="Vertical button card dark theme" width="425">
   <br/>
-  <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 #### This card will not work without installing:
@@ -494,7 +488,6 @@ type: vertical-stack
   <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
   <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
   <br/>
-  <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 #### This card will not work without installing:
@@ -788,7 +781,6 @@ type: horizontal-stack
   <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
   <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="425">
   <br/>
-  <b>Remote pop-up card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
 #### This card will not work without installing:
@@ -1307,6 +1299,6 @@ cards:
 </p>
 </details>
 
-### Thank you!
+## Thank you!
 
 Developed, maintained, and based on the Lovelace of **@N-l1** ✨
