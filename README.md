@@ -1,9 +1,9 @@
 # Lovelace Soft UI 
 #### A new user friendly, simple, and clean Lovelace configuration
 
-![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square) 
-![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&) 
-![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)
+[![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square)](https://github.com/N-l1/lovelace-soft-ui/blob/master/LICENSE) 
+[![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
+[![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
 First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from Soft UI AKA Neumorphism. Hope you like it!
 
@@ -34,7 +34,7 @@ This styling works best with custom themes. They can also be installed with [HAC
 
 I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**. 
 
-If you decide to use the Clear theme, please make sure to remove the ```lovelace-background``` line from the theme YAML.
+If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
 ### 4. Automation
 You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
@@ -89,7 +89,7 @@ style: |
 # Advanced Usage
 Here are some cards I created using this style :) 
 
-All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `MANUAL CARD`. 
+All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `Manual`. 
 
 Paste in the appropriate code for each card.
 
@@ -107,9 +107,9 @@ Paste in the appropriate code for each card.
 
 This makes the original Home Assistant header "compact" and also matches it with the background color.
 
-Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
+Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
 
-``` yaml
+```yaml
 # Example entry
 custom_header:
   # Makes header compact
@@ -129,7 +129,6 @@ custom_header:
 ```
 
 ## Text Header Card
-</p>
 <p align="left">
   <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="425">
   <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="425">
@@ -148,7 +147,6 @@ This card displays texts with transparent background.
 
 ``` yaml
 # Example entry
-# Enter what you want to display
 content: |
   # Enter what you want to display here
 style:
@@ -175,7 +173,6 @@ type: markdown
 
 ``` yaml
 # Example entry
-# Enter what you want to display
 content: |
   # Enter what you want to display here
 style: |
@@ -215,7 +212,6 @@ This card displays texts with smaller texts underneath with transparent backgrou
 ``` yaml
 # Example entry
 cards:
-# Enter what you want to display
   - content: |
       # Enter what you want to display here
     style:
@@ -234,9 +230,8 @@ cards:
             letter-spacing: '-0.01em';
           }
     type: markdown
-# Enter what you want to display in the small text
   - content: |
-      # Enter what you want to display here
+      # Enter what you want to display in the small text
     style:
       .: |
         ha-card {
@@ -265,7 +260,6 @@ type: vertical-stack
 ``` yaml
 # Example entry
 cards:
-# Enter what you want to display
   - content: |
       # Enter what you want to display here
     style: |
@@ -281,9 +275,8 @@ cards:
         letter-spacing: '-0.01em';
       }
     type: markdown
-# Enter what you want to display in the small text
   - content: |
-      # Enter what you want to display here
+      # Enter what you want to display in the small text
     style: |
       ha-card {
            height: 50px;
