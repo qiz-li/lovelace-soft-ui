@@ -138,6 +138,7 @@ This makes the original Home Assistant header "compact" and also matches it with
 Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following:
 
 ``` yaml
+# Example entry
 custom_header:
   # Makes header compact
   compact_mode: true
