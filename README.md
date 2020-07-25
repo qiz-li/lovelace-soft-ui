@@ -5,39 +5,36 @@
 [![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
 [![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
-First and foremost thank you for finding your way to my Home Assistant repo. This is my custom style for Lovelace (UI of Home Assistant). I drew some inspiration from Soft UI AKA Neumorphism. Hope you like it!
+**Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic / Soft UI syled Lovelace (UI of Home Assistant). I hope you like it!
 
-**Home Assistant forum discussions are** [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) 
+**Click** [**here**](docs/inspiration.md) **for some examples and inspiration** 
 
-**Example Soft UI dashboards are** [**here**](docs/inspiration.md)  
+**Don't hesitate to ask for help [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) on the Home Assistant forum** 
   
 ![Lovelace Soft UI light theme](docs/images/soft_ui_light.jpg)
 ![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
 
 # Let's do it!
-### 1. Install card-mod
-You will need [**card-mod**](https://github.com/thomasloven/lovelace-card-mod) to be installed, it is easily done via [**HACS**](https://hacs.xyz). 
 
-Please read HACS documentations and install it.
+**Note**: If you are looking for a quick and simple way to implement this style universally to all your cards, a better option would be **@KTibow**'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes. The themes are easier to implement and faster to set up, while this repo provides more flexibility and customizability. 
+
+### 1. Install card-mod
+You will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS [documentations](https://hacs.xyz) and install it.
 
 ### 2. sun.sun
-For the cards to switch automatically to a dark/light theme, please make sure you have the sun.sun entity (should come preinstalled). If you don't have it please add the following to your `configuration.yaml`.
+For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, please add the following to your `configuration.yaml`.
 
 ``` yaml
 # Example configuration.yaml entry
 sun:
 ```
 ### 3. Themes
-This styling works best with custom themes. They can also be installed with [HACS](https://hacs.xyz). Light themes with a **milky white background** work well, and dark themes with a **dark grey/black background** work well. 
+This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a **milky white background** work well, and dark themes with a **dark grey background** work well. 
 
-**Please note the background should not be pure white/black** 
-
-I recommend the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2**. 
-
-If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
+The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2** (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
 ### 4. Automation
-You will need to setup an automation for automatically switching to a dark theme at sunset and back to a light theme at sunrise. If you don't have one please add the following to your `automations.yaml`.
+You will need to set up an automation to automatically switch to a dark theme at sunset and back to a light theme at sunrise. If you don't have one, please add the following to your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 <p>
@@ -47,22 +44,30 @@ You will need to setup an automation for automatically switching to a dark theme
 - id: set_theme
   alias: Set Theme
   trigger:
-  - event: start
-    platform: homeassistant
-  - entity_id: sun.sun
-    platform: state
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sun.sun
   action:
-  - data_template:
-      # Change the names to your theme names
-      name: >-
-      {% if states('sun.sun') == "above_horizon" %}
-      Light
-      {% else %}
-      Dark
-      {% endif %}
-    service: frontend.set_theme
-  initial_state: true
-  mode: single
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: "above_horizon"
+      sequence:
+      - service: frontend.set_theme
+        data:
+# Change this to the name of your light theme
+          name: Name of your light theme
+    - conditions:
+      - condition: state
+        entity_id: sun.sun
+        state: "below_horizon"
+      sequence:
+      - service: frontend.set_theme
+        data:
+# Change this to the name of your light theme
+          name: Name of your dark theme
 ```
 </p>
 </details>
@@ -80,18 +85,16 @@ style: |
       box-shadow: 
         {% if is_state('sun.sun', 'above_horizon') %}
           -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-        {% else %}
+        {% elif is_state('sun.sun', 'below_horizon') %}
           -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
         {% endif %}   
    }      
 ```
 
 # Advanced Usage
-Here are some cards I created using this style :) 
+Here are some cards I created using this style.
 
-All cards are added using the UI: click on the three dots on the top right, then go to `Configure UI` then click on the `+` on the bottom right, then select `Manual`. 
-
-Paste in the appropriate code for each card.
+All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
 
 ## Compact Header
 <p align="left">
@@ -101,14 +104,15 @@ Paste in the appropriate code for each card.
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
 </p>
 
-#### Custom cards needed
+#### This card will not work without installing:
 
 * [**Custom Header**](https://maykar.github.io/custom-header), by **maykar**
 
-This makes the original Home Assistant header "compact" and also matches it with the background color.
+This makes the original Home Assistant header "compact" while also matching it with the background color. To add this card, click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
 
-Click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
-
+<details><summary><b>Show code</b></summary>
+<p>
+  
 ```yaml
 # Example entry
 custom_header:
@@ -127,6 +131,8 @@ custom_header:
   # Make mobile view notification dot color same as selected panel color
   notification_dot_color: var(--sidebar-selected-icon-color)
 ```
+</p>
+</details>
 
 ## Text Header Card
 <p align="left">
@@ -136,13 +142,13 @@ custom_header:
   <b>Text header cards</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-#### Custom cards needed
+#### This card will not work without installing:
 
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card displays texts with transparent background. 
+This card displays texts with transparent background.
 
-<details><summary><b>Show code for 0.111 or above</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` yaml
@@ -168,29 +174,6 @@ type: markdown
 </p>
 </details>
 
-<details><summary><b>Show code for 0.110 or lower</b></summary>
-<p>
-
-``` yaml
-# Example entry
-content: |
-  # Enter what you want to display here
-style: |
-  ha-card {
-     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-     box-shadow: 2px 2px rgba(0,0,0,0.0);
-  }
-  h1 {
-    font-size: 20px;
-    font-weight: bold;
-    font-family: Helvetica;
-    letter-spacing: '-0.01em';
-  }
-type: markdown
-```
-</p>
-</details>
-
 ## Text Header Card with Subheader
 </p>
 <p align="left">
@@ -200,13 +183,13 @@ type: markdown
   <b>Text header cards with subheader</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-#### Custom cards needed
+#### This card will not work without installing:
 
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
 This card displays texts with smaller texts underneath with transparent background.
 
-<details><summary><b>Show code for 0.111 or above</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` yaml
@@ -253,48 +236,6 @@ type: vertical-stack
 </p>
 </details>
 
-
-<details><summary><b>Show code for 0.110 or lower</b></summary>
-<p>
-
-``` yaml
-# Example entry
-cards:
-  - content: |
-      # Enter what you want to display here
-    style: |
-      ha-card {
-        height: 20px;
-        --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-        box-shadow: 2px 2px rgba(0,0,0,0.0);
-      }
-      h1 {
-        font-size: 20px;
-        font-weight: bold;
-        font-family: Helvetica;
-        letter-spacing: '-0.01em';
-      }
-    type: markdown
-  - content: |
-      # Enter what you want to display in the small text
-    style: |
-      ha-card {
-           height: 50px;
-           --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-           box-shadow: 2px 2px rgba(0,0,0,0.0);
-             }
-         h1 {
-              font-size: 15px;
-              font-weight: thin;
-              font-family: Helvetica;
-              letter-spacing: '-0.01em';
-            }
-    type: markdown
-type: vertical-stack
-```
-</p>
-</details>
-
 ## Vertical Buttons Card
 </p>
 <p align="left">
@@ -304,18 +245,19 @@ type: vertical-stack
   <b>Vertical buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-#### Custom cards needed
+#### This card will not work without installing:
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
 #### Template used to count how many lights are on
-``` markdown
+To use this template as a light count sensor, use the Home Assistant [template sensor component](https://www.home-assistant.io/integrations/template/). 
+``` 
 {{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
 ```
-This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e lovelace/lights. You can change the icons, names, tap action, and texts beside them. 
+This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e. lovelace/lights. You can change the icons, names, tap action, and texts beside them. 
 
-<details><summary><b>Show code for 0.111 or above</b></summary>
+<details><summary><b>Show code</b></summary>
 <p>
 
 ``` yaml
@@ -546,220 +488,6 @@ type: vertical-stack
 </p>
 </details>
 
-<details><summary><b>Show code for 0.110 or lower</b></summary>
-<p>
-
-``` yaml
-# Example entry
-cards:
-  - cards:
-      - cards:
-# Icon to display - First button
-          - icon: 'mdi:lightbulb-multiple'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}                 
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - First button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/lights
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - First button       
-              - content: |
-                  # Lights
-                style: |
-                  ha-card {
-                    height: 20px;                  
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                    margin-top: 15px;
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-# Small text to display - First button             
-              - content: >              
-                  # There are  {% if is_state('sensor.lights_on', '0') %}
-                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
-                  endif %} lights on
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                     }
-                  h1 {
-                    font-size: 15px;
-                    font-weight: thin;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-      - cards:
-# Icon to display - Second button
-          - icon: 'mdi:alarm'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}    
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - Second button
-            tap_action:
-              action: navigate         
-              navigation_path: /lovelace/alarm
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - Second button    
-              - content: |           
-                  # Alarm clock
-                style: |
-                  ha-card {
-                    height: 20px;                  
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                    margin-top: 15px;
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-# Small text to display - Second button   
-              - content: >            
-                  # The weekday alarm is  {% if
-                  is_state('input_boolean.sleep_cycle_weekday', 'on') and
-                  is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
-                  sleep cycle mode   {% elif
-                  is_state('input_boolean.alarm_weekday_enabled', 'on') %}   set
-                  for {{states('sensor.alarm_weekday_time')}}  {% else %}  not
-                  set  {% endif %}
-                style: |
-                  ha-card {
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 15px;
-                    font-weight: thin;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-      - cards:
-# Icon to display - Third button         
-          - icon: 'mdi:pine-tree'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow: 
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - Third button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/sprinklers/
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - Third button
-              - content: |             
-                  # Irrigation
-                style: |
-                  ha-card {
-                    height: 20px;                  
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                    margin-top: 15px;
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
-                type: markdown
-# Small text to display - Third button      
-              - content: |          
-                  # The irrigation system is not activated
-                style: |
-                  ha-card {
-                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                     }
-                   h1 {
-                   
-                   font-size: 15px;
-                   font-weight: thin;
-                   font-family: Helvetica;
-                   letter-spacing: '-0.01em';
-                      }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-    type: vertical-stack
-type: vertical-stack
-```
-</p>
-</details>
-
 ## Horizontal Buttons Card
 </p>
 <p align="left">
@@ -769,19 +497,17 @@ type: vertical-stack
   <b>Horizontal buttons card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-#### Custom cards needed
+#### This card will not work without installing:
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-This card is five buttons lined up horizontally (like the picture). When the state of the entity is 'on', the button will be depressed. When the entity is 'off' it will be released (like normal). 
-
-This card can resize based on the width of your screen!
+This card is five buttons lined up horizontally. When the state of the entity is 'on', the button will be pressed in. When the entity is 'off' the button will be released (like normal). 
 
 <details><summary><b>Show code</b></summary>
 <p>
 
-``` markdown
+``` yaml
 # Example entry
 cards:
 # Entity to control - First button
@@ -1065,584 +791,522 @@ type: horizontal-stack
   <b>Remote pop-up card</b> with the <b>Light</b> and <b>Dark</b> themes.
 </p>
 
-#### Custom cards needed
+#### This card will not work without installing:
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
 
-#### Custom components needed
-
-* [**Browser Mod**](https://github.com/thomasloven/hass-browser_mod), by **@thomasloven**
-
-This is a quite special card. Each button on it can be used to control your TV/device. It will pop up when you long press on an entity. For example, you can make it pop-up when you hold on your TV entity. 
-
-To add this card, click on the three dots on the top right, then go to `Configure UI` then click the three dots on the top right again, then select `Raw config editor`  
-
-Add the following to the first line:
+This is a card that mimics a TV remote. Each button is customizable to execute your actions. 
 
 <details><summary><b>Show code</b></summary>
 <p>
 
-``` markdown
-popup_cards:
-# Please change this to the entity you want to hold and get the remote
-  script.television:
-    title: Remote
-    card:
-      type: vertical-stack
-      cards:
-       - type: vertical-stack
-         cards:
-           - type: vertical-stack
-             cards:
-                - type: vertical-stack
-                  cards:
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                        styles:
-                          card:
-                            - width: 1px
-                            - height: 1px
-                      type: 'custom:button-card'
-                    - cards:
-                        - show_icon: false
-                          show_name: false
-                          style: |
-                            ha-card {
-                               --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                               box-shadow: 2px 2px rgba(0,0,0,0.0);
-                            }
-                          styles:
-                            card:
-                              - width: 50px
-                              - height: 60px
-                          type: 'custom:button-card'
-                        - entities:
-                            - cards:
-                                - show_icon: false
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                      box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 150px
-                                      - height: 60px
-                                  type: 'custom:button-card'
-                                - icon: 'mdi:power'
-                                  show_icon: true
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      box-shadow: 
-                                        {% if is_state('sun.sun', 'above_horizon') %}
-                                          -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                                        {% else %}
-                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                                        {% endif %}                
-                                    }                
-                                  styles:
-                                    card:
-                                      - width: 60px
-                                      - height: 60px
-                                      - border-radius: 100px
-                                      - background-color: var(--primary-background-color)
-                                    icon:
-                                      - color: var(--primary-text-color)
-                                  tap_action:
-                                    action: call-service
+``` yaml
+type: vertical-stack
+cards:
+- cards:
+      type: 'custom:button-card'
+    - entities:
+        - cards:
+            - show_icon: false
+              show_name: false
+              style: |
+                ha-card {
+                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                }
+              styles:
+                card:
+                  - width: 150px
+                  - height: 60px
+              type: 'custom:button-card'
+            - icon: 'mdi:power'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  box-shadow: 
+                    {% if is_state('sun.sun', 'above_horizon') %}
+                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                    {% else %}
+                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                    {% endif %}                
+                }                
+              styles:
+                card:
+                  - width: 60px
+                  - height: 60px
+                  - border-radius: 100px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
 # Please change this to a service you call to toggle the TV/device
-                                    service: remote.send_command
-                                    service_data:
-                                      command: power
-                                      entity_id: remote.xiaomi
-                                  type: 'custom:button-card'
-                                - show_icon: false
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                      box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 10px
-                                      - height: 60px
-                                  type: 'custom:button-card'
-                              type: 'custom:hui-horizontal-stack-card'
-                            - show_icon: false
-                              show_name: false
-                              style: |
-                                ha-card {
-                                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                }
-                              styles:
-                                card:
-                                  - width: 10px
-                                  - height: 10px
-                              type: 'custom:button-card'
-                            - cards:
-                                - entities:
-                                    - cards:
-                                        - show_icon: false
-                                          show_name: false
-                                          style: |
-                                            ha-card {
-                                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 63px
-                                              - height: 10px
-                                          type: 'custom:button-card'
-                                        - icon: 'mdi:menu-up'
-                                          show_icon: true
-                                          show_name: false
-                                          size: 100%
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 50px
-                                              - height: 50px
-                                              - background-color: var(--primary-background-color)
-                                            icon:
-                                              - color: var(--primary-text-color)
-                                          tap_action:
-                                            action: call-service
-# Please change this to a service you call to go 'up' on the TV/device                                            
-                                            service: remote.send_command
-                                            service_data:
-                                              command: up
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                      type: 'custom:hui-horizontal-stack-card'
-                                    - cards:
-                                        - show_icon: false
-                                          show_name: false
-                                          style: |
-                                            ha-card {
-                                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 5px
-                                              - height: 10px
-                                          type: 'custom:button-card'
-                                        - icon: 'mdi:menu-left'
-                                          show_icon: true
-                                          show_name: false
-                                          size: 100%
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 50px
-                                              - height: 50px
-                                              - background-color: var(--primary-background-color)
-                                            icon:
-                                              - color: var(--primary-text-color)
-                                          tap_action:
-                                            action: call-service
-# Please change this to a service you call to go 'left' on the TV/device                                              
-                                            service: remote.send_command
-                                            service_data:
-                                              command: left
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                        - name: OK
-                                          show_icon: false
-                                          show_name: true
-                                          style: |
-                                            ha-card {
-                                              box-shadow: 
-                                                {% if is_state('sun.sun', 'above_horizon') %}
-                                                  -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
-                                                {% else %}
-                                                  -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
-                                                {% endif %}                
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 50px
-                                              - height: 50px
-                                              - border-radius: 100px
-                                              - background-color: var(--primary-background-color)
-                                            name:
-                                              - font-size: 20px
-                                              - font-weight: bold
-                                              - font-family: Helvetica
-                                              - letter-spacing: '-0.01em'
-                                          tap_action:
-# Please change this to a service you call to 'enter' on the TV/device                                            
-                                            action: call-service
-                                            service: remote.send_command
-                                            service_data:
-                                              command: enter
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                        - icon: 'mdi:menu-right'
-                                          show_icon: true
-                                          show_name: false
-                                          size: 100%
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 50px
-                                              - height: 50px
-                                              - background-color: var(--primary-background-color)
-                                            icon:
-                                              - color: var(--primary-text-color)
-                                          tap_action:
-                                            action: call-service
-# Please change this to a service you call to go 'right' on the TV/device                                             
-                                            service: remote.send_command
-                                            service_data:
-                                              command: right
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                      type: 'custom:hui-horizontal-stack-card'
-                                    - cards:
-                                        - show_icon: false
-                                          show_name: false
-                                          style: |
-                                            ha-card {
-                                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 63px
-                                              - height: 10px
-                                          type: 'custom:button-card'
-                                        - icon: 'mdi:menu-down'
-                                          show_icon: true
-                                          show_name: false
-                                          size: 100%
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 50px
-                                              - height: 50px
-                                              - background-color: var(--primary-background-color)
-                                            icon:
-                                              - color: var(--primary-text-color)
-                                          tap_action:
-                                            action: call-service
-# Please change this to a service you call to go 'down' on the TV/device                                             
-                                            service: remote.send_command
-                                            service_data:
-                                              command: down
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                      type: 'custom:hui-horizontal-stack-card'
-                                  show_header_toggle: false
-                                  style: |
-                                    ha-card {                           
-                                      box-shadow: 
-                                        {% if is_state('sun.sun', 'above_horizon') %}
-                                          inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
-                                        {% else %}
-                                          inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                                        {% endif %}                    
-                                      border-radius: 30px;
-                                      background-color: var(--primary-background-color)
-                                    }
-                                  type: 'custom:hui-entities-card'
-                              type: 'custom:hui-horizontal-stack-card'
-                            - show_icon: false
-                              show_name: false
-                              style: |
-                                ha-card {
-                                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                }
-                              styles:
-                                card:
-                                  - width: 10px
-                                  - height: 10px
-                              type: 'custom:button-card'
-                            - cards:
-                                - entities:
-                                    - cards:
-                                        - show_icon: false
-                                          show_name: false
-                                          style: |
-                                            ha-card {
-                                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 17px
-                                              - height: 10px
-                                          type: 'custom:button-card'
-                                        - icon: 'mdi:minus'
-                                          show_icon: true
-                                          show_name: false
-                                          size: 100%
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 30px
-                                              - height: 30px
-                                              - background-color: var(--primary-background-color)
-                                            icon:
-                                              - color: var(--primary-text-color)
-                                          tap_action:
-                                            action: call-service
-# Please change this to a service you call to 'volume down' on the TV/device                                              
-                                            service: remote.send_command
-                                            service_data:
-                                              command: volume_down_sony
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                        - show_icon: false
-                                          show_name: false
-                                          style: |
-                                            ha-card {
-                                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 10px
-                                              - height: 10px
-                                          type: 'custom:button-card'
-                                        - name: VOL
-                                          show_icon: false
-                                          show_name: true
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 30px
-                                              - height: 30px
-                                              - border-radius: 100px
-                                              - background-color: var(--primary-background-color)
-                                            name:
-                                              - font-size: 13px
-                                              - font-weight: bold
-                                              - font-family: Helvetica
-                                              - letter-spacing: '-0.01em'
-                                          type: 'custom:button-card'
-                                        - show_icon: false
-                                          show_name: false
-                                          style: |
-                                            ha-card {
-                                              --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                            }
-                                          styles:
-                                            card:
-                                              - width: 10px
-                                              - height: 10px
-                                          type: 'custom:button-card'
-                                        - icon: 'mdi:plus'
-                                          show_icon: true
-                                          show_name: false
-                                          size: 100%
-                                          styles:
-                                            card:
-                                              - box-shadow: none
-                                              - width: 30px
-                                              - height: 30px
-                                              - background-color: var(--primary-background-color)
-                                            icon:
-                                              - color: var(--primary-text-color)
-                                          tap_action:
-                                            action: call-service
-# Please change this to a service you call to 'volume up' on the TV/device                                             
-                                            service: remote.send_command
-                                            service_data:
-                                              command: volume_up_sony
-                                              entity_id: remote.xiaomi
-                                          type: 'custom:button-card'
-                                      type: 'custom:hui-horizontal-stack-card'
-                                  show_header_toggle: false
-                                  style: |
-                                    ha-card {
-                                      box-shadow: 
-                                        {% if is_state('sun.sun', 'above_horizon') %}
-                                           -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                                        {% else %}
-                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                                        {% endif %}                
-                                      border-radius: 30px;
-                                      background-color: var(--primary-background-color)
-                                    }
-                                  type: 'custom:hui-entities-card'
-                              type: 'custom:hui-horizontal-stack-card'
-                            - show_icon: false
-                              show_name: false
-                              style: |
-                                ha-card {
-                                  --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                }
-                              styles:
-                                card:
-                                  - width: 10px
-                                  - height: 10px
-                              type: 'custom:button-card'
-                            - cards:
-# The first button in the bottom, you can change the icon here. In my case it is 'home'                            
-                                - icon: 'mdi:home'
-                                  show_icon: true
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      box-shadow: 
-                                        {% if is_state('sun.sun', 'above_horizon') %}
-                                          -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                                        {% else %}
-                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                                        {% endif %}                
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 60px
-                                      - height: 60px
-                                      - border-radius: 15px
-                                      - background-color: var(--primary-background-color)
-                                    icon:
-                                      - color: var(--primary-text-color)
-                                  tap_action:
-                                    action: call-service
-# Please change this to a service you want to call on the first button                              
-                                    service: remote.send_command
-                                    service_data:
-                                      command: home
-                                      entity_id: remote.xiaomi
-                                  type: 'custom:button-card'
-                                - show_icon: false
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                      box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 5px
-                                      - height: 60px
-                                  type: 'custom:button-card'
-# The second button in the bottom, you can change the icon here. In my case it is 'return'                                    
-                                - icon: 'mdi:keyboard-return'
-                                  show_icon: true
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      box-shadow: 
-                                        {% if is_state('sun.sun', 'above_horizon') %}
-                                          -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                                        {% else %}
-                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                                        {% endif %}               
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 60px
-                                      - height: 60px
-                                      - border-radius: 15px
-                                      - background-color: var(--primary-background-color)
-                                    icon:
-                                      - color: var(--primary-text-color)
-                                  tap_action:
-                                    action: call-service
-# Please change this to a service you want to call on the second button                                     
-                                    service: remote.send_command
-                                    service_data:
-                                      command: return
-                                      entity_id: remote.xiaomi
-                                  type: 'custom:button-card'
-                                - show_icon: false
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                      box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 5px
-                                      - height: 60px
-                                  type: 'custom:button-card'
-# The third button in the bottom, you can change the icon here. In my case it is a set top box.                                    
-                                - icon: 'mdi:set-top-box'
-                                  show_icon: true
-                                  show_name: false
-                                  style: |
-                                    ha-card {
-                                      box-shadow: 
-                                        {% if is_state('sun.sun', 'above_horizon') %}
-                                          -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                                        {% else %}
-                                          -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                                        {% endif %}                
-                                    }
-                                  styles:
-                                    card:
-                                      - width: 60px
-                                      - height: 60px
-                                      - border-radius: 15px
-                                      - background-color: var(--primary-background-color)
-                                    icon:
-                                      - color: var(--primary-text-color)
-                                  tap_action:
-                                    action: call-service
-# Please change this to a service you want to call on the third button                                      
-                                    service: script.turn_on
-                                    service_data:
-                                      entity_id: script.mi_box
-                                  type: 'custom:button-card'
-                              type: 'custom:hui-horizontal-stack-card'
-                          show_header_toggle: false
-                          style: |
-                            ha-card {
-                              background-color: var(--primary-background-color);
-                              width: 250px;
-                              box-shadow:
-                                {% if is_state('sun.sun', 'above_horizon') %}
-                                   -6px -6px 6px 0 rgba(255,255,255,.5),6px 6px 6px 0 rgba(0,0,0,.03);
-                                {% else %}
-                                  -6px -6px 6px 0 rgba(77, 77, 77,.5),6px 6px 6px 0 rgba(0,0,0,.3);
-                                {% endif %} 
-                              border-radius: 10px;
-                            }
-                          type: entities
-                      type: horizontal-stack
+                service: remote.send_command
+                service_data:
+                  command: power
+                  entity_id: remote.xiaomi
+              type: 'custom:button-card'
+            - show_icon: false
+              show_name: false
+              style: |
+                ha-card {
+                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                }
+              styles:
+                card:
+                  - width: 10px
+                  - height: 60px
+              type: 'custom:button-card'
+          type: 'custom:hui-horizontal-stack-card'
+        - show_icon: false
+          show_name: false
+          style: |
+            ha-card {
+              --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+              box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+          styles:
+            card:
+              - width: 10px
+              - height: 10px
+          type: 'custom:button-card'
+        - cards:
+            - entities:
+                - cards:
                     - show_icon: false
                       show_name: false
                       style: |
                         ha-card {
-                          --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
+                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
                           box-shadow: 2px 2px rgba(0,0,0,0.0);
                         }
-                        styles:
-                          card:
-                            - width: 5px
-                            - height: 5px
+                      styles:
+                        card:
+                          - width: 63px
+                          - height: 10px
                       type: 'custom:button-card'
+                    - icon: 'mdi:menu-up'
+                      show_icon: true
+                      show_name: false
+                      size: 100%
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 50px
+                          - height: 50px
+                          - background-color: var(--primary-background-color)
+                        icon:
+                          - color: var(--primary-text-color)
+                      tap_action:
+                        action: call-service
+# Please change this to a service you call to go 'up' on the TV/device                                            
+                        service: remote.send_command
+                        service_data:
+                          command: up
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                  type: 'custom:hui-horizontal-stack-card'
+                - cards:
+                    - show_icon: false
+                      show_name: false
+                      style: |
+                        ha-card {
+                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        }
+                      styles:
+                        card:
+                          - width: 5px
+                          - height: 10px
+                      type: 'custom:button-card'
+                    - icon: 'mdi:menu-left'
+                      show_icon: true
+                      show_name: false
+                      size: 100%
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 50px
+                          - height: 50px
+                          - background-color: var(--primary-background-color)
+                        icon:
+                          - color: var(--primary-text-color)
+                      tap_action:
+                        action: call-service
+# Please change this to a service you call to go 'left' on the TV/device                                              
+                        service: remote.send_command
+                        service_data:
+                          command: left
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                    - name: OK
+                      show_icon: false
+                      show_name: true
+                      style: |
+                        ha-card {
+                          box-shadow: 
+                            {% if is_state('sun.sun', 'above_horizon') %}
+                              -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
+                            {% else %}
+                              -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
+                            {% endif %}                
+                        }
+                      styles:
+                        card:
+                          - width: 50px
+                          - height: 50px
+                          - border-radius: 100px
+                          - background-color: var(--primary-background-color)
+                        name:
+                          - font-size: 20px
+                          - font-weight: bold
+                          - font-family: Helvetica
+                          - letter-spacing: '-0.01em'
+                      tap_action:
+# Please change this to a service you call to 'enter' on the TV/device                                            
+                        action: call-service
+                        service: remote.send_command
+                        service_data:
+                          command: enter
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                    - icon: 'mdi:menu-right'
+                      show_icon: true
+                      show_name: false
+                      size: 100%
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 50px
+                          - height: 50px
+                          - background-color: var(--primary-background-color)
+                        icon:
+                          - color: var(--primary-text-color)
+                      tap_action:
+                        action: call-service
+# Please change this to a service you call to go 'right' on the TV/device                                             
+                        service: remote.send_command
+                        service_data:
+                          command: right
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                  type: 'custom:hui-horizontal-stack-card'
+                - cards:
+                    - show_icon: false
+                      show_name: false
+                      style: |
+                        ha-card {
+                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        }
+                      styles:
+                        card:
+                          - width: 63px
+                          - height: 10px
+                      type: 'custom:button-card'
+                    - icon: 'mdi:menu-down'
+                      show_icon: true
+                      show_name: false
+                      size: 100%
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 50px
+                          - height: 50px
+                          - background-color: var(--primary-background-color)
+                        icon:
+                          - color: var(--primary-text-color)
+                      tap_action:
+                        action: call-service
+# Please change this to a service you call to go 'down' on the TV/device                                             
+                        service: remote.send_command
+                        service_data:
+                          command: down
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                  type: 'custom:hui-horizontal-stack-card'
+              show_header_toggle: false
+              style: |
+                ha-card {                           
+                  box-shadow: 
+                    {% if is_state('sun.sun', 'above_horizon') %}
+                      inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
+                    {% else %}
+                      inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+                    {% endif %}                    
+                  border-radius: 30px;
+                  background-color: var(--primary-background-color)
+                }
+              type: 'custom:hui-entities-card'
+          type: 'custom:hui-horizontal-stack-card'
+        - show_icon: false
+          show_name: false
+          style: |
+            ha-card {
+              --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+              box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+          styles:
+            card:
+              - width: 10px
+              - height: 10px
+          type: 'custom:button-card'
+        - cards:
+            - entities:
+                - cards:
+                    - show_icon: false
+                      show_name: false
+                      style: |
+                        ha-card {
+                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        }
+                      styles:
+                        card:
+                          - width: 17px
+                          - height: 10px
+                      type: 'custom:button-card'
+                    - icon: 'mdi:minus'
+                      show_icon: true
+                      show_name: false
+                      size: 100%
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 30px
+                          - height: 30px
+                          - background-color: var(--primary-background-color)
+                        icon:
+                          - color: var(--primary-text-color)
+                      tap_action:
+                        action: call-service
+# Please change this to a service you call to 'volume down' on the TV/device                                              
+                        service: remote.send_command
+                        service_data:
+                          command: volume_down_sony
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                    - show_icon: false
+                      show_name: false
+                      style: |
+                        ha-card {
+                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        }
+                      styles:
+                        card:
+                          - width: 10px
+                          - height: 10px
+                      type: 'custom:button-card'
+                    - name: VOL
+                      show_icon: false
+                      show_name: true
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 30px
+                          - height: 30px
+                          - border-radius: 100px
+                          - background-color: var(--primary-background-color)
+                        name:
+                          - font-size: 13px
+                          - font-weight: bold
+                          - font-family: Helvetica
+                          - letter-spacing: '-0.01em'
+                      type: 'custom:button-card'
+                    - show_icon: false
+                      show_name: false
+                      style: |
+                        ha-card {
+                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                          box-shadow: 2px 2px rgba(0,0,0,0.0);
+                        }
+                      styles:
+                        card:
+                          - width: 10px
+                          - height: 10px
+                      type: 'custom:button-card'
+                    - icon: 'mdi:plus'
+                      show_icon: true
+                      show_name: false
+                      size: 100%
+                      styles:
+                        card:
+                          - box-shadow: none
+                          - width: 30px
+                          - height: 30px
+                          - background-color: var(--primary-background-color)
+                        icon:
+                          - color: var(--primary-text-color)
+                      tap_action:
+                        action: call-service
+# Please change this to a service you call to 'volume up' on the TV/device                                             
+                        service: remote.send_command
+                        service_data:
+                          command: volume_up_sony
+                          entity_id: remote.xiaomi
+                      type: 'custom:button-card'
+                  type: 'custom:hui-horizontal-stack-card'
+              show_header_toggle: false
+              style: |
+                ha-card {
+                  box-shadow: 
+                    {% if is_state('sun.sun', 'above_horizon') %}
+                        -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                    {% else %}
+                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                    {% endif %}                
+                  border-radius: 30px;
+                  background-color: var(--primary-background-color)
+                }
+              type: 'custom:hui-entities-card'
+          type: 'custom:hui-horizontal-stack-card'
+        - show_icon: false
+          show_name: false
+          style: |
+            ha-card {
+              --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+              box-shadow: 2px 2px rgba(0,0,0,0.0);
+            }
+          styles:
+            card:
+              - width: 10px
+              - height: 10px
+          type: 'custom:button-card'
+        - cards:
+# The first button in the bottom, you can change the icon here. In my case it is 'home'                            
+            - icon: 'mdi:home'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  box-shadow: 
+                    {% if is_state('sun.sun', 'above_horizon') %}
+                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                    {% else %}
+                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                    {% endif %}                
+                }
+              styles:
+                card:
+                  - width: 60px
+                  - height: 60px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
+# Please change this to a service you want to call on the first button                              
+                service: remote.send_command
+                service_data:
+                  command: home
+                  entity_id: remote.xiaomi
+              type: 'custom:button-card'
+            - show_icon: false
+              show_name: false
+              style: |
+                ha-card {
+                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                }
+              styles:
+                card:
+                  - width: 5px
+                  - height: 60px
+              type: 'custom:button-card'
+# The second button in the bottom, you can change the icon here. In my case it is 'return'                                    
+            - icon: 'mdi:keyboard-return'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  box-shadow: 
+                    {% if is_state('sun.sun', 'above_horizon') %}
+                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                    {% else %}
+                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                    {% endif %}               
+                }
+              styles:
+                card:
+                  - width: 60px
+                  - height: 60px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
+# Please change this to a service you want to call on the second button                                     
+                service: remote.send_command
+                service_data:
+                  command: return
+                  entity_id: remote.xiaomi
+              type: 'custom:button-card'
+            - show_icon: false
+              show_name: false
+              style: |
+                ha-card {
+                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
+                  box-shadow: 2px 2px rgba(0,0,0,0.0);
+                }
+              styles:
+                card:
+                  - width: 5px
+                  - height: 60px
+              type: 'custom:button-card'
+# The third button in the bottom, you can change the icon here. In my case it is a set top box.                                    
+            - icon: 'mdi:set-top-box'
+              show_icon: true
+              show_name: false
+              style: |
+                ha-card {
+                  box-shadow: 
+                    {% if is_state('sun.sun', 'above_horizon') %}
+                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                    {% else %}
+                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                    {% endif %}                
+                }
+              styles:
+                card:
+                  - width: 60px
+                  - height: 60px
+                  - border-radius: 15px
+                  - background-color: var(--primary-background-color)
+                icon:
+                  - color: var(--primary-text-color)
+              tap_action:
+                action: call-service
+# Please change this to a service you want to call on the third button                                      
+                service: script.turn_on
+                service_data:
+                  entity_id: script.mi_box
+              type: 'custom:button-card'
+          type: 'custom:hui-horizontal-stack-card'
+      show_header_toggle: false
+      style: |
+        ha-card {
+          background-color: var(--primary-background-color);
+          width: 250px;
+          box-shadow:
+            {% if is_state('sun.sun', 'above_horizon') %}
+                -6px -6px 6px 0 rgba(255,255,255,.5),6px 6px 6px 0 rgba(0,0,0,.03);
+            {% else %}
+              -6px -6px 6px 0 rgba(77, 77, 77,.5),6px 6px 6px 0 rgba(0,0,0,.3);
+            {% endif %} 
+          border-radius: 10px;
+        }
+      type: entities
+  type: horizontal-stack
 ```
 </p>
 </details>
 
-Then for it to pop-up when you are holding a button.
+### Thank you!
 
-Add the following to the button-card config of the entity you want to hold to get the remote:
-
-``` markdown
-hold_action:
-  action: more-info
-```
-# Thank you!
-This repository is maintained and developed by
-## @N-l1 ✨
+Developed, maintained, and based on the Lovelace of **@N-l1** ✨
