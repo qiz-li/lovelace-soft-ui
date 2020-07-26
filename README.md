@@ -766,14 +766,14 @@ type: horizontal-stack
 ```
 </details>
 
-## Remote pop-up card
+## Remote Card
 <p align="left">
   <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
   <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="425">
   <br/>
 </p>
 
-This is a card that mimics a TV remote. Each button is customizable to execute your desired actions. 
+This card mimics a TV remote. Each button is customizable to execute your desired actions. 
 
 **Required Custom Cards:**
 
@@ -783,507 +783,503 @@ This is a card that mimics a TV remote. Each button is customizable to execute y
 <details><summary><b>Show code</b></summary>
 
 ```yaml
-type: vertical-stack
-cards:
-- cards:
-      type: 'custom:button-card'
-    - entities:
-        - cards:
-            - show_icon: false
-              show_name: false
-              style: |
-                ha-card {
-                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                }
-              styles:
-                card:
-                  - width: 150px
-                  - height: 60px
-              type: 'custom:button-card'
-            - icon: 'mdi:power'
-              show_icon: true
-              show_name: false
-              style: |
-                ha-card {
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                    {% endif %}                
-                }                
-              styles:
-                card:
-                  - width: 60px
-                  - height: 60px
-                  - border-radius: 100px
-                  - background-color: var(--primary-background-color)
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
+entities:
+  - cards:
+      - show_icon: false
+        show_name: false
+        style: |
+          ha-card {
+            --ha-card-background: none !important;
+            box-shadow: none !important;
+          }
+        styles:
+          card:
+            - width: 150px
+            - height: 60px
+        type: 'custom:button-card'
+      - icon: 'mdi:power'
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow: 
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+              {% endif %}                
+          }                
+        styles:
+          card:
+            - width: 60px
+            - height: 60px
+            - border-radius: 100px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        tap_action:
+          action: call-service
 # Please change this to a service you call to toggle the TV/device
-                service: remote.send_command
-                service_data:
-                  command: power
-                  entity_id: remote.xiaomi
-              type: 'custom:button-card'
-            - show_icon: false
-              show_name: false
-              style: |
-                ha-card {
-                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                }
-              styles:
-                card:
-                  - width: 10px
-                  - height: 60px
-              type: 'custom:button-card'
-          type: 'custom:hui-horizontal-stack-card'
-        - show_icon: false
-          show_name: false
-          style: |
-            ha-card {
-              --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-              box-shadow: 2px 2px rgba(0,0,0,0.0);
-            }
-          styles:
-            card:
-              - width: 10px
-              - height: 10px
-          type: 'custom:button-card'
-        - cards:
-            - entities:
-                - cards:
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                      styles:
-                        card:
-                          - width: 63px
-                          - height: 10px
-                      type: 'custom:button-card'
-                    - icon: 'mdi:menu-up'
-                      show_icon: true
-                      show_name: false
-                      size: 100%
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 50px
-                          - height: 50px
-                          - background-color: var(--primary-background-color)
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
+          service: remote.send_command
+          service_data:
+            command: power
+            entity_id: remote.xiaomi
+        type: 'custom:button-card'
+      - show_icon: false
+        show_name: false
+        style: |
+          ha-card {
+            --ha-card-background: none !important;
+            box-shadow: none !important;
+          }
+        styles:
+          card:
+            - width: 10px
+            - height: 60px
+        type: 'custom:button-card'
+    type: 'custom:hui-horizontal-stack-card'
+  - show_icon: false
+    show_name: false
+    style: |
+      ha-card {
+        --ha-card-background: none !important;
+        box-shadow: none !important;
+      }
+    styles:
+      card:
+        - width: 10px
+        - height: 10px
+    type: 'custom:button-card'
+  - cards:
+      - entities:
+          - cards:
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                  }
+                styles:
+                  card:
+                    - width: 63px
+                    - height: 10px
+                type: 'custom:button-card'
+              - icon: 'mdi:menu-up'
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 50px
+                    - height: 50px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
 # Please change this to a service you call to go 'up' on the TV/device                                            
-                        service: remote.send_command
-                        service_data:
-                          command: up
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                  type: 'custom:hui-horizontal-stack-card'
-                - cards:
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                      styles:
-                        card:
-                          - width: 5px
-                          - height: 10px
-                      type: 'custom:button-card'
-                    - icon: 'mdi:menu-left'
-                      show_icon: true
-                      show_name: false
-                      size: 100%
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 50px
-                          - height: 50px
-                          - background-color: var(--primary-background-color)
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: up
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+            type: 'custom:hui-horizontal-stack-card'
+          - cards:
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                  }
+                styles:
+                  card:
+                    - width: 5px
+                    - height: 10px
+                type: 'custom:button-card'
+              - icon: 'mdi:menu-left'
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 50px
+                    - height: 50px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
 # Please change this to a service you call to go 'left' on the TV/device                                              
-                        service: remote.send_command
-                        service_data:
-                          command: left
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                    - name: OK
-                      show_icon: false
-                      show_name: true
-                      style: |
-                        ha-card {
-                          box-shadow: 
-                            {% if is_state('sun.sun', 'above_horizon') %}
-                              -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
-                            {% else %}
-                              -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
-                            {% endif %}                
-                        }
-                      styles:
-                        card:
-                          - width: 50px
-                          - height: 50px
-                          - border-radius: 100px
-                          - background-color: var(--primary-background-color)
-                        name:
-                          - font-size: 20px
-                          - font-weight: bold
-                          - font-family: Helvetica
-                          - letter-spacing: '-0.01em'
-                      tap_action:
+                  service: remote.send_command
+                  service_data:
+                    command: left
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+              - name: OK
+                show_icon: false
+                show_name: true
+                style: |
+                  ha-card {
+                    box-shadow: 
+                      {% if is_state('sun.sun', 'above_horizon') %}
+                        -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
+                      {% elif is_state('sun.sun', 'below_horizon') %}
+                        -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
+                      {% endif %}                
+                  }
+                styles:
+                  card:
+                    - width: 50px
+                    - height: 50px
+                    - border-radius: 100px
+                    - background-color: var(--primary-background-color)
+                  name:
+                    - font-size: 20px
+                    - font-weight: bold
+                    - font-family: Helvetica
+                    - letter-spacing: '-0.01em'
+                tap_action:
 # Please change this to a service you call to 'enter' on the TV/device                                            
-                        action: call-service
-                        service: remote.send_command
-                        service_data:
-                          command: enter
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                    - icon: 'mdi:menu-right'
-                      show_icon: true
-                      show_name: false
-                      size: 100%
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 50px
-                          - height: 50px
-                          - background-color: var(--primary-background-color)
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: enter
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+              - icon: 'mdi:menu-right'
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 50px
+                    - height: 50px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
 # Please change this to a service you call to go 'right' on the TV/device                                             
-                        service: remote.send_command
-                        service_data:
-                          command: right
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                  type: 'custom:hui-horizontal-stack-card'
-                - cards:
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                      styles:
-                        card:
-                          - width: 63px
-                          - height: 10px
-                      type: 'custom:button-card'
-                    - icon: 'mdi:menu-down'
-                      show_icon: true
-                      show_name: false
-                      size: 100%
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 50px
-                          - height: 50px
-                          - background-color: var(--primary-background-color)
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: right
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+            type: 'custom:hui-horizontal-stack-card'
+          - cards:
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                  }
+                styles:
+                  card:
+                    - width: 63px
+                    - height: 10px
+                type: 'custom:button-card'
+              - icon: 'mdi:menu-down'
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 50px
+                    - height: 50px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
 # Please change this to a service you call to go 'down' on the TV/device                                             
-                        service: remote.send_command
-                        service_data:
-                          command: down
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                  type: 'custom:hui-horizontal-stack-card'
-              show_header_toggle: false
-              style: |
-                ha-card {                           
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
-                    {% else %}
-                      inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                    {% endif %}                    
-                  border-radius: 30px;
-                  background-color: var(--primary-background-color)
-                }
-              type: 'custom:hui-entities-card'
-          type: 'custom:hui-horizontal-stack-card'
-        - show_icon: false
-          show_name: false
-          style: |
-            ha-card {
-              --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-              box-shadow: 2px 2px rgba(0,0,0,0.0);
-            }
-          styles:
-            card:
-              - width: 10px
-              - height: 10px
-          type: 'custom:button-card'
-        - cards:
-            - entities:
-                - cards:
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                      styles:
-                        card:
-                          - width: 17px
-                          - height: 10px
-                      type: 'custom:button-card'
-                    - icon: 'mdi:minus'
-                      show_icon: true
-                      show_name: false
-                      size: 100%
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 30px
-                          - height: 30px
-                          - background-color: var(--primary-background-color)
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: down
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+            type: 'custom:hui-horizontal-stack-card'
+        show_header_toggle: false
+        style: |
+          ha-card {                           
+            box-shadow: 
+              {% if is_state('sun.sun', 'above_horizon') %}
+                inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
+              {% endif %}                    
+            border-radius: 30px;
+            background-color: var(--primary-background-color)
+          }
+        type: 'custom:hui-entities-card'
+    type: 'custom:hui-horizontal-stack-card'
+  - show_icon: false
+    show_name: false
+    style: |
+      ha-card {
+        --ha-card-background: none !important;
+        box-shadow: none !important;
+      }
+    styles:
+      card:
+        - width: 10px
+        - height: 10px
+    type: 'custom:button-card'
+  - cards:
+      - entities:
+          - cards:
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                  }
+                styles:
+                  card:
+                    - width: 17px
+                    - height: 10px
+                type: 'custom:button-card'
+              - icon: 'mdi:minus'
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 30px
+                    - height: 30px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
 # Please change this to a service you call to 'volume down' on the TV/device                                              
-                        service: remote.send_command
-                        service_data:
-                          command: volume_down_sony
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                      styles:
-                        card:
-                          - width: 10px
-                          - height: 10px
-                      type: 'custom:button-card'
-                    - name: VOL
-                      show_icon: false
-                      show_name: true
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 30px
-                          - height: 30px
-                          - border-radius: 100px
-                          - background-color: var(--primary-background-color)
-                        name:
-                          - font-size: 13px
-                          - font-weight: bold
-                          - font-family: Helvetica
-                          - letter-spacing: '-0.01em'
-                      type: 'custom:button-card'
-                    - show_icon: false
-                      show_name: false
-                      style: |
-                        ha-card {
-                          --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                          box-shadow: 2px 2px rgba(0,0,0,0.0);
-                        }
-                      styles:
-                        card:
-                          - width: 10px
-                          - height: 10px
-                      type: 'custom:button-card'
-                    - icon: 'mdi:plus'
-                      show_icon: true
-                      show_name: false
-                      size: 100%
-                      styles:
-                        card:
-                          - box-shadow: none
-                          - width: 30px
-                          - height: 30px
-                          - background-color: var(--primary-background-color)
-                        icon:
-                          - color: var(--primary-text-color)
-                      tap_action:
-                        action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: volume_down_sony
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                  }
+                styles:
+                  card:
+                    - width: 10px
+                    - height: 10px
+                type: 'custom:button-card'
+              - name: VOL
+                show_icon: false
+                show_name: true
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 30px
+                    - height: 30px
+                    - border-radius: 100px
+                    - background-color: var(--primary-background-color)
+                  name:
+                    - font-size: 13px
+                    - font-weight: bold
+                    - font-family: Helvetica
+                    - letter-spacing: '-0.01em'
+                type: 'custom:button-card'
+              - show_icon: false
+                show_name: false
+                style: |
+                  ha-card {
+                    --ha-card-background: none !important;
+                    box-shadow: none !important;
+                  }
+                styles:
+                  card:
+                    - width: 10px
+                    - height: 10px
+                type: 'custom:button-card'
+              - icon: 'mdi:plus'
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 30px
+                    - height: 30px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                tap_action:
+                  action: call-service
 # Please change this to a service you call to 'volume up' on the TV/device                                             
-                        service: remote.send_command
-                        service_data:
-                          command: volume_up_sony
-                          entity_id: remote.xiaomi
-                      type: 'custom:button-card'
-                  type: 'custom:hui-horizontal-stack-card'
-              show_header_toggle: false
-              style: |
-                ha-card {
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                        -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                    {% endif %}                
-                  border-radius: 30px;
-                  background-color: var(--primary-background-color)
-                }
-              type: 'custom:hui-entities-card'
-          type: 'custom:hui-horizontal-stack-card'
-        - show_icon: false
-          show_name: false
-          style: |
-            ha-card {
-              --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-              box-shadow: 2px 2px rgba(0,0,0,0.0);
-            }
-          styles:
-            card:
-              - width: 10px
-              - height: 10px
-          type: 'custom:button-card'
-        - cards:
+                  service: remote.send_command
+                  service_data:
+                    command: volume_up_sony
+                    entity_id: remote.xiaomi
+                type: 'custom:button-card'
+            type: 'custom:hui-horizontal-stack-card'
+        show_header_toggle: false
+        style: |
+          ha-card {
+            box-shadow: 
+              {% if is_state('sun.sun', 'above_horizon') %}
+                  -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+              {% endif %}                
+            border-radius: 30px;
+            background-color: var(--primary-background-color)
+          }
+        type: 'custom:hui-entities-card'
+    type: 'custom:hui-horizontal-stack-card'
+  - show_icon: false
+    show_name: false
+    style: |
+      ha-card {
+        --ha-card-background: none !important;
+        box-shadow: none !important;
+      }
+    styles:
+      card:
+        - width: 10px
+        - height: 10px
+    type: 'custom:button-card'
+  - cards:
 # The first button in the bottom, you can change the icon here. In my case it is 'home'                            
-            - icon: 'mdi:home'
-              show_icon: true
-              show_name: false
-              style: |
-                ha-card {
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                    {% endif %}                
-                }
-              styles:
-                card:
-                  - width: 60px
-                  - height: 60px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
+      - icon: 'mdi:home'
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow: 
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+              {% endif %}                
+          }
+        styles:
+          card:
+            - width: 60px
+            - height: 60px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        tap_action:
+          action: call-service
 # Please change this to a service you want to call on the first button                              
-                service: remote.send_command
-                service_data:
-                  command: home
-                  entity_id: remote.xiaomi
-              type: 'custom:button-card'
-            - show_icon: false
-              show_name: false
-              style: |
-                ha-card {
-                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                }
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-              type: 'custom:button-card'
+          service: remote.send_command
+          service_data:
+            command: home
+            entity_id: remote.xiaomi
+        type: 'custom:button-card'
+      - show_icon: false
+        show_name: false
+        style: |
+          ha-card {
+            --ha-card-background: none !important;
+            box-shadow: none !important;
+          }
+        styles:
+          card:
+            - width: 5px
+            - height: 60px
+        type: 'custom:button-card'
 # The second button in the bottom, you can change the icon here. In my case it is 'return'                                    
-            - icon: 'mdi:keyboard-return'
-              show_icon: true
-              show_name: false
-              style: |
-                ha-card {
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                    {% endif %}               
-                }
-              styles:
-                card:
-                  - width: 60px
-                  - height: 60px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
+      - icon: 'mdi:keyboard-return'
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow: 
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+              {% endif %}               
+          }
+        styles:
+          card:
+            - width: 60px
+            - height: 60px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        tap_action:
+          action: call-service
 # Please change this to a service you want to call on the second button                                     
-                service: remote.send_command
-                service_data:
-                  command: return
-                  entity_id: remote.xiaomi
-              type: 'custom:button-card'
-            - show_icon: false
-              show_name: false
-              style: |
-                ha-card {
-                  --ha-card-background: 'rgba(11, 11, 11, 0.00)';
-                  box-shadow: 2px 2px rgba(0,0,0,0.0);
-                }
-              styles:
-                card:
-                  - width: 5px
-                  - height: 60px
-              type: 'custom:button-card'
+          service: remote.send_command
+          service_data:
+            command: return
+            entity_id: remote.xiaomi
+        type: 'custom:button-card'
+      - show_icon: false
+        show_name: false
+        style: |
+          ha-card {
+            --ha-card-background: none !important;
+            box-shadow: none !important;
+          }
+        styles:
+          card:
+            - width: 5px
+            - height: 60px
+        type: 'custom:button-card'
 # The third button in the bottom, you can change the icon here. In my case it is a set top box.                                    
-            - icon: 'mdi:set-top-box'
-              show_icon: true
-              show_name: false
-              style: |
-                ha-card {
-                  box-shadow: 
-                    {% if is_state('sun.sun', 'above_horizon') %}
-                      -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
-                    {% else %}
-                      -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-                    {% endif %}                
-                }
-              styles:
-                card:
-                  - width: 60px
-                  - height: 60px
-                  - border-radius: 15px
-                  - background-color: var(--primary-background-color)
-                icon:
-                  - color: var(--primary-text-color)
-              tap_action:
-                action: call-service
+      - icon: 'mdi:set-top-box'
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow: 
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+              {% endif %}                
+          }
+        styles:
+          card:
+            - width: 60px
+            - height: 60px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        tap_action:
+          action: call-service
 # Please change this to a service you want to call on the third button                                      
-                service: script.turn_on
-                service_data:
-                  entity_id: script.mi_box
-              type: 'custom:button-card'
-          type: 'custom:hui-horizontal-stack-card'
-      show_header_toggle: false
-      style: |
-        ha-card {
-          background-color: var(--primary-background-color);
-          width: 250px;
-          box-shadow:
-            {% if is_state('sun.sun', 'above_horizon') %}
-                -6px -6px 6px 0 rgba(255,255,255,.5),6px 6px 6px 0 rgba(0,0,0,.03);
-            {% else %}
-              -6px -6px 6px 0 rgba(77, 77, 77,.5),6px 6px 6px 0 rgba(0,0,0,.3);
-            {% endif %} 
-          border-radius: 10px;
-        }
-      type: entities
-  type: horizontal-stack
+          service: script.turn_on
+          service_data:
+            entity_id: script.mi_box
+        type: 'custom:button-card'
+    type: 'custom:hui-horizontal-stack-card'
+show_header_toggle: false
+style: |
+  ha-card {
+    background-color: var(--primary-background-color);
+    width: 250px;
+    border-radius: 10px;
+    margin: 10px auto;
+    box-shadow:
+      {% if is_state('sun.sun', 'above_horizon') %}
+        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+      {% elif is_state('sun.sun', 'below_horizon') %}
+        -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+      {% endif %}   
+  }
+type: entities
 ```
 </details>
 
