@@ -785,23 +785,12 @@ This card mimics a TV remote. Each button is customizable to execute your desire
 ```yaml
 entities:
   - cards:
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --ha-card-background: none !important;
-            box-shadow: none !important;
-          }
-        styles:
-          card:
-            - width: 150px
-            - height: 60px
-        type: 'custom:button-card'
       - icon: 'mdi:power'
         show_icon: true
         show_name: false
         style: |
           ha-card {
+            margin: 10px 10px 10px 155px;
             box-shadow: 
               {% if is_state('sun.sun', 'above_horizon') %}
                 -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
@@ -825,52 +814,17 @@ entities:
             command: power
             entity_id: remote.xiaomi
         type: 'custom:button-card'
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --ha-card-background: none !important;
-            box-shadow: none !important;
-          }
-        styles:
-          card:
-            - width: 10px
-            - height: 60px
-        type: 'custom:button-card'
     type: 'custom:hui-horizontal-stack-card'
-  - show_icon: false
-    show_name: false
-    style: |
-      ha-card {
-        --ha-card-background: none !important;
-        box-shadow: none !important;
-      }
-    styles:
-      card:
-        - width: 10px
-        - height: 10px
-    type: 'custom:button-card'
   - cards:
       - entities:
           - cards:
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                    --ha-card-background: none !important;
-                    box-shadow: none !important;
-                  }
-                styles:
-                  card:
-                    - width: 63px
-                    - height: 10px
-                type: 'custom:button-card'
               - icon: 'mdi:menu-up'
                 show_icon: true
                 show_name: false
                 size: 100%
                 styles:
                   card:
+                    - margin-left: 69px
                     - box-shadow: none
                     - width: 50px
                     - height: 50px
@@ -887,24 +841,13 @@ entities:
                 type: 'custom:button-card'
             type: 'custom:hui-horizontal-stack-card'
           - cards:
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                    --ha-card-background: none !important;
-                    box-shadow: none !important;
-                  }
-                styles:
-                  card:
-                    - width: 5px
-                    - height: 10px
-                type: 'custom:button-card'
               - icon: 'mdi:menu-left'
                 show_icon: true
                 show_name: false
                 size: 100%
                 styles:
                   card:
+                    - margin-left: 11px
                     - box-shadow: none
                     - width: 50px
                     - height: 50px
@@ -972,24 +915,13 @@ entities:
                 type: 'custom:button-card'
             type: 'custom:hui-horizontal-stack-card'
           - cards:
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                    --ha-card-background: none !important;
-                    box-shadow: none !important;
-                  }
-                styles:
-                  card:
-                    - width: 63px
-                    - height: 10px
-                type: 'custom:button-card'
               - icon: 'mdi:menu-down'
                 show_icon: true
                 show_name: false
                 size: 100%
                 styles:
                   card:
+                    - margin-left: 69px
                     - box-shadow: none
                     - width: 50px
                     - height: 50px
@@ -1034,24 +966,13 @@ entities:
   - cards:
       - entities:
           - cards:
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                    --ha-card-background: none !important;
-                    box-shadow: none !important;
-                  }
-                styles:
-                  card:
-                    - width: 17px
-                    - height: 10px
-                type: 'custom:button-card'
               - icon: 'mdi:minus'
                 show_icon: true
                 show_name: false
                 size: 100%
                 styles:
                   card:
+                    - margin-left: 30px
                     - box-shadow: none
                     - width: 30px
                     - height: 30px
@@ -1066,23 +987,12 @@ entities:
                     command: volume_down_sony
                     entity_id: remote.xiaomi
                 type: 'custom:button-card'
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                    --ha-card-background: none !important;
-                    box-shadow: none !important;
-                  }
-                styles:
-                  card:
-                    - width: 10px
-                    - height: 10px
-                type: 'custom:button-card'
               - name: VOL
                 show_icon: false
                 show_name: true
                 styles:
                   card:
+                    - margin-left: 10px
                     - box-shadow: none
                     - width: 30px
                     - height: 30px
@@ -1094,24 +1004,13 @@ entities:
                     - font-family: Helvetica
                     - letter-spacing: '-0.01em'
                 type: 'custom:button-card'
-              - show_icon: false
-                show_name: false
-                style: |
-                  ha-card {
-                    --ha-card-background: none !important;
-                    box-shadow: none !important;
-                  }
-                styles:
-                  card:
-                    - width: 10px
-                    - height: 10px
-                type: 'custom:button-card'
               - icon: 'mdi:plus'
                 show_icon: true
                 show_name: false
                 size: 100%
                 styles:
                   card:
+                    - margin-left: 10px
                     - box-shadow: none
                     - width: 30px
                     - height: 30px
@@ -1129,30 +1028,18 @@ entities:
             type: 'custom:hui-horizontal-stack-card'
         show_header_toggle: false
         style: |
-          ha-card {
+          ha-card { 
+            background-color: var(--primary-background-color);
+            border-radius: 15px;
             box-shadow: 
               {% if is_state('sun.sun', 'above_horizon') %}
                   -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
                 -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
               {% endif %}                
-            border-radius: 30px;
-            background-color: var(--primary-background-color)
           }
         type: 'custom:hui-entities-card'
     type: 'custom:hui-horizontal-stack-card'
-  - show_icon: false
-    show_name: false
-    style: |
-      ha-card {
-        --ha-card-background: none !important;
-        box-shadow: none !important;
-      }
-    styles:
-      card:
-        - width: 10px
-        - height: 10px
-    type: 'custom:button-card'
   - cards:
 # The first button in the bottom, you can change the icon here. In my case it is 'home'                            
       - icon: 'mdi:home'
@@ -1169,6 +1056,8 @@ entities:
           }
         styles:
           card:
+            - margin-top: 10px
+            - margin-left: 5px
             - width: 60px
             - height: 60px
             - border-radius: 15px
@@ -1182,18 +1071,6 @@ entities:
           service_data:
             command: home
             entity_id: remote.xiaomi
-        type: 'custom:button-card'
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --ha-card-background: none !important;
-            box-shadow: none !important;
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 60px
         type: 'custom:button-card'
 # The second button in the bottom, you can change the icon here. In my case it is 'return'                                    
       - icon: 'mdi:keyboard-return'
@@ -1210,6 +1087,8 @@ entities:
           }
         styles:
           card:
+            - margin-top: 10px
+            - margin-left: 8px
             - width: 60px
             - height: 60px
             - border-radius: 15px
@@ -1223,18 +1102,6 @@ entities:
           service_data:
             command: return
             entity_id: remote.xiaomi
-        type: 'custom:button-card'
-      - show_icon: false
-        show_name: false
-        style: |
-          ha-card {
-            --ha-card-background: none !important;
-            box-shadow: none !important;
-          }
-        styles:
-          card:
-            - width: 5px
-            - height: 60px
         type: 'custom:button-card'
 # The third button in the bottom, you can change the icon here. In my case it is a set top box.                                    
       - icon: 'mdi:set-top-box'
@@ -1251,6 +1118,8 @@ entities:
           }
         styles:
           card:
+            - margin-top: 10px
+            - margin-left: 8px
             - width: 60px
             - height: 60px
             - border-radius: 15px
