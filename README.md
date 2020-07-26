@@ -21,7 +21,7 @@
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. [**@KTibow**](https://github.com/KTibow)'s themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
 ### 1. Install card-mod
-You will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
+OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots in 5 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
 
 ### 2. sun.sun
 For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
