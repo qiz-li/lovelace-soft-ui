@@ -4,7 +4,7 @@
 [![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
 [![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
-**Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic / Soft UI syled Lovelace (UI of Home Assistant). I hope you like it!
+**Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic/Soft UI syled Lovelace (UI of Home Assistant). I hope you like it!
 
 **Click** [**here**](docs/inspiration.md) **for some examples and inspiration** 
 
@@ -15,30 +15,32 @@
 
 # Let's do it!
 
-**Note**: If you are looking for a quick and simple way to implement this style universally to all your cards, a better option would be **@KTibow**'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes. The themes are easier to implement and faster to set up. This repo, however, provides more flexibility and customizability. 
+### Alternatives
+**[@Savjee](https://github.com/Savjee)'s [Button Text Card](https://github.com/Savjee/button-text-card).** If you are only looking to implement this style on a button, this is the way. It is very easy to install and set up. The downside, however, is that you will not be able to implement this style on any other card.
+
+**[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. [**@KTibow**](https://github.com/KTibow)'s themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
 ### 1. Install card-mod
-You will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS [documentations](https://hacs.xyz) and install it.
+You will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
 
 ### 2. sun.sun
-For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, please add the following to your `configuration.yaml`.
+For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
 
-``` yaml
+```yaml
 # Example configuration.yaml entry
 sun:
 ```
 ### 3. Themes
 This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark grey background work well. 
 
-The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by **@naofireblade** and **@seangreen2** (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
+The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
 ### 4. Automation
 You will need to set up an automation to automatically switch to a dark theme at sunset and back to a light theme at sunrise. If you don't have one, please add the following to your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
-<p>
 
-``` yaml
+```yaml
 # Example automations.yaml entry
 - id: set_theme
   alias: Set Theme
@@ -68,13 +70,12 @@ You will need to set up an automation to automatically switch to a dark theme at
 # Change this to the name of your light theme
           name: Name of your dark theme
 ```
-</p>
 </details>
 
 ### 5. Done!
 We are done! Use this code to add the Soft UI style to any card. 
 
-``` yaml
+```yaml
 # Example entry
 style: |
   ha-card {
@@ -101,14 +102,14 @@ Here are some cards I created using this style. All cards are added using the UI
   <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
 </p>
 
-#### This card will not work without installing:
-
-* [**Custom Header**](https://maykar.github.io/custom-header), by **@maykar**
-
 This makes the original Home Assistant header "compact" while also matching it with the background color. To add this card, click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
 
+**Required Custom Cards:**
+
+* [**Custom Header**](https://maykar.github.io/custom-header), by [**@maykar**](https://github.com/maykar)
+
+
 <details><summary><b>Show code</b></summary>
-<p>
   
 ```yaml
 # Example entry
@@ -128,7 +129,6 @@ custom_header:
   # Make mobile view notification dot color same as selected panel color
   notification_dot_color: var(--sidebar-selected-icon-color)
 ```
-</p>
 </details>
 
 ## Text Header Card
@@ -138,16 +138,15 @@ custom_header:
   <br/>
 </p>
 
-#### This card will not work without installing:
-
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
-
 This card displays texts with transparent background.
 
-<details><summary><b>Show code</b></summary>
-<p>
+**Required Custom Cards:**
 
-``` yaml
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
 # Example entry
 content: |
   # Enter what you want to display here
@@ -167,27 +166,25 @@ style:
       }
 type: markdown
 ```
-</p>
 </details>
 
 ## Text Header Card with Subheader
-</p>
+
 <p align="left">
   <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="425">
   <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="425">
   <br/>
 </p>
 
-#### This card will not work without installing:
-
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
-
 This card displays texts with smaller texts underneath with transparent background.
 
-<details><summary><b>Show code</b></summary>
-<p>
+**Required Custom Cards:**
 
-``` yaml
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
 # Example entry
 cards:
   - content: |
@@ -228,33 +225,31 @@ cards:
     type: markdown
 type: vertical-stack
 ```
-</p>
 </details>
 
 ## Vertical Buttons Card
-</p>
 <p align="left">
   <img src="docs/images/vertical_button_card_light.png" alt="Vertical button card light theme" width="425">
   <img src="docs/images/vertical_button_card_dark.png" alt="Vertical button card dark theme" width="425">
   <br/>
 </p>
 
-#### This card will not work without installing:
-
-* [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
-
-#### Template used to count how many lights are on
-To use this template as a light count sensor, use the Home Assistant [template sensor component](https://www.home-assistant.io/integrations/template/). 
-``` 
-{{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
-```
 This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e. lovelace/lights. You can change the icons, names, tap action, and texts beside them. 
 
-<details><summary><b>Show code</b></summary>
-<p>
+Wondering how the card is able to count how many lights are on? Here is the template. To use this template as a light count sensor, use the Home Assistant [template sensor component](https://www.home-assistant.io/integrations/template/). 
 
-``` yaml
+```
+{{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
+```
+
+**Required Custom Cards:**
+
+* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
 # Example entry
 cards:
   - cards:
@@ -479,28 +474,25 @@ cards:
     type: vertical-stack
 type: vertical-stack
 ```
-</p>
 </details>
 
 ## Horizontal Buttons Card
-</p>
 <p align="left">
   <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
   <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
   <br/>
 </p>
 
-#### This card will not work without installing:
-
-* [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
-
 This card is five buttons lined up horizontally. When the state of the entity is 'on', the button will be pressed in. When the entity is 'off' the button will be released (like normal). 
 
-<details><summary><b>Show code</b></summary>
-<p>
+**Required Custom Cards:**
 
-``` yaml
+* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
 # Example entry
 cards:
 # Entity to control - First button
@@ -772,28 +764,25 @@ cards:
     type: 'custom:button-card'
 type: horizontal-stack            
 ```
-</p>
 </details>
 
 ## Remote pop-up card
-</p>
 <p align="left">
   <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
   <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="425">
   <br/>
 </p>
 
-#### This card will not work without installing:
+This is a card that mimics a TV remote. Each button is customizable to execute your desired actions. 
 
-* [**Button Card**](https://github.com/custom-cards/button-card), by **@RomRider**
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by **@thomasloven**
+**Required Custom Cards:**
 
-This is a card that mimics a TV remote. Each button is customizable to execute your actions. 
+* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
 <details><summary><b>Show code</b></summary>
-<p>
 
-``` yaml
+```yaml
 type: vertical-stack
 cards:
 - cards:
@@ -1296,9 +1285,8 @@ cards:
       type: entities
   type: horizontal-stack
 ```
-</p>
 </details>
 
 ## Thank you!
 
-Developed, maintained, and based on the Lovelace of **@N-l1** ✨
+Developed, maintained, and based on the Lovelace of [**@N-l1**](https://github.com/N-l1) ✨
