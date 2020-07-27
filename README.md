@@ -60,11 +60,7 @@ You will need to set up an automation to automatically switch to a dark theme at
         data:
 # Change this to the name of your light theme
           name: Name of your light theme
-    - conditions:
-      - condition: state
-        entity_id: sun.sun
-        state: "below_horizon"
-      sequence:
+    default:
       - service: frontend.set_theme
         data:
 # Change this to the name of your light theme
