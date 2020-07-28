@@ -60,7 +60,7 @@ You will need to set up an automation to automatically switch to a dark theme at
 # Change this to the name of your light theme
           name: Name of your light theme
     - conditions:
-      - condition: state
+      - condition: sun
         after: sunset
       sequence:
       - service: frontend.set_theme
