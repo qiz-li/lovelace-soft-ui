@@ -52,18 +52,16 @@ You will need to set up an automation to automatically switch to a dark theme at
   action:
   - choose:
     - conditions:
-      - condition: state
-        entity_id: sun.sun
-        state: "above_horizon"
+      - condition: sun
+        after: sunrise
       sequence:
       - service: frontend.set_theme
         data:
 # Change this to the name of your light theme
           name: Name of your light theme
     - conditions:
-      - condition: state
-        entity_id: sun.sun
-        state: "below_horizon"
+      - condition: sun
+        after: sunset
       sequence:
       - service: frontend.set_theme
         data:
