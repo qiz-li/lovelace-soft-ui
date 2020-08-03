@@ -766,6 +766,136 @@ type: horizontal-stack
 ```
 </details>
 
+## Horizontal Buttons With Text Card
+<p align="left">
+  <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
+  <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
+  <br/>
+</p>
+
+This card has 3 buttons lined up horizontally, with the name and state. When the state of the entity is 'on', the button will be pressed in. When the entity is 'off' the button will be released (like normal). Based off of [@hawk](https://community.home-assistant.io/u/hawk)'s dashboard code.
+
+**Required Custom Cards:**
+
+* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
+type: horizontal-stack
+cards:
+  - entity: switch.dining_table
+    state:
+      - value: 'on'
+        styles:
+          icon:
+            - color: var(--primary-color)
+          name:
+            - color: var(--primary-color)
+          state:
+            - color: var(--primary-color)
+          card:
+            - border-color: var(--primary-color)
+            - border-width: 2px
+            - box-shadow: var(--soft-ui-pressed)
+    show_state: true
+    style: |
+      #aspect-ratio {
+        margin: 10px;
+      }
+      * {
+        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+               inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+             {% elif is_state('sun.sun', 'below_horizon') %}
+               inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+             {% endif %}
+        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+            {% endif %}
+      }
+    size: 80%
+    styles:
+      card:
+        - font-family: 'Google Sans, Roboto'
+        - font-weight: 500
+        - background-color: var(--primary-background-color)
+        - border-radius: 15px
+        - box-shadow: var(--soft-ui-shadow)
+      grid:
+        - grid-template-areas: '"i ." "n" "s"'
+        - grid-template-columns: 50% 30%
+        - grid-template-rows: 50%
+        - padding: 15px
+      name:
+        - font-size: 20px
+        - font-weight: 400
+      state:
+        - font-size: 20px
+        - font-weight: 500
+      icon:
+        - color: var(--primary-text-color)
+    aspect_ratio: 1/1
+    type: 'custom:button-card'
+  - entity: light.family_room_light
+    state:
+      - value: 'on'
+        styles:
+          icon:
+            - color: var(--primary-color)
+          name:
+            - color: var(--primary-color)
+          state:
+            - color: var(--primary-color)
+          card:
+            - border-color: var(--primary-color)
+            - border-width: 2px
+            - box-shadow: var(--soft-ui-pressed)
+    show_state: true
+    style: |
+      #aspect-ratio {
+        margin: 10px;
+      }
+      * {
+        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+               inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+             {% elif is_state('sun.sun', 'below_horizon') %}
+               inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+             {% endif %}
+        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+            {% endif %}
+      }
+    size: 80%
+    styles:
+      card:
+        - font-family: 'Google Sans, Roboto'
+        - font-weight: 500
+        - background-color: var(--primary-background-color)
+        - border-radius: 15px
+        - box-shadow: var(--soft-ui-shadow)
+      grid:
+        - grid-template-areas: '"i ." "n" "s"'
+        - grid-template-columns: 50% 30%
+        - grid-template-rows: 50%
+        - padding: 15px
+      name:
+        - font-size: 20px
+        - font-weight: 400
+      state:
+        - font-size: 20px
+        - font-weight: 500
+      icon:
+        - color: var(--primary-text-color)
+    aspect_ratio: 1/1
+    type: 'custom:button-card'
+```
+</details>
+
 ## Remote Card
 <p align="left">
   <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
