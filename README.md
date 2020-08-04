@@ -82,13 +82,13 @@ style: |
       background-color: var(--primary-background-color);
       border-radius: 15px;
       margin: 10px;
-      box-shadow: 
+      box-shadow:
         {% if is_state('sun.sun', 'above_horizon') %}
           -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
         {% elif is_state('sun.sun', 'below_horizon') %}
           -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-        {% endif %}   
-   }      
+        {% endif %}
+   }
 ```
 
 # Advanced Usage
@@ -194,7 +194,7 @@ cards:
         ha-card {
           --ha-card-background: none !important;
           box-shadow: none !important;
-          height: 20px; 
+          height: 20px;
         }
       ha-markdown:
         $: |
@@ -212,7 +212,7 @@ cards:
         ha-card {
           --ha-card-background: none !important;
           box-shadow: none !important;
-          height: 50px; 
+          height: 50px;
         }
       ha-markdown:
         $: |
@@ -261,12 +261,12 @@ cards:
             style: |
               ha-card {
                 margin: 10px;
-                box-shadow: 
+                box-shadow:
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
                   {% elif is_state('sun.sun', 'below_horizon') %}
                     -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}                 
+                  {% endif %}
               }
             styles:
               card:
@@ -283,7 +283,7 @@ cards:
               haptic: light
             type: 'custom:button-card'
           - cards:
-# Big text to display - First button       
+# Big text to display - First button
               - content: |
                   # Lights
                 style:
@@ -291,7 +291,7 @@ cards:
                     ha-card {
                       --ha-card-background: none !important;
                       box-shadow: none !important;
-                      height: 20px; 
+                      height: 20px;
                       margin-top: 15px;
                     }
                   ha-markdown:
@@ -303,8 +303,8 @@ cards:
                         letter-spacing: '-0.01em';
                       }
                 type: markdown
-# Small text to display - First button             
-              - content: >              
+# Small text to display - First button
+              - content: >
                   # There are  {% if is_state('sensor.lights_on', '0') %}
                   currently no  {% else %}  {{states('sensor.lights_on')}}  {%
                   endif %} lights on
@@ -322,7 +322,7 @@ cards:
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
                       }
-                type: markdown                   
+                type: markdown
             type: vertical-stack
         type: horizontal-stack
       - cards:
@@ -333,12 +333,12 @@ cards:
             style: |
               ha-card {
                 margin: 10px;
-                box-shadow: 
+                box-shadow:
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
                   {% elif is_state('sun.sun', 'below_horizon') %}
                     -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}    
+                  {% endif %}
               }
             styles:
               card:
@@ -350,20 +350,20 @@ cards:
                 - color: var(--primary-text-color)
 # Action to perform - Second button
             tap_action:
-              action: navigate         
+              action: navigate
               navigation_path: /lovelace/alarm
               haptic: light
             type: 'custom:button-card'
           - cards:
-# Big text to display - Second button    
-              - content: |           
+# Big text to display - Second button
+              - content: |
                   # Alarm clock
                 style:
                   .: |
                     ha-card {
                       --ha-card-background: none !important;
                       box-shadow: none !important;
-                      height: 20px; 
+                      height: 20px;
                       margin-top: 15px;
                     }
                   ha-markdown:
@@ -375,8 +375,8 @@ cards:
                         letter-spacing: '-0.01em';
                       }
                 type: markdown
-# Small text to display - Second button   
-              - content: >            
+# Small text to display - Second button
+              - content: >
                   # The weekday alarm is  {% if
                   is_state('input_boolean.sleep_cycle_weekday', 'on') and
                   is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
@@ -398,23 +398,23 @@ cards:
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
                       }
-                type: markdown  
+                type: markdown
             type: vertical-stack
         type: horizontal-stack
       - cards:
-# Icon to display - Third button         
+# Icon to display - Third button
           - icon: 'mdi:pine-tree'
             show_icon: true
             show_name: false
             style: |
               ha-card {
                 margin: 10px;
-                box-shadow: 
+                box-shadow:
                   {% if is_state('sun.sun', 'above_horizon') %}
                     -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
                   {% elif is_state('sun.sun', 'below_horizon') %}
                     -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}   
+                  {% endif %}
               }
             styles:
               card:
@@ -432,14 +432,14 @@ cards:
             type: 'custom:button-card'
           - cards:
 # Big text to display - Third button
-              - content: |             
+              - content: |
                   # Irrigation
                 style:
                   .: |
                     ha-card {
                       --ha-card-background: none !important;
                       box-shadow: none !important;
-                      height: 20px; 
+                      height: 20px;
                       margin-top: 15px;
                     }
                   ha-markdown:
@@ -451,8 +451,8 @@ cards:
                         letter-spacing: '-0.01em';
                       }
                 type: markdown
-# Small text to display - Third button      
-              - content: |          
+# Small text to display - Third button
+              - content: |
                   # The irrigation system is not activated
                 style:
                   .: |
@@ -468,7 +468,7 @@ cards:
                         font-family: Helvetica;
                         letter-spacing: '-0.01em';
                       }
-                type: markdown  
+                type: markdown
             type: vertical-stack
         type: horizontal-stack
     type: vertical-stack
@@ -509,29 +509,29 @@ cards:
 # Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
-        margin: 5px;  
+        margin: 5px;
         margin-left: 6.5px;
-        box-shadow: 
+        box-shadow:
          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-         {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
+         {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}
            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}                      
-           inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}   
+         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}
+           inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}
            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-         {% endif %}                      
+         {% endif %}
       }
       @media only screen and (max-width: 600px) {
          ha-card {
-           margin: 3px; 
-           margin-left: 4px;                   
+           margin: 3px;
+           margin-left: 4px;
          }
       }
       @media only screen and (min-width: 1200px) {
          ha-card {
-           margin: 8px;  
-           margin-left: 11px;               
+           margin: 8px;
+           margin-left: 11px;
          }
       }
     styles:
@@ -544,8 +544,8 @@ cards:
         - color: var(--primary-text-color)
     tap_action:
       action: toggle
-      haptic: light      
-    hold_action: 
+      haptic: light
+    hold_action:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
@@ -563,29 +563,29 @@ cards:
 # Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
-        margin: 5px;  
+        margin: 5px;
         margin-left: 6.5px;
-        box-shadow: 
+        box-shadow:
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}
             -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'on') %}                      
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}   
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'on') %}
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}                      
+          {% endif %}
       }
       @media only screen and (max-width: 600px) {
          ha-card {
-           margin: 3px; 
-           margin-left: 4px;                   
+           margin: 3px;
+           margin-left: 4px;
          }
       }
       @media only screen and (min-width: 1200px) {
          ha-card {
-           margin: 8px;  
-           margin-left: 11px;               
+           margin: 8px;
+           margin-left: 11px;
          }
       }
     styles:
@@ -598,8 +598,8 @@ cards:
         - color: var(--primary-text-color)
     tap_action:
       action: toggle
-      haptic: light      
-    hold_action: 
+      haptic: light
+    hold_action:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
@@ -614,31 +614,31 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
-# Please change the entities inside to match the entity to be controlled  
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
-        margin: 5px;                
-        box-shadow: 
+        margin: 5px;
+        box-shadow:
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}
             -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}                           
+          {% endif %}
       }
       @media only screen and (max-width: 600px) {
          ha-card {
-           margin: 3px; 
-           margin-left: 4px;                   
+           margin: 3px;
+           margin-left: 4px;
          }
       }
       @media only screen and (min-width: 1200px) {
          ha-card {
-           margin: 8px;  
-           margin-left: 11px;               
+           margin: 8px;
+           margin-left: 11px;
          }
       }
     styles:
@@ -651,8 +651,8 @@ cards:
         - color: var(--primary-text-color)
     tap_action:
       action: toggle
-      haptic: light      
-    hold_action: 
+      haptic: light
+    hold_action:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
@@ -670,28 +670,28 @@ cards:
 # Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
-        margin: 5px;  
-        box-shadow: 
+        margin: 5px;
+        box-shadow:
           {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}
             -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'on') %}                      
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}   
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'on') %}
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}     
+          {% endif %}
       }
       @media only screen and (max-width: 600px) {
          ha-card {
-           margin: 3px; 
-           margin-left: 4px;                   
+           margin: 3px;
+           margin-left: 4px;
          }
       }
       @media only screen and (min-width: 1200px) {
          ha-card {
-           margin: 8px;  
-           margin-left: 11px;               
+           margin: 8px;
+           margin-left: 11px;
          }
       }
     styles:
@@ -704,8 +704,8 @@ cards:
         - color: var(--primary-text-color)
     tap_action:
       action: toggle
-      haptic: light      
-    hold_action: 
+      haptic: light
+    hold_action:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
@@ -720,31 +720,31 @@ cards:
           icon:
             - color: 'var(--paper-item-icon-active-color)  '
         value: 'on'
-# Please change the entities inside to match the entity to be controlled  
+# Please change the entities inside to match the entity to be controlled
     style: |
       ha-card {
-        margin: 5px;            
-        box-shadow: 
+        margin: 5px;
+        box-shadow:
           {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
             inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
+          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}
             -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}
+            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}
             -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}     
+          {% endif %}
       }
       @media only screen and (max-width: 600px) {
          ha-card {
-           margin: 3px; 
-           margin-left: 4px;                   
+           margin: 3px;
+           margin-left: 4px;
          }
       }
       @media only screen and (min-width: 1200px) {
          ha-card {
-           margin: 8px;  
-           margin-left: 11px;               
+           margin: 8px;
+           margin-left: 11px;
          }
       }
     styles:
@@ -757,12 +757,12 @@ cards:
         - color: var(--primary-text-color)
     tap_action:
       action: toggle
-      haptic: light      
-    hold_action: 
+      haptic: light
+    hold_action:
       action: more-info
       haptic: medium
     type: 'custom:button-card'
-type: horizontal-stack            
+type: horizontal-stack
 ```
 </details>
 
@@ -921,13 +921,13 @@ entities:
         style: |
           ha-card {
             margin: 10px 10px 10px 155px;
-            box-shadow: 
+            box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
                 -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
                 -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-              {% endif %}                
-          }                
+              {% endif %}
+          }
         styles:
           card:
             - width: 60px
@@ -963,7 +963,7 @@ entities:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: call-service
-# Please change this to a service you call to go 'up' on the TV/device                                            
+# Please change this to a service you call to go 'up' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: up
@@ -986,7 +986,7 @@ entities:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: call-service
-# Please change this to a service you call to go 'left' on the TV/device                                              
+# Please change this to a service you call to go 'left' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: left
@@ -997,12 +997,12 @@ entities:
                 show_name: true
                 style: |
                   ha-card {
-                    box-shadow: 
+                    box-shadow:
                       {% if is_state('sun.sun', 'above_horizon') %}
                         -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') %}
                         -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
-                      {% endif %}                
+                      {% endif %}
                   }
                 styles:
                   card:
@@ -1016,7 +1016,7 @@ entities:
                     - font-family: Helvetica
                     - letter-spacing: '-0.01em'
                 tap_action:
-# Please change this to a service you call to 'enter' on the TV/device                                            
+# Please change this to a service you call to 'enter' on the TV/device
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -1037,7 +1037,7 @@ entities:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: call-service
-# Please change this to a service you call to go 'right' on the TV/device                                             
+# Please change this to a service you call to go 'right' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: right
@@ -1060,7 +1060,7 @@ entities:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: call-service
-# Please change this to a service you call to go 'down' on the TV/device                                             
+# Please change this to a service you call to go 'down' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: down
@@ -1069,13 +1069,13 @@ entities:
             type: 'custom:hui-horizontal-stack-card'
         show_header_toggle: false
         style: |
-          ha-card {                           
-            box-shadow: 
+          ha-card {
+            box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
                 inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-              {% endif %}                    
+                inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+              {% endif %}
             border-radius: 30px;
             background-color: var(--primary-background-color)
           }
@@ -1111,7 +1111,7 @@ entities:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: call-service
-# Please change this to a service you call to 'volume down' on the TV/device                                              
+# Please change this to a service you call to 'volume down' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: volume_down_sony
@@ -1149,7 +1149,7 @@ entities:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: call-service
-# Please change this to a service you call to 'volume up' on the TV/device                                             
+# Please change this to a service you call to 'volume up' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: volume_up_sony
@@ -1158,31 +1158,31 @@ entities:
             type: 'custom:hui-horizontal-stack-card'
         show_header_toggle: false
         style: |
-          ha-card { 
+          ha-card {
             background-color: var(--primary-background-color);
             border-radius: 15px;
-            box-shadow: 
+            box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
                   -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
                 -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-              {% endif %}                
+              {% endif %}
           }
         type: 'custom:hui-entities-card'
     type: 'custom:hui-horizontal-stack-card'
   - cards:
-# The first button in the bottom, you can change the icon here. In my case it is 'home'                            
+# The first button in the bottom, you can change the icon here. In my case it is 'home'
       - icon: 'mdi:home'
         show_icon: true
         show_name: false
         style: |
           ha-card {
-            box-shadow: 
+            box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
                 -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
                 -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-              {% endif %}                
+              {% endif %}
           }
         styles:
           card:
@@ -1196,24 +1196,24 @@ entities:
             - color: var(--primary-text-color)
         tap_action:
           action: call-service
-# Please change this to a service you want to call on the first button                              
+# Please change this to a service you want to call on the first button
           service: remote.send_command
           service_data:
             command: home
             entity_id: remote.xiaomi
         type: 'custom:button-card'
-# The second button in the bottom, you can change the icon here. In my case it is 'return'                                    
+# The second button in the bottom, you can change the icon here. In my case it is 'return'
       - icon: 'mdi:keyboard-return'
         show_icon: true
         show_name: false
         style: |
           ha-card {
-            box-shadow: 
+            box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
                 -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
                 -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-              {% endif %}               
+              {% endif %}
           }
         styles:
           card:
@@ -1227,24 +1227,24 @@ entities:
             - color: var(--primary-text-color)
         tap_action:
           action: call-service
-# Please change this to a service you want to call on the second button                                     
+# Please change this to a service you want to call on the second button
           service: remote.send_command
           service_data:
             command: return
             entity_id: remote.xiaomi
         type: 'custom:button-card'
-# The third button in the bottom, you can change the icon here. In my case it is a set top box.                                    
+# The third button in the bottom, you can change the icon here. In my case it is a set top box.
       - icon: 'mdi:set-top-box'
         show_icon: true
         show_name: false
         style: |
           ha-card {
-            box-shadow: 
+            box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
                 -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
                 -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
-              {% endif %}                
+              {% endif %}
           }
         styles:
           card:
@@ -1258,7 +1258,7 @@ entities:
             - color: var(--primary-text-color)
         tap_action:
           action: call-service
-# Please change this to a service you want to call on the third button                                      
+# Please change this to a service you want to call on the third button
           service: script.turn_on
           service_data:
             entity_id: script.mi_box
@@ -1276,7 +1276,7 @@ style: |
         -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
       {% elif is_state('sun.sun', 'below_horizon') %}
         -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-      {% endif %}   
+      {% endif %}
   }
 type: entities
 ```
