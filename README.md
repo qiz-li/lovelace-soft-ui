@@ -774,6 +774,7 @@ type: horizontal-stack
 </p>
 
 This card has 3 buttons lined up horizontally, with the name and state. When the state of the entity is 'on', the button will be pressed in. When the entity is 'off' the button will be released (like normal). Based off of [@hawk](https://community.home-assistant.io/u/hawk)'s dashboard code.
+**Note: This card will only display properly in a horizontal stack.**
 
 **Required Custom Cards:**
 
@@ -783,62 +784,120 @@ This card has 3 buttons lined up horizontally, with the name and state. When the
 <details><summary><b>Show code</b></summary>
 
 ```yaml
-aspect_ratio: 1/1
-entity: light.infinity_mirror
-show_state: true
-size: 80%
-state:
-  - styles:
+cards:
+  - aspect_ratio: 1/1
+    entity: light.kitchen_light
+    show_state: true
+    size: 80%
+    state:
+      - styles:
+          card:
+            - border-color: var(--primary-color)
+            - border-width: 2px
+            - box-shadow: var(--soft-ui-pressed)
+          icon:
+            - color: var(--primary-color)
+          name:
+            - color: var(--primary-color)
+          state:
+            - color: var(--primary-color)
+        value: 'on'
+    style: |
+      #aspect-ratio {
+        margin: 10px;
+      }
+      * {
+        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+               inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+             {% elif is_state('sun.sun', 'below_horizon') %}
+               inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+             {% endif %}
+        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+            {% endif %}
+      }
+    styles:
       card:
-        - border-color: var(--primary-color)
-        - border-width: 2px
-        - box-shadow: var(--soft-ui-pressed)
+        - font-family: 'Google Sans, Roboto'
+        - font-weight: 500
+        - background-color: var(--primary-background-color)
+        - border-radius: 15px
+        - box-shadow: var(--soft-ui-shadow)
+      grid:
+        - grid-template-areas: '"i i . ." "i i . ." ". . . ." "n n n ." "s . . ." ". . . ."'
+        - grid-template-columns: 1fr 1fr 1fr 1fr
+        - grid-template-rows: 1fr 1fr .25fr .75fr .75fr .5fr
+        - padding: 15px
       icon:
-        - color: var(--primary-color)
+        - color: grey
       name:
-        - color: var(--primary-color)
+        - font-size: 20px
+        - font-weight: 400
+        - color: grey
       state:
-        - color: var(--primary-color)
-    value: 'on'
-style: |
-  #aspect-ratio {
-    margin: 10px;
-  }
-  * {
-    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-           inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-         {% elif is_state('sun.sun', 'below_horizon') %}
-           inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-         {% endif %}
-    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-          -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-        {% elif is_state('sun.sun', 'below_horizon') %}
-          -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-        {% endif %}
-  }
-styles:
-  card:
-    - font-family: 'Google Sans, Roboto'
-    - font-weight: 500
-    - background-color: var(--primary-background-color)
-    - border-radius: 15px
-    - box-shadow: var(--soft-ui-shadow)
-  grid:
-    - grid-template-areas: '"i i . ." "i i . ." ". . . ." "n n n ." "s . . ." ". . . ."'
-    - grid-template-columns: 1fr 1fr 1fr 1fr
-    - grid-template-rows: 1fr 1fr .25fr .75fr .75fr .5fr
-    - padding: 15px
-  icon:
-    - color: grey
-  name:
-    - font-size: 20px
-    - font-weight: 400
-    - color: grey
-  state:
-    - font-size: 20px
-    - font-weight: 500
-    - color: grey
-type: 'custom:button-card'
+        - font-size: 20px
+        - font-weight: 500
+        - color: grey
+    type: 'custom:button-card'
+  - aspect_ratio: 1/1
+    entity: switch.humidifier
+    show_state: true
+    size: 80%
+    state:
+      - styles:
+          card:
+            - border-color: var(--primary-color)
+            - border-width: 2px
+            - box-shadow: var(--soft-ui-pressed)
+          icon:
+            - color: var(--primary-color)
+          name:
+            - color: var(--primary-color)
+          state:
+            - color: var(--primary-color)
+        value: 'on'
+    style: |
+      #aspect-ratio {
+        margin: 10px;
+      }
+      * {
+        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+               inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
+             {% elif is_state('sun.sun', 'below_horizon') %}
+               inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+             {% endif %}
+        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+            {% endif %}
+      }
+    styles:
+      card:
+        - font-family: 'Google Sans, Roboto'
+        - font-weight: 500
+        - background-color: var(--primary-background-color)
+        - border-radius: 15px
+        - box-shadow: var(--soft-ui-shadow)
+      grid:
+        - grid-template-areas: '"i i . ." "i i . ." ". . . ." "n n n ." "s . . ." ". . . ."'
+        - grid-template-columns: 1fr 1fr 1fr 1fr
+        - grid-template-rows: 1fr 1fr .25fr .75fr .75fr .5fr
+        - padding: 15px
+      icon:
+        - color: grey
+      name:
+        - font-size: 20px
+        - font-weight: 400
+        - color: grey
+      state:
+        - font-size: 20px
+        - font-weight: 500
+        - color: grey
+    type: 'custom:button-card'
+type: horizontal-stack
 ```
 </details>
 
