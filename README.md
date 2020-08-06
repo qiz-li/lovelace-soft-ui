@@ -476,428 +476,302 @@ type: vertical-stack
 ```
 </details>
 
-## Horizontal Buttons Card
-<p align="left">
-  <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
-  <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
-  <br/>
-</p>
+## Button Cards
+Below you will find different button variations with the Soft UI style. All the buttons can be placed in a ```horizontal-stack``` card to form a row of buttons (as seen in some of the screenshots). The button cards with border are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
 
-This card is five buttons lined up horizontally. When the state of the entity is 'on', the button will be pressed in. When the entity is 'off' the button will be released (like normal). 
-
-**Required Custom Cards:**
+**All button cards below require:**
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+
+### Button, No Text, No Border
+<p align="left">
+  <img src="docs/images/button_card.png" alt="Button card" width="400">
+  <img src="docs/images/button_card_pressed.png" alt="Button card pressed" width="400">
+  <br/>
+</p>
+
+This card is a simple button with an icon. When the state of the entity is ```on```, the button will be pressed in (picture on the right). When the entity is ```off``` the button will be released (picture on the left). 
 
 <details><summary><b>Show code</b></summary>
 
 ```yaml
 # Example entry
-cards:
-# Entity to control - First button
-  - entity: light.family_room_lamp
-# Icon to display - First button
-    icon: 'mdi:lamp'
-    show_icon: true
-    show_name: false
-    state:
-      - styles:
-          icon:
-            - color: 'var(--paper-item-icon-active-color)  '
-        value: 'on'
-# Please change the entities inside to match the entity to be controlled
-    style: |
-      ha-card {
-        margin: 5px;
-        margin-left: 6.5px;
-        box-shadow:
-         {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
-           inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-         {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}
-           -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}
-           inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-         {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}
-           -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
+# Change this to the entity you want to control
+entity: light.example
+# Change this to the icon you want to display
+icon: 'mdi:lamp'
+show_icon: true
+show_name: false
+style: |
+  * {
+    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+           inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+         {% elif is_state('sun.sun', 'below_horizon') %}
+           inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
          {% endif %}
-      }
-      @media only screen and (max-width: 600px) {
-         ha-card {
-           margin: 3px;
-           margin-left: 4px;
-         }
-      }
-      @media only screen and (min-width: 1200px) {
-         ha-card {
-           margin: 8px;
-           margin-left: 11px;
-         }
-      }
+    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+        {% elif is_state('sun.sun', 'below_horizon') %}
+          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+        {% endif %}
+  }
+styles:
+  card:
+    - width: 60px
+    - height: 60px
+    - margin: 10px
+    - border-radius: 15px
+    - box-shadow: var(--soft-ui-shadow)
+    - background-color: var(--primary-background-color)
+  icon:
+    - color: var(--primary-text-color)
+state:
+  - value: 'on'
     styles:
       card:
-        - width: 60px
-        - height: 60px
-        - border-radius: 15px
-        - background-color: var(--primary-background-color)
+        - box-shadow: var(--soft-ui-pressed)
       icon:
-        - color: var(--primary-text-color)
-    tap_action:
-      action: toggle
-      haptic: light
-    hold_action:
-      action: more-info
-      haptic: medium
-    type: 'custom:button-card'
-# Entity to control - Second button
-  - entity: switch.kitchen_island_light
-# Icon to display - Second button
-    icon: 'mdi:vanity-light'
-    show_icon: true
-    show_name: false
-    state:
-      - styles:
-          icon:
-            - color: 'var(--paper-item-icon-active-color)  '
-        value: 'on'
-# Please change the entities inside to match the entity to be controlled
-    style: |
-      ha-card {
-        margin: 5px;
-        margin-left: 6.5px;
-        box-shadow:
-          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
-            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}
-            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'on') %}
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}
-            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}
-      }
-      @media only screen and (max-width: 600px) {
-         ha-card {
-           margin: 3px;
-           margin-left: 4px;
-         }
-      }
-      @media only screen and (min-width: 1200px) {
-         ha-card {
-           margin: 8px;
-           margin-left: 11px;
-         }
-      }
-    styles:
-      card:
-        - width: 60px
-        - height: 60px
-        - border-radius: 15px
-        - background-color: var(--primary-background-color)
-      icon:
-        - color: var(--primary-text-color)
-    tap_action:
-      action: toggle
-      haptic: light
-    hold_action:
-      action: more-info
-      haptic: medium
-    type: 'custom:button-card'
-# Entity to control - Third button
-  - entity: switch.dining_area
-# Icon to display - Third button
-    icon: 'mdi:ceiling-light'
-    show_icon: true
-    show_name: false
-    state:
-      - styles:
-          icon:
-            - color: 'var(--paper-item-icon-active-color)  '
-        value: 'on'
-# Please change the entities inside to match the entity to be controlled
-    style: |
-      ha-card {
-        margin: 5px;
-        box-shadow:
-          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
-            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}
-            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}
-            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}
-      }
-      @media only screen and (max-width: 600px) {
-         ha-card {
-           margin: 3px;
-           margin-left: 4px;
-         }
-      }
-      @media only screen and (min-width: 1200px) {
-         ha-card {
-           margin: 8px;
-           margin-left: 11px;
-         }
-      }
-    styles:
-      card:
-        - width: 60px
-        - height: 60px
-        - border-radius: 15px
-        - background-color: var(--primary-background-color)
-      icon:
-        - color: var(--primary-text-color)
-    tap_action:
-      action: toggle
-      haptic: light
-    hold_action:
-      action: more-info
-      haptic: medium
-    type: 'custom:button-card'
-# Entity to control - Forth button
-  - entity: light.family_room_light
-# Icon to display - Forth button
-    icon: 'mdi:light-switch'
-    show_icon: true
-    show_name: false
-    state:
-      - styles:
-          icon:
-            - color: 'var(--paper-item-icon-active-color)  '
-        value: 'on'
-# Please change the entities inside to match the entity to be controlled
-    style: |
-      ha-card {
-        margin: 5px;
-        box-shadow:
-          {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
-            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}
-            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'on') %}
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}
-            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}
-      }
-      @media only screen and (max-width: 600px) {
-         ha-card {
-           margin: 3px;
-           margin-left: 4px;
-         }
-      }
-      @media only screen and (min-width: 1200px) {
-         ha-card {
-           margin: 8px;
-           margin-left: 11px;
-         }
-      }
-    styles:
-      card:
-        - width: 60px
-        - height: 60px
-        - border-radius: 15px
-        - background-color: var(--primary-background-color)
-      icon:
-        - color: var(--primary-text-color)
-    tap_action:
-      action: toggle
-      haptic: light
-    hold_action:
-      action: more-info
-      haptic: medium
-    type: 'custom:button-card'
-# Entity to control - Fifth button
-  - entity: switch.dining_table
-# Icon to display - Fifth button
-    icon: 'mdi:table-chair'
-    show_icon: true
-    show_name: false
-    state:
-      - styles:
-          icon:
-            - color: 'var(--paper-item-icon-active-color)  '
-        value: 'on'
-# Please change the entities inside to match the entity to be controlled
-    style: |
-      ha-card {
-        margin: 5px;
-        box-shadow:
-          {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
-            inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}
-            -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}
-            inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-          {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}
-            -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-          {% endif %}
-      }
-      @media only screen and (max-width: 600px) {
-         ha-card {
-           margin: 3px;
-           margin-left: 4px;
-         }
-      }
-      @media only screen and (min-width: 1200px) {
-         ha-card {
-           margin: 8px;
-           margin-left: 11px;
-         }
-      }
-    styles:
-      card:
-        - width: 60px
-        - height: 60px
-        - border-radius: 15px
-        - background-color: var(--primary-background-color)
-      icon:
-        - color: var(--primary-text-color)
-    tap_action:
-      action: toggle
-      haptic: light
-    hold_action:
-      action: more-info
-      haptic: medium
-    type: 'custom:button-card'
-type: horizontal-stack
+        - color: var(--paper-item-icon-active-color)
+tap_action:
+  action: toggle
+  haptic: light
+hold_action:
+  action: more-info
+  haptic: medium
+type: 'custom:button-card'
 ```
 </details>
 
-## Horizontal Buttons With Text Card
+### Button, No Text, With Border
 <p align="left">
-  <img src="docs/images/horizontal_button_card_light.png" alt="Horizontal button card light theme" width="425">
-  <img src="docs/images/horizontal_button_card_dark.png" alt="Horizontal button card dark theme" width="425">
+  <img src="docs/images/button_card_with_border_pressed.png" alt="Button card with border" width="400">
+  <img src="docs/images/button_card_with_border.png" alt="Button card with border pressed" width="400">
   <br/>
 </p>
 
-This card has 3 buttons lined up horizontally, with the name and state. When the state of the entity is 'on', the button will be pressed in. When the entity is 'off' the button will be released (like normal). Based off of [@hawk](https://community.home-assistant.io/u/hawk)'s dashboard code.
-**Note: This card will only display properly in a horizontal stack.**
-
-**Required Custom Cards:**
-
-* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+This card is almost identical to the one above. The only difference between the two is when this button is pressed there is a border surrounding it (picture on the left).
 
 <details><summary><b>Show code</b></summary>
 
 ```yaml
-cards:
-  - aspect_ratio: 1/1
-    entity: light.kitchen_light
-    show_state: true
-    size: 80%
-    state:
-      - styles:
-          card:
-            - border-color: var(--primary-color)
-            - border-width: 2px
-            - box-shadow: var(--soft-ui-pressed)
-          icon:
-            - color: var(--primary-color)
-          name:
-            - color: var(--primary-color)
-          state:
-            - color: var(--primary-color)
-        value: 'on'
-    style: |
-      #aspect-ratio {
-        margin: 10px;
-      }
-      * {
-        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-               inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-             {% elif is_state('sun.sun', 'below_horizon') %}
-               inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-             {% endif %}
-        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-            {% elif is_state('sun.sun', 'below_horizon') %}
-              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-            {% endif %}
-      }
+# Example entry
+# Change this to the entity you want to control
+entity: light.example
+# Change this to the icon you want to display
+icon: 'mdi:light-switch'
+show_icon: true
+show_name: false
+style: |
+  * {
+    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+         {% elif is_state('sun.sun', 'below_horizon') %}
+           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+         {% endif %}
+    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+        {% elif is_state('sun.sun', 'below_horizon') %}
+          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+        {% endif %}
+  }
+styles:
+  card:
+    - width: 60px
+    - height: 60px
+    - margin: 10px
+    - border-radius: 15px
+    - border-width: 1px
+    - border-style: solid
+    - border-color: var(--primary-background-color)
+    - box-shadow: var(--soft-ui-shadow)
+    - background-color: var(--primary-background-color)
+  icon:
+    - color: var(--primary-text-color)
+state:
+  - value: 'on'
     styles:
       card:
-        - font-family: 'Google Sans, Roboto'
-        - font-weight: 500
-        - background-color: var(--primary-background-color)
-        - border-radius: 15px
-        - box-shadow: var(--soft-ui-shadow)
-      grid:
-        - grid-template-areas: '"i i . ." "i i . ." ". . . ." "n n n ." "s . . ." ". . . ."'
-        - grid-template-columns: 1fr 1fr 1fr 1fr
-        - grid-template-rows: 1fr 1fr .25fr .75fr .75fr .5fr
-        - padding: 15px
+        - border-width: 2px
+        - box-shadow: var(--soft-ui-pressed)
+        - border-color: var(--paper-item-icon-active-color)
       icon:
-        - color: grey
-      name:
-        - font-size: 20px
-        - font-weight: 400
-        - color: grey
-      state:
-        - font-size: 20px
-        - font-weight: 500
-        - color: grey
-    type: 'custom:button-card'
-  - aspect_ratio: 1/1
-    entity: switch.humidifier
-    show_state: true
-    size: 80%
-    state:
-      - styles:
-          card:
-            - border-color: var(--primary-color)
-            - border-width: 2px
-            - box-shadow: var(--soft-ui-pressed)
-          icon:
-            - color: var(--primary-color)
-          name:
-            - color: var(--primary-color)
-          state:
-            - color: var(--primary-color)
-        value: 'on'
-    style: |
-      #aspect-ratio {
-        margin: 10px;
-      }
-      * {
-        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-               inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-             {% elif is_state('sun.sun', 'below_horizon') %}
-               inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
-             {% endif %}
-        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-              -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-            {% elif is_state('sun.sun', 'below_horizon') %}
-              -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-            {% endif %}
-      }
+        - color: var(--paper-item-icon-active-color)
+tap_action:
+  action: toggle
+  haptic: light
+hold_action:
+  action: more-info
+  haptic: medium
+type: 'custom:button-card'
+```
+</details>
+
+### Button, With Text, No Border
+<p align="left">
+  <img src="docs/images/button_card_with_text_pressed.png" alt="Button card with border" width="400">
+  <img src="docs/images/button_card_with_text.png" alt="Button card with border pressed" width="400">
+  <br/>
+</p>
+
+This button will display, in addition to the icon, the name, and the state of the entity. It acts the same as the first button.
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
+# Example entry
+# Change this to the entity you want to control
+entity: light.example
+# Change this to the icon you want to display
+icon: 'mdi:ceiling-light'
+# Change this to the name you want to display
+name: Bedroom
+# You can adjust the size of the icon
+size: 35%
+styles:
+  img_cell:
+# You can adjust padding of the icon
+    - padding-left: 15px
+    - justify-content: start
+  card:
+    - margin: 10px
+    - width: 100px
+    - height: 100px
+    - border-radius: 15px
+    - box-shadow: var(--soft-ui-shadow)
+    - background-color: var(--primary-background-color)
+  icon:
+    - color: var(--primary-text-color)
+  grid:
+    - grid-template-areas: '"i" "n" "s"'
+    - grid-template-columns: 1fr
+    - grid-template-rows: 1fr min-content min-content
+  name:
+    - justify-self: start
+    - font-weight: bold
+    - font-size: 15px
+    - padding-left: 15px
+  state:
+    - justify-self: start
+    - font-weight: bold
+    - font-size: 15px
+    - opacity: 0.6
+    - padding: 0 15px 5px
+show_state: true
+style: |
+  * {
+    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+           inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+         {% elif is_state('sun.sun', 'below_horizon') %}
+           inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
+         {% endif %}
+    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+          -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+        {% elif is_state('sun.sun', 'below_horizon') %}
+          -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
+        {% endif %}
+  }
+state:
+  - value: 'on'
     styles:
       card:
-        - font-family: 'Google Sans, Roboto'
-        - font-weight: 500
-        - background-color: var(--primary-background-color)
-        - border-radius: 15px
-        - box-shadow: var(--soft-ui-shadow)
-      grid:
-        - grid-template-areas: '"i i . ." "i i . ." ". . . ." "n n n ." "s . . ." ". . . ."'
-        - grid-template-columns: 1fr 1fr 1fr 1fr
-        - grid-template-rows: 1fr 1fr .25fr .75fr .75fr .5fr
-        - padding: 15px
+        - box-shadow: var(--soft-ui-pressed)
       icon:
-        - color: grey
-      name:
-        - font-size: 20px
-        - font-weight: 400
-        - color: grey
-      state:
-        - font-size: 20px
-        - font-weight: 500
-        - color: grey
-    type: 'custom:button-card'
-type: horizontal-stack
+        - color: var(--paper-item-icon-active-color)
+tap_action:
+  action: toggle
+  haptic: light
+hold_action:
+  action: more-info
+  haptic: medium
+type: 'custom:button-card'
+```
+</details>
+
+### Button, With Text and Border
+<p align="left">
+  <img src="docs/images/button_card_with_text_and_border.png" alt="Button card with border" width="400">
+  <img src="docs/images/button_card_with_text_and_border_pressed.png" alt="Button card with border pressed" width="400">
+  <br/>
+</p>
+
+This card is almost identical to the one above. The only difference between the two is when this button is pressed there is a border surrounding it (picture on the right).
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
+# Example entry
+# Change this to the entity you want to control
+entity: light.example
+# Change this to the icon you want to display
+icon: 'mdi:vanity-light'
+# Change this to the name you want to display
+name: Island
+# You can adjust the size of the icon
+size: 30%
+styles:
+  img_cell:
+# You can adjust padding of the icon
+    - padding-left: 25px
+    - justify-content: start
+  card:
+    - width: 100px
+    - height: 100px
+    - border-radius: 15px
+    - border-style: solid
+    - border-color: var(--primary-background-color)
+    - border-width: 1px
+    - margin: 10px
+    - box-shadow: var(--soft-ui-shadow)
+    - background-color: var(--primary-background-color)
+  icon:
+    - color: var(--primary-text-color)
+  grid:
+    - grid-template-areas: '"i" "n" "s"'
+    - grid-template-columns: 1fr
+    - grid-template-rows: 1fr min-content min-content
+  name:
+    - justify-self: start
+    - font-weight: bold
+    - font-size: 15px
+    - padding-left: 15px
+  state:
+    - justify-self: start
+    - font-weight: bold
+    - font-size: 15px
+    - opacity: 0.6
+    - padding: 0 15px 5px
+show_state: true
+style: |
+  * {
+    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+         {% elif is_state('sun.sun', 'below_horizon') %}
+           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+         {% endif %}
+    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+          -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+        {% elif is_state('sun.sun', 'below_horizon') %}
+          -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
+        {% endif %}
+  }
+
+state:
+  - value: 'on'
+    styles:
+      card:
+        - border-width: 2px
+        - box-shadow: var(--soft-ui-pressed)
+        - border-color: var(--paper-item-icon-active-color)
+      icon:
+        - color: var(--paper-item-icon-active-color)
+tap_action:
+  action: toggle
+  haptic: light
+hold_action:
+  action: more-info
+  haptic: medium
+type: 'custom:button-card'
 ```
 </details>
 
