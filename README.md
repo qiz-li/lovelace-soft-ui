@@ -477,7 +477,7 @@ type: vertical-stack
 </details>
 
 ## Button Cards
-Below you will find different button variations with the Soft UI style. All the buttons can be placed in a ```horizontal-stack``` card to form a row of buttons (as seen in some of the screenshots). The button cards with border are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
+Below you will find different button variations with the Soft UI style. All the buttons can be placed in a ```horizontal-stack``` card to form a row of buttons (as seen in some of the screenshots). The button cards with borders are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
 
 **All button cards below require:**
 
