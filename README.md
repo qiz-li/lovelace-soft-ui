@@ -67,7 +67,7 @@ You will need to set up an automation to automatically switch to a dark theme at
       sequence:
       - service: frontend.set_theme
         data:
-# Change this to the name of your light theme
+# Change this to the name of your dark theme
           name: Name of your dark theme
 ```
 </details>
