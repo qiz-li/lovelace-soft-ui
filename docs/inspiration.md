@@ -1,7 +1,8 @@
 # Inspiration
 Here you can find some inspiration for your Soft UI dashboards.  
 
-For code of the cards used, go back to the [readme](https://github.com/N-l1/lovelace-soft-ui/blob/master/README.md).  
+The lovelace code for the UI elements can be found in the [readme](https://github.com/N-l1/lovelace-soft-ui/blob/master/README.md).  
+
 ##
 <p align="left">
   <img src="images/home_page_light.png" alt="Home page, light theme" width="48%">

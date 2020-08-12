@@ -4,12 +4,12 @@
 [![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
 [![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
-**Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic/Soft UI syled Lovelace (UI of Home Assistant). I hope you like it!
+**Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic/Soft UI styled Lovelace (UI of Home Assistant). I hope you like it!
 
 **Click** [**here**](docs/inspiration.md) **for some examples and inspiration** 
 
 **Don't hesitate to ask for help [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) on the Home Assistant forum** 
-  
+
 ![Lovelace Soft UI light theme](docs/images/soft_ui_light.jpg)
 ![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
 
@@ -24,6 +24,8 @@
 OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots in 5 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
 
 ### 2. sun.sun
+As of version 0.114 of Home Assistant you are no longer required to use the `sun.sun` sensor to switch between dark and light mode **if** your device and browser support dark mode detection. See [the automation section](#4-automation) for implementation.
+
 For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
 
 ```yaml
@@ -35,8 +37,18 @@ This style works best with custom themes. You can also find and install them wit
 
 The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
-### 4. Automation
-You will need to set up an automation to automatically switch to a dark theme at sunset and back to a light theme at sunrise. If you don't have one, please add the following to your `automations.yaml`.
+### 4. Automation 
+To utilize the automatic dark mode detection implemented in version 0.114 of Home Assistant you will need to make a service call in Home Assistant. 
+In the sidebar select Developer Tools and then navigate to the services tab and select ```frontend.set_theme``` from the service dropdown. In the Service Data field enter the following and modify as required.
+
+```yaml
+name: name of your theme
+mode: light # or dark
+```
+
+<b>Alternative setup</b>
+
+To automatically switch to a dark theme at sunset and back to a light theme at sunrise you will need to set up an automation. If you don't already have one, please add the following to your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
@@ -110,7 +122,7 @@ This makes the original Home Assistant header "compact" while also matching it w
 
 
 <details><summary><b>Show code</b></summary>
-  
+
 ```yaml
 # Example entry
 custom_header:
@@ -790,6 +802,8 @@ This card mimics a TV remote. Each button is customizable to execute your desire
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
 <details><summary><b>Show code</b></summary>
+
+
 
 ```yaml
 entities:
