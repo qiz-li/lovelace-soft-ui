@@ -37,7 +37,7 @@ This style works best with custom themes. You can also find and install them wit
 
 The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
-### <a name="automation"></a> 4. Automation 
+### 4. Automation 
 To utilize the automatic dark mode detection implemented in version 0.114 of Home Assistant you will need to make a service call in Home Assistant. 
 In the sidebar select Developer Tools and then navigate to the services tab and select ```frontend.set_theme``` from the service dropdown. In the Service Data field enter the following and modify as required.
 
