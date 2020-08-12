@@ -24,7 +24,7 @@
 OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots in 5 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
 
 ### 2. sun.sun
-As of version 0.114 of Home Assistant you are no longer required to use the ```sun.sun``` sensor to switch between dark and light mode **if** your device and browser support dark mode detection. See [4. Automation](#automation) for implementation.
+As of version 0.114 of Home Assistant you are no longer required to use the `sun.sun` sensor to switch between dark and light mode **if** your device and browser support dark mode detection. See [the automation section](#-4-automation) for implementation.
 
 For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
 
