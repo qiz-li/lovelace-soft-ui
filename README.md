@@ -1,7 +1,7 @@
 # Lovelace Soft UI 
 
 [![License is MIT](https://img.shields.io/github/license/N-l1/home-assistant-config?style=flat-square)](https://github.com/N-l1/lovelace-soft-ui/blob/master/LICENSE) 
-[![This is new user_friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
+[![This is new user friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
 [![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
 **Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic/Soft UI styled Lovelace (UI of Home Assistant). I hope you like it!
@@ -23,7 +23,7 @@
 ### 1. Install card-mod
 OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots in 5 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
 
-### 2. sun.sun
+### 2. `sun.sun`
 As of version 0.114 of Home Assistant you are no longer required to use the `sun.sun` sensor to switch between dark and light mode **if** your device and browser support dark mode detection. See [the automation section](#4-automation) for implementation.
 
 For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
@@ -33,9 +33,9 @@ For the cards to switch automatically to dark/light themes, please make sure you
 sun:
 ```
 ### 3. Themes
-This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark grey background work well. 
+This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well. 
 
-The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
+The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code.
 
 ### 4. Automation 
 To utilize the automatic dark mode detection implemented in version 0.114 of Home Assistant you will need to make a service call in Home Assistant. 
@@ -246,7 +246,7 @@ type: vertical-stack
   <br/>
 </p>
 
-This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e. lovelace/lights. You can change the icons, names, tap action, and texts beside them. 
+This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e. `lovelace/lights`. You can change the icons, names, tap action, and texts beside them. 
 
 Wondering how the card is able to count how many lights are on? Here is the template. To use this template as a light count sensor, use the Home Assistant [template sensor component](https://www.home-assistant.io/integrations/template/). 
 
