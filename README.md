@@ -24,7 +24,7 @@
 OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots in 5 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
 
 ### 2. sun.sun
-As of version 0.114 of Home Assistant you are no longer required to use the ```sun.sun``` sensor to switch between dark and light mode **if** your device and browser support dark mode detection.
+As of version 0.114 of Home Assistant you are no longer required to use the ```sun.sun``` sensor to switch between dark and light mode **if** your device and browser support dark mode detection. See [4. Automation](#automation) for implementation.
 
 For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
 
@@ -37,7 +37,7 @@ This style works best with custom themes. You can also find and install them wit
 
 The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme YAML.
 
-### 4. Automation
+### <a name="automation"></a> 4. Automation 
 To utilize the automatic dark mode detection implemented in version 0.114 of Home Assistant you will need to make a service call in Home Assistant. 
 In the sidebar select Developer Tools and then navigate to the services tab and select ```frontend.set_theme``` from the service dropdown. In the Service Data field enter the following and modify as required.
 
