@@ -21,25 +21,18 @@
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
 ### 1. Install card-mod
-OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots in 5 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS's [documentation](https://hacs.xyz) and install it.
+OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots following these 3 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS [documentation](https://hacs.xyz) and install it.
 
-### 2. `sun.sun`
-As of version 0.114 of Home Assistant you are no longer required to use the `sun.sun` sensor to switch between dark and light mode **if** your device and browser support dark mode detection. See [the automation section](#4-automation) for implementation.
+### 2. Custom Light and Dark Themes
+The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
 
-For the cards to switch automatically to dark/light themes, please make sure you have the `sun.sun` entity (should come preinstalled). If you don't have it, add the following to your `configuration.yaml`.
+You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well. 
 
-```yaml
-# Example configuration.yaml entry
-sun:
-```
-### 3. Themes
-This style works best with custom themes. You can also find and install them with [HACS](https://hacs.xyz). **Please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well. 
+The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at ```config/themes/clear/clear.yaml```).
 
-The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code.
+Now that you have picked out your light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
 
-### 4. Automation 
-To utilize the automatic dark mode detection implemented in version 0.114 of Home Assistant you will need to make a service call in Home Assistant. 
-In the sidebar select Developer Tools and then navigate to the services tab and select ```frontend.set_theme``` from the service dropdown. In the Service Data field enter the following and modify as required.
+If your device does match the requirements, you will now need to make a service call in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select ```frontend.set_theme``` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
 
 ```yaml
 name: name of your theme
@@ -48,7 +41,7 @@ mode: light # or dark
 
 <b>Alternative setup</b>
 
-To automatically switch to a dark theme at sunset and back to a light theme at sunrise you will need to set up an automation. If you don't already have one, please add the following to your `automations.yaml`.
+Alternatively, you can just add the following into your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
@@ -84,7 +77,7 @@ To automatically switch to a dark theme at sunset and back to a light theme at s
 ```
 </details>
 
-### 5. Done!
+### 3. Done!
 We are done! Use this code to add the Soft UI style to any card. 
 
 ```yaml
@@ -108,10 +101,10 @@ Here are some cards I created using this style. All cards are added using the UI
 
 ## Compact Header
 <p align="left">
-  <img src="docs/images/slate_theme_with_colored_header.png" alt="Slate theme with color header" width="425">
-  <img src="docs/images/slate_theme.png" alt="Slate theme without color header" width="425">
+  <img src="docs/images/normal_header.png" alt="Normal header" width="400">
+  <img src="docs/images/compact_header.png" alt="compact header" width="400">
   <br/>
-  <a href="https://github.com/seangreen2/slate_theme"><b>Slate theme</b></a> header with and without color.
+  Normal header and compact header.
 </p>
 
 This makes the original Home Assistant header "compact" while also matching it with the background color. To add this card, click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
@@ -145,8 +138,8 @@ custom_header:
 
 ## Text Header Card
 <p align="left">
-  <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="425">
-  <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="425">
+  <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="400">
+  <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="400">
   <br/>
 </p>
 
@@ -183,8 +176,8 @@ type: markdown
 ## Text Header Card with Subheader
 
 <p align="left">
-  <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="425">
-  <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="425">
+  <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="400">
+  <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="400">
   <br/>
 </p>
 
@@ -239,257 +232,8 @@ type: vertical-stack
 ```
 </details>
 
-## Vertical Buttons Card
-<p align="left">
-  <img src="docs/images/vertical_button_card_light.png" alt="Vertical button card light theme" width="425">
-  <img src="docs/images/vertical_button_card_dark.png" alt="Vertical button card dark theme" width="425">
-  <br/>
-</p>
-
-This card contains three buttons lined up vertically: lights, alarm clock, and irrigation. Each of the buttons will redirect you to a Lovelace tab with the corresponding name, i.e. `lovelace/lights`. You can change the icons, names, tap action, and texts beside them. 
-
-Wondering how the card is able to count how many lights are on? Here is the template. To use this template as a light count sensor, use the Home Assistant [template sensor component](https://www.home-assistant.io/integrations/template/). 
-
-```
-{{ states | selectattr('entity_id','in', ['light.list_your_lights_here','switch.example_1','switch.example_2'] )|selectattr('state','eq','on') | list | count }}
-```
-
-**Required Custom Cards:**
-
-* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
-
-<details><summary><b>Show code</b></summary>
-
-```yaml
-# Example entry
-cards:
-  - cards:
-      - cards:
-# Icon to display - First button
-          - icon: 'mdi:lightbulb-multiple'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow:
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - First button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/lights
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - First button
-              - content: |
-                  # Lights
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                      height: 20px;
-                      margin-top: 15px;
-                    }
-                  ha-markdown:
-                    $: |
-                      h1 {
-                        font-size: 20px;
-                        font-weight: bold;
-                        font-family: Helvetica;
-                        letter-spacing: '-0.01em';
-                      }
-                type: markdown
-# Small text to display - First button
-              - content: >
-                  # There are  {% if is_state('sensor.lights_on', '0') %}
-                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
-                  endif %} lights on
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                    }
-                  ha-markdown:
-                    $: |
-                      h1 {
-                        font-size: 15px;
-                        font-weight: thin;
-                        font-family: Helvetica;
-                        letter-spacing: '-0.01em';
-                      }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-      - cards:
-# Icon to display - Second button
-          - icon: 'mdi:alarm'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow:
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - Second button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/alarm
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - Second button
-              - content: |
-                  # Alarm clock
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                      height: 20px;
-                      margin-top: 15px;
-                    }
-                  ha-markdown:
-                    $: |
-                      h1 {
-                        font-size: 20px;
-                        font-weight: bold;
-                        font-family: Helvetica;
-                        letter-spacing: '-0.01em';
-                      }
-                type: markdown
-# Small text to display - Second button
-              - content: >
-                  # The weekday alarm is  {% if
-                  is_state('input_boolean.sleep_cycle_weekday', 'on') and
-                  is_state('input_boolean.alarm_weekday_enabled', 'on')%}  on
-                  sleep cycle mode   {% elif
-                  is_state('input_boolean.alarm_weekday_enabled', 'on') %}   set
-                  for {{states('sensor.alarm_weekday_time')}}  {% else %}  not
-                  set  {% endif %}
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                    }
-                  ha-markdown:
-                    $: |
-                      h1 {
-                        font-size: 15px;
-                        font-weight: thin;
-                        font-family: Helvetica;
-                        letter-spacing: '-0.01em';
-                      }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-      - cards:
-# Icon to display - Third button
-          - icon: 'mdi:pine-tree'
-            show_icon: true
-            show_name: false
-            style: |
-              ha-card {
-                margin: 10px;
-                box-shadow:
-                  {% if is_state('sun.sun', 'above_horizon') %}
-                    -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                  {% elif is_state('sun.sun', 'below_horizon') %}
-                    -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                  {% endif %}
-              }
-            styles:
-              card:
-                - width: 80px
-                - height: 80px
-                - border-radius: 15px
-                - background-color: var(--primary-background-color)
-              icon:
-                - color: var(--primary-text-color)
-# Action to perform - Third button
-            tap_action:
-              action: navigate
-              navigation_path: /lovelace/sprinklers/
-              haptic: light
-            type: 'custom:button-card'
-          - cards:
-# Big text to display - Third button
-              - content: |
-                  # Irrigation
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                      height: 20px;
-                      margin-top: 15px;
-                    }
-                  ha-markdown:
-                    $: |
-                      h1 {
-                        font-size: 20px;
-                        font-weight: bold;
-                        font-family: Helvetica;
-                        letter-spacing: '-0.01em';
-                      }
-                type: markdown
-# Small text to display - Third button
-              - content: |
-                  # The irrigation system is not activated
-                style:
-                  .: |
-                    ha-card {
-                      --ha-card-background: none !important;
-                      box-shadow: none !important;
-                    }
-                  ha-markdown:
-                    $: |
-                      h1 {
-                        font-size: 15px;
-                        font-weight: thin;
-                        font-family: Helvetica;
-                        letter-spacing: '-0.01em';
-                      }
-                type: markdown
-            type: vertical-stack
-        type: horizontal-stack
-    type: vertical-stack
-type: vertical-stack
-```
-</details>
-
 ## Button Cards
-Below you will find different button variations using the Soft UI style. All the buttons can be placed in a ```horizontal-stack``` card to form a row of buttons (as seen in some of the screenshots). The button cards with borders are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
+Below you will find different button variations using the Soft UI style. All the buttons can be placed in a ```horizontal-stack``` or ```vertical-stack``` card to form a row or column of buttons (as seen in some of the screenshots). The button cards with borders are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
 
 **All button cards below require:**
 
@@ -621,8 +365,8 @@ type: 'custom:button-card'
 
 ### Button, With Text, No Border
 <p align="left">
-  <img src="docs/images/button_card_with_text_pressed.png" alt="Button card with border" width="400">
-  <img src="docs/images/button_card_with_text.png" alt="Button card with border pressed" width="400">
+  <img src="docs/images/button_card_with_text_pressed.png" alt="Button card with text no border" width="400">
+  <img src="docs/images/button_card_with_text.png" alt="Button card with text no border pressed" width="400">
   <br/>
 </p>
 
@@ -702,8 +446,8 @@ type: 'custom:button-card'
 
 ### Button, With Text and Border
 <p align="left">
-  <img src="docs/images/button_card_with_text_and_border.png" alt="Button card with border" width="400">
-  <img src="docs/images/button_card_with_text_and_border_pressed.png" alt="Button card with border pressed" width="400">
+  <img src="docs/images/button_card_with_text_and_border.png" alt="Button card with text and border" width="400">
+  <img src="docs/images/button_card_with_text_and_border_pressed.png" alt="Button card with text and border pressed" width="400">
   <br/>
 </p>
 
@@ -787,10 +531,112 @@ type: 'custom:button-card'
 ```
 </details>
 
+### Button, With Description
+<p align="left">
+  <img src="docs/images/button_card_with_description_pressed.png" alt="Button card with description pressed" width="400">
+  <img src="docs/images/button_card_with_description.png" alt="Button card with description" width="400">
+  <br/>
+</p>
+
+The general gist of this card is the same as the other button cards. When the state of the entity is ```on```, the button will be pressed in (picture on the left). When the entity is ```off``` the button will be released (picture on the right). However, this card is different from all the other button cards as beside the big button, there are two lines of text that are customizable.
+
+<details><summary><b>Show code</b></summary>
+
+```yaml
+# Example entry
+cards:
+    # Change this to the entity you want to control
+  - entity: light.example
+    # Change this to the icon you want to display
+    icon: 'mdi:lightbulb-multiple'
+    show_icon: true
+    show_name: false
+    style: |
+      * {
+        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+              inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
+            {% endif %}
+        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+              -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+            {% elif is_state('sun.sun', 'below_horizon') %}
+              -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
+            {% endif %}
+      }
+    state:
+      - value: 'on'
+        styles:
+          card:
+            - box-shadow: var(--soft-ui-pressed)
+          icon:
+            - color: var(--paper-item-icon-active-color)
+    styles:
+      card:
+        - width: 80px
+        - height: 80px
+        - margin: 10px
+        - border-radius: 15px
+        - box-shadow: var(--soft-ui-shadow)
+        - background-color: var(--primary-background-color)
+      icon:
+        - color: var(--primary-text-color)
+# Actions to perform
+      tap_action:
+        action: toggle
+        haptic: light
+      hold_action:
+        action: more-info
+        haptic: medium
+    type: 'custom:button-card'
+  - cards:
+# Big text to display
+      - content: |
+          # Big Text
+        style:
+          .: |
+            ha-card {
+              --ha-card-background: none !important;
+              box-shadow: none !important;
+              height: 20px;
+              margin-top: 15px;
+            }
+          ha-markdown:
+            $: |
+              h1 {
+                font-size: 20px;
+                font-weight: bold;
+                font-family: Helvetica;
+                letter-spacing: '-0.01em';
+              }
+        type: markdown
+# Small text to display
+      - content: >
+          # Lorum ipsum small text
+        style:
+          .: |
+            ha-card {
+              --ha-card-background: none !important;
+              box-shadow: none !important;
+            }
+          ha-markdown:
+            $: |
+              h1 {
+                font-size: 15px;
+                font-weight: thin;
+                font-family: Helvetica;
+                letter-spacing: '-0.01em';
+              }
+        type: markdown
+    type: vertical-stack
+type: horizontal-stack
+```
+</details>
+
 ## Remote Card
 <p align="left">
-  <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="425">
-  <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="425">
+  <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="400">
+  <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="400">
   <br/>
 </p>
 
@@ -803,9 +649,8 @@ This card mimics a TV remote. Each button is customizable to execute your desire
 
 <details><summary><b>Show code</b></summary>
 
-
-
 ```yaml
+# Example entry
 entities:
   - cards:
       - icon: 'mdi:power'
@@ -813,18 +658,18 @@ entities:
         show_name: false
         style: |
           ha-card {
-            margin: 10px 10px 10px 155px;
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
               {% endif %}
           }
         styles:
           card:
             - width: 60px
             - height: 60px
+            - margin: 10px 10px 10px 155px
             - border-radius: 100px
             - background-color: var(--primary-background-color)
           icon:
@@ -892,9 +737,9 @@ entities:
                   ha-card {
                     box-shadow:
                       {% if is_state('sun.sun', 'above_horizon') %}
-                        -4px -4px 4px 0 rgba(255,255,255,.5),4px 4px 4px 0 rgba(0,0,0,.03);
+                        -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
                       {% elif is_state('sun.sun', 'below_horizon') %}
-                        -4px -4px 4px 0 rgba(50, 50, 50,.5),4px 4px 4px 0 rgba(0,0,0,.15);
+                        -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
                       {% endif %}
                   }
                 styles:
@@ -965,9 +810,9 @@ entities:
           ha-card {
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                inset -4px -4px 5px 0 rgba(255,255,255,.7), inset 4px 4px 5px 0 rgba(0,0,0,.07);
+                inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3);
+                inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
               {% endif %}
             border-radius: 30px;
             background-color: var(--primary-background-color)
@@ -1056,9 +901,9 @@ entities:
             border-radius: 15px;
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                  -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
               {% endif %}
           }
         type: 'custom:hui-entities-card'
@@ -1072,9 +917,9 @@ entities:
           ha-card {
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
               {% endif %}
           }
         styles:
@@ -1103,9 +948,9 @@ entities:
           ha-card {
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
               {% endif %}
           }
         styles:
@@ -1134,9 +979,9 @@ entities:
           ha-card {
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                -5px -5px 5px 0 rgba(255,255,255,.5),5px 5px 5px 0 rgba(0,0,0,.03);
+                -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                -5px -5px 5px 0 rgba(50, 50, 50,.5),5px 5px 5px 0 rgba(0,0,0,.15);
+                -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
               {% endif %}
           }
         styles:
@@ -1166,9 +1011,9 @@ style: |
     margin: 10px auto;
     box-shadow:
       {% if is_state('sun.sun', 'above_horizon') %}
-        -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
+        -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
       {% elif is_state('sun.sun', 'below_horizon') %}
-        -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
+        -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
       {% endif %}
   }
 type: entities
