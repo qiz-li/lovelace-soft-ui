@@ -41,7 +41,7 @@ mode: light # or dark
 
 ### Alternative setup
 
-Alternatively, you can just add the following into your `automations.yaml`.
+Alternatively, after you've picked out custom light and dark themes, you can just add the following into your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
