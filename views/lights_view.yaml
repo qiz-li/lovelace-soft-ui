@@ -1,373 +1,385 @@
 # Lovelace Soft UI lights view by @N-l1
   - badges: []
     cards:
-      - type: vertical-stack
-        cards:
+      - cards:
           - cards:
               - content: |
                   # Most used
-                style: |
-                  ha-card {
-                    height: 20px;
-                    --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                    box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                      height: 20px;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
                 type: markdown
               - content: >
-                  # There are  {% if is_state('sensor.lights_on', '0') %}
-                  currently no  {% else %}  {{states('sensor.lights_on')}}  {%
-                  endif %} lights on
-                style: |
-                  ha-card {
-                       height: 50px;
-                       --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                       box-shadow: 2px 2px rgba(0,0,0,0.0);
-                         }
-                     h1 {
-                          font-size: 15px;
-                          font-weight: thin;
-                          font-family: Helvetica;
-                          letter-spacing: '-0.01em';
-                        }
+                  # {% if is_state('sensor.lights_on', '0') %} There are
+                  currently no lights on
+                    {% elif is_state('sensor.lights_on', '1') %} There is 1 light on
+                    {% else %} There are {{states('sensor.lights_on')}} lights on {% endif %}
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                      height: 50px;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 15px;
+                        font-weight: thin;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
                 type: markdown
             type: vertical-stack
           - cards:
               - entity: light.family_room_lamp
+                hold_action:
+                  action: more-info
+                  haptic: medium
                 icon: 'mdi:lamp'
                 show_icon: true
                 show_name: false
                 state:
                   - styles:
+                      card:
+                        - border-width: 2px
+                        - box-shadow: var(--soft-ui-pressed)
+                        - border-color: var(--paper-item-icon-active-color)
                       icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
+                        - color: var(--paper-item-icon-active-color)
                     value: 'on'
                 style: |
-                  ha-card {
-                    margin: 5px;  
-                    margin-left: 6.5px;
-                    box-shadow: 
-                     {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'on') %}
-                       inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                     {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_lamp', 'off') %}                      
-                       -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                     {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'on') %}                      
-                       inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                     {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_lamp', 'off') %}   
-                       -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                     {% endif %}                      
-                  }
-                  @media only screen and (max-width: 600px) {
-                     ha-card {
-                       margin: 3px; 
-                       margin-left: 4px;                   
-                     }
-                  }
-                  @media only screen and (min-width: 1200px) {
-                     ha-card {
-                       margin: 8px;  
-                       margin-left: 11px;               
-                     }
+                  * {
+                    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+                         {% elif is_state('sun.sun', 'below_horizon') %}
+                           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+                         {% endif %}
+                    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+                        {% endif %}
                   }
                 styles:
                   card:
                     - width: 60px
                     - height: 60px
+                    - margin: 10px
                     - border-radius: 15px
+                    - border-width: 1px
+                    - border-style: solid
+                    - border-color: var(--primary-background-color)
+                    - box-shadow: var(--soft-ui-shadow)
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
+                type: 'custom:button-card'
+              - entity: switch.kitchen_island_light
                 hold_action:
                   action: more-info
                   haptic: medium
-                type: 'custom:button-card'
-              - entity: switch.kitchen_island_light
                 icon: 'mdi:vanity-light'
                 show_icon: true
                 show_name: false
                 state:
                   - styles:
+                      card:
+                        - border-width: 2px
+                        - box-shadow: var(--soft-ui-pressed)
+                        - border-color: var(--paper-item-icon-active-color)
                       icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
+                        - color: var(--paper-item-icon-active-color)
                     value: 'on'
                 style: |
-                  ha-card {
-                    margin: 5px;  
-                    margin-left: 6.5px;
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.kitchen_island_light', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.kitchen_island_light', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}                      
-                  }
-                  @media only screen and (max-width: 600px) {
-                     ha-card {
-                       margin: 3px; 
-                       margin-left: 4px;                   
-                     }
-                  }
-                  @media only screen and (min-width: 1200px) {
-                     ha-card {
-                       margin: 8px;  
-                       margin-left: 11px;               
-                     }
+                  * {
+                    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+                         {% elif is_state('sun.sun', 'below_horizon') %}
+                           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+                         {% endif %}
+                    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+                        {% endif %}
                   }
                 styles:
                   card:
                     - width: 60px
                     - height: 60px
+                    - margin: 10px
                     - border-radius: 15px
+                    - border-width: 1px
+                    - border-style: solid
+                    - border-color: var(--primary-background-color)
+                    - box-shadow: var(--soft-ui-shadow)
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
+                type: 'custom:button-card'
+              - entity: switch.dining_area
                 hold_action:
                   action: more-info
                   haptic: medium
-                type: 'custom:button-card'
-              - entity: switch.dining_area
                 icon: 'mdi:ceiling-light'
                 show_icon: true
                 show_name: false
                 state:
                   - styles:
+                      card:
+                        - border-width: 2px
+                        - box-shadow: var(--soft-ui-pressed)
+                        - border-color: var(--paper-item-icon-active-color)
                       icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
+                        - color: var(--paper-item-icon-active-color)
                     value: 'on'
                 style: |
-                  ha-card {
-                    margin: 5px;                
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_area', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_area', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}                           
-                  }
-                  @media only screen and (max-width: 600px) {
-                     ha-card {
-                       margin: 3px; 
-                       margin-left: 4px;                   
-                     }
-                  }
-                  @media only screen and (min-width: 1200px) {
-                     ha-card {
-                       margin: 8px;  
-                       margin-left: 11px;               
-                     }
+                  * {
+                    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+                         {% elif is_state('sun.sun', 'below_horizon') %}
+                           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+                         {% endif %}
+                    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+                        {% endif %}
                   }
                 styles:
                   card:
                     - width: 60px
                     - height: 60px
+                    - margin: 10px
                     - border-radius: 15px
+                    - border-width: 1px
+                    - border-style: solid
+                    - border-color: var(--primary-background-color)
+                    - box-shadow: var(--soft-ui-shadow)
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
+                type: 'custom:button-card'
+              - entity: light.family_room_light
                 hold_action:
                   action: more-info
                   haptic: medium
-                type: 'custom:button-card'
-              - entity: light.family_room_light
                 icon: 'mdi:light-switch'
                 show_icon: true
                 show_name: false
                 state:
                   - styles:
+                      card:
+                        - border-width: 2px
+                        - box-shadow: var(--soft-ui-pressed)
+                        - border-color: var(--paper-item-icon-active-color)
                       icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
+                        - color: var(--paper-item-icon-active-color)
                     value: 'on'
                 style: |
-                  ha-card {
-                    margin: 5px;  
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('light.family_room_light', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('light.family_room_light', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}     
-                  }
-                  @media only screen and (max-width: 600px) {
-                     ha-card {
-                       margin: 3px; 
-                       margin-left: 4px;                   
-                     }
-                  }
-                  @media only screen and (min-width: 1200px) {
-                     ha-card {
-                       margin: 8px;  
-                       margin-left: 11px;               
-                     }
+                  * {
+                    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+                         {% elif is_state('sun.sun', 'below_horizon') %}
+                           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+                         {% endif %}
+                    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+                        {% endif %}
                   }
                 styles:
                   card:
                     - width: 60px
                     - height: 60px
+                    - margin: 10px
                     - border-radius: 15px
+                    - border-width: 1px
+                    - border-style: solid
+                    - border-color: var(--primary-background-color)
+                    - box-shadow: var(--soft-ui-shadow)
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
+                type: 'custom:button-card'
+              - entity: switch.dining_table
                 hold_action:
                   action: more-info
                   haptic: medium
-                type: 'custom:button-card'
-              - entity: switch.dining_table
                 icon: 'mdi:table-chair'
                 show_icon: true
                 show_name: false
                 state:
                   - styles:
+                      card:
+                        - border-width: 2px
+                        - box-shadow: var(--soft-ui-pressed)
+                        - border-color: var(--paper-item-icon-active-color)
                       icon:
-                        - color: 'var(--paper-item-icon-active-color)  '
+                        - color: var(--paper-item-icon-active-color)
                     value: 'on'
                 style: |
-                  ha-card {
-                    margin: 5px;            
-                    box-shadow: 
-                      {% if is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'on') %}
-                        inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'above_horizon') and is_state('switch.dining_table', 'off') %}                      
-                        -5px -5px 8px 0 rgba(255,255,255,.5),5px 5px 8px 0 rgba(0,0,0,.03);
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'on') %}                      
-                        inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3); 
-                      {% elif is_state('sun.sun', 'below_horizon') and is_state('switch.dining_table', 'off') %}   
-                        -5px -5px 8px 0 rgba(50, 50, 50,.5),5px 5px 8px 0 rgba(0,0,0,.15);
-                      {% endif %}     
-                  }
-                  @media only screen and (max-width: 600px) {
-                     ha-card {
-                       margin: 3px; 
-                       margin-left: 4px;                   
-                     }
-                  }
-                  @media only screen and (min-width: 1200px) {
-                     ha-card {
-                       margin: 8px;  
-                       margin-left: 11px;               
-                     }
+                  * {
+                    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
+                         {% elif is_state('sun.sun', 'below_horizon') %}
+                           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
+                         {% endif %}
+                    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                        {% elif is_state('sun.sun', 'below_horizon') %}
+                          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
+                        {% endif %}
                   }
                 styles:
                   card:
                     - width: 60px
                     - height: 60px
+                    - margin: 10px
                     - border-radius: 15px
+                    - border-width: 1px
+                    - border-style: solid
+                    - border-color: var(--primary-background-color)
+                    - box-shadow: var(--soft-ui-shadow)
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
                 tap_action:
                   action: toggle
                   haptic: light
-                hold_action:
-                  action: more-info
-                  haptic: medium
                 type: 'custom:button-card'
             type: horizontal-stack
           - cards:
               - content: |
                   # Scenes
-                style: |
-                  ha-card {
-                     --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                     box-shadow: 2px 2px rgba(0,0,0,0.0);
-                  }
-                  h1 {
-                    font-size: 20px;
-                    font-weight: bold;
-                    font-family: Helvetica;
-                    letter-spacing: '-0.01em';
-                  }
+                style:
+                  .: |
+                    ha-card {
+                      --ha-card-background: none !important;
+                      box-shadow: none !important;
+                    }
+                  ha-markdown:
+                    $: |
+                      h1 {
+                        font-size: 20px;
+                        font-weight: bold;
+                        font-family: Helvetica;
+                        letter-spacing: '-0.01em';
+                      }
                 type: markdown
             type: vertical-stack
           - cards:
               - cards:
                   - cards:
-                      - entity: script.dinner
-                        icon: 'mdi:silverware-fork-knife'
+                      - entity: switch.tv
+                        hold_action:
+                          action: more-info
+                          haptic: medium
+                        icon: 'mdi:television'
                         show_icon: true
                         show_name: false
+                        state:
+                          - styles:
+                              card:
+                                - border-width: 2px
+                                - box-shadow: var(--soft-ui-pressed)
+                                - border-color: var(--paper-item-icon-active-color)
+                              icon:
+                                - color: var(--paper-item-icon-active-color)
+                            value: 'on'
                         style: |
-                          ha-card {
-                            margin: 10px;
-                            box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
-                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% elif is_state('sun.sun', 'below_horizon') %}
-                                -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                              {% endif %}                 
+                          * {
+                            --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                                  inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+                                {% elif is_state('sun.sun', 'below_horizon') %}
+                                  inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
+                                {% endif %}
+                            --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                                  -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                                {% elif is_state('sun.sun', 'below_horizon') %}
+                                  -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
+                                {% endif %}
                           }
                         styles:
                           card:
                             - width: 80px
                             - height: 80px
+                            - margin: 10px
                             - border-radius: 15px
+                            - box-shadow: var(--soft-ui-shadow)
+                            - background-color: var(--primary-background-color)
+                            - border-style: solid
+                            - border-color: var(--primary-background-color)
+                            - box-shadow: var(--soft-ui-shadow)
                             - background-color: var(--primary-background-color)
                           icon:
                             - color: var(--primary-text-color)
                         tap_action:
                           action: toggle
-                          haptic: medium
+                          haptic: light
                         type: 'custom:button-card'
                       - cards:
                           - content: |
-                              # Dinner
-                            style: |
-                              ha-card {
-                                height: 20px;                  
-                                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                box-shadow: 2px 2px rgba(0,0,0,0.0);
-                              }
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                              # TV
+                            style:
+                              .: |
+                                ha-card {
+                                  --ha-card-background: none !important;
+                                  box-shadow: none !important;
+                                  height: 20px;
+                                  margin-top: 15px;
+                                }
+                              ha-markdown:
+                                $: |
+                                  h1 {
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                    font-family: Helvetica;
+                                    letter-spacing: '-0.01em';
+                                  }
                             type: markdown
                           - content: |
-                              # Sets lights and notifies it is dinner time
-                            style: >
-                              ha-card {
-
-                              --paper-card-background-color: 'rgba(11, 11, 11,
-                              0.00)';
-
-                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                 }
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                              # Toggles the TV
+                            style:
+                              .: |
+                                ha-card {
+                                  --ha-card-background: none !important;
+                                  box-shadow: none !important;
+                                }
+                              ha-markdown:
+                                $: |
+                                  h1 {
+                                    font-size: 15px;
+                                    font-weight: thin;
+                                    font-family: Helvetica;
+                                    letter-spacing: '-0.01em';
+                                  }
                             type: markdown
                         type: vertical-stack
                     type: horizontal-stack
@@ -376,128 +388,166 @@
                         icon: 'mdi:movie-open'
                         show_icon: true
                         show_name: false
+                        state:
+                          - styles:
+                              card:
+                                - box-shadow: var(--soft-ui-pressed)
+                              icon:
+                                - color: var(--paper-item-icon-active-color)
+                            value: 'on'
                         style: |
-                          ha-card {
-                            margin: 10px;
-                            box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
-                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% elif is_state('sun.sun', 'below_horizon') %}
-                                -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                              {% endif %}    
+                          * {
+                            --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                                  inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+                                {% elif is_state('sun.sun', 'below_horizon') %}
+                                  inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
+                                {% endif %}
+                            --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                                  -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                                {% elif is_state('sun.sun', 'below_horizon') %}
+                                  -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
+                                {% endif %}
                           }
                         styles:
                           card:
                             - width: 80px
                             - height: 80px
+                            - margin: 10px
                             - border-radius: 15px
+                            - box-shadow: var(--soft-ui-shadow)
                             - background-color: var(--primary-background-color)
+                          hold_action:
+                            action: more-info
+                            haptic: medium
                           icon:
                             - color: var(--primary-text-color)
-                        tap_action:
-                          action: toggle
-                          haptic: medium
+                          tap_action:
+                            action: toggle
+                            haptic: light
                         type: 'custom:button-card'
                       - cards:
                           - content: |
-                              # Movie
-                            style: |
-                              ha-card {
-                                height: 20px;                  
-                                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                box-shadow: 2px 2px rgba(0,0,0,0.0);
-                              }
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                              # Movie 
+                            style:
+                              .: |
+                                ha-card {
+                                  --ha-card-background: none !important;
+                                  box-shadow: none !important;
+                                  height: 20px;
+                                  margin-top: 15px;
+                                }
+                              ha-markdown:
+                                $: |
+                                  h1 {
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                    font-family: Helvetica;
+                                    letter-spacing: '-0.01em';
+                                  }
                             type: markdown
                           - content: |
-                              # Turns off all the lights and turns on the TV
-                            style: |
-                              ha-card {
-                                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                box-shadow: 2px 2px rgba(0,0,0,0.0);
-                              }
-                              h1 {
-                                font-size: 15px;
-                                font-weight: thin;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                              # All lights off, TV on
+                            style:
+                              .: |
+                                ha-card {
+                                  --ha-card-background: none !important;
+                                  box-shadow: none !important;
+                                }
+                              ha-markdown:
+                                $: |
+                                  h1 {
+                                    font-size: 15px;
+                                    font-weight: thin;
+                                    font-family: Helvetica;
+                                    letter-spacing: '-0.01em';
+                                  }
                             type: markdown
                         type: vertical-stack
                     type: horizontal-stack
                   - cards:
-                      - entity: script.television
-                        icon: 'mdi:television'
+                      - entity: script.dinner
+                        icon: 'mdi:silverware-fork-knife'
                         show_icon: true
                         show_name: false
+                        state:
+                          - styles:
+                              card:
+                                - box-shadow: var(--soft-ui-pressed)
+                              icon:
+                                - color: var(--paper-item-icon-active-color)
+                            value: 'on'
                         style: |
-                          ha-card {
-                            margin: 10px;
-                            box-shadow: 
-                              {% if is_state('sun.sun', 'above_horizon') %}
-                                -8px -8px 8px 0 rgba(255,255,255,.5),8px 8px 8px 0 rgba(0,0,0,.03);
-                              {% elif is_state('sun.sun', 'below_horizon') %}
-                                -8px -8px 8px 0 rgba(50, 50, 50,.5),8px 8px 8px 0 rgba(0,0,0,.15);
-                              {% endif %}   
+                          * {
+                            --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
+                                  inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+                                {% elif is_state('sun.sun', 'below_horizon') %}
+                                  inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
+                                {% endif %}
+                            --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
+                                  -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
+                                {% elif is_state('sun.sun', 'below_horizon') %}
+                                  -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
+                                {% endif %}
                           }
                         styles:
                           card:
                             - width: 80px
                             - height: 80px
+                            - margin: 10px
                             - border-radius: 15px
+                            - box-shadow: var(--soft-ui-shadow)
                             - background-color: var(--primary-background-color)
+                          hold_action:
+                            action: more-info
+                            haptic: medium
                           icon:
                             - color: var(--primary-text-color)
-                        tap_action:
-                          action: navigate
-                          navigation_path: /lovelace/sprinklers/
-                          haptic: light
-                        hold_action:
-                          action: more-info
+                          tap_action:
+                            action: toggle
+                            haptic: light
                         type: 'custom:button-card'
                       - cards:
                           - content: |
-                              # Television
-                            style: |
-                              ha-card {
-                                height: 20px;                  
-                                --paper-card-background-color: 'rgba(11, 11, 11, 0.00)';
-                                box-shadow: 2px 2px rgba(0,0,0,0.0);
-                              }
-                              h1 {
-                                font-size: 20px;
-                                font-weight: bold;
-                                font-family: Helvetica;
-                                letter-spacing: '-0.01em';
-                              }
+                              # Dinner
+                            style:
+                              .: |
+                                ha-card {
+                                  --ha-card-background: none !important;
+                                  box-shadow: none !important;
+                                  height: 20px;
+                                  margin-top: 15px;
+                                }
+                              ha-markdown:
+                                $: |
+                                  h1 {
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                    font-family: Helvetica;
+                                    letter-spacing: '-0.01em';
+                                  }
                             type: markdown
                           - content: |
-                              # Toggles the family room televsion
-                            style: >
-                              ha-card {
-
-                              --paper-card-background-color: 'rgba(11, 11, 11,
-                              0.00)';
-
-                              box-shadow: 2px 2px rgba(0,0,0,0.0);
-                                 }
-                               h1 {
-                               
-                               font-size: 15px;
-                               font-weight: thin;
-                               font-family: Helvetica;
-                               letter-spacing: '-0.01em';
+                              # Dinner lighting and notification
+                            style:
+                              .: |
+                                ha-card {
+                                  --ha-card-background: none !important;
+                                  box-shadow: none !important;
+                                }
+                              ha-markdown:
+                                $: |
+                                  h1 {
+                                    font-size: 15px;
+                                    font-weight: thin;
+                                    font-family: Helvetica;
+                                    letter-spacing: '-0.01em';
                                   }
                             type: markdown
                         type: vertical-stack
                     type: horizontal-stack
                 type: vertical-stack
             type: vertical-stack
+        type: vertical-stack
     icon: 'mdi:lightbulb-multiple'
     path: lights
     title: Lights
