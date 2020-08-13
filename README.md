@@ -138,7 +138,6 @@ custom_header:
 
 ## Text Cards
 **All text cards below require:**
-* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
 ## Header
