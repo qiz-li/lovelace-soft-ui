@@ -140,7 +140,7 @@ custom_header:
 **All text cards below require:**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
-## Header
+### Header
 <p align="left">
   <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="400">
   <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="400">
@@ -173,7 +173,7 @@ type: markdown
 ```
 </details>
 
-## Header and Subheader
+### Header and Subheader
 
 <p align="left">
   <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="400">
