@@ -290,8 +290,8 @@ state:
       card:
         - box-shadow: |
             [[[ return states['sun.sun'].state == 'below_horizon'
-              ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
-              : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+              ? 'inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3)'
+              : 'inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035)';
             ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
@@ -399,8 +399,8 @@ styles:
     - border-radius: 15px
     - box-shadow: |
         [[[ return states['sun.sun'].state == 'below_horizon'
-          ? '-5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08)'
-          : '-4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
+          ? '-5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08)'
+          : '-5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
         ]]]
     - background-color: var(--primary-background-color)
   icon:
@@ -427,8 +427,8 @@ state:
       card:
         - box-shadow: |
             [[[ return states['sun.sun'].state == 'below_horizon'
-              ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
-              : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+              ? 'inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3)'
+              : 'inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035)';
             ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
@@ -563,7 +563,7 @@ cards:
         - border-radius: 15px
         - box-shadow: |
             [[[ return states['sun.sun'].state == 'below_horizon'
-              ? '-5px -5px 10px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08)'
+              ? '-5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08)'
               : '-5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
             ]]]
         - background-color: var(--primary-background-color)
