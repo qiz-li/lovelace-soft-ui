@@ -21,18 +21,18 @@
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
 ## 1. Install card-mod
-OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots following these 3 simple steps! First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It is a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read HACS [documentation](https://hacs.xyz) and install it.
+OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots following these 3 simple steps! First of all, if you want to apply styles to cards other than `button-card`, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
 
 ## 2. Custom Light and Dark Themes
 The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
 
 You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well. 
 
-The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at ```config/themes/clear/clear.yaml```).
+The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
 
 Now that you have picked out your light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
 
-If your device does match the requirements, you will now need to make a service call in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select ```frontend.set_theme``` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
+If your device does match the requirements, you will now need to make a service call in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select `frontend.set_theme` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
 
 ```yaml
 name: name of your theme
@@ -95,6 +95,22 @@ style: |
         {% endif %}
    }
 ```
+
+<details><summary>Alternative code for button cards</summary>
+
+```yaml
+triggers_update:
+  - sun.sun
+styles:
+  card:
+    - box-shadow: |
+        [[[ return states['sun.sun'].state == 'below_horizon'
+          ? '-4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)'
+          : '-5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08)';
+        ]]]
+```
+
+</details>
 
 # Advanced Usage
 Here are some cards I created using this style. All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
@@ -234,7 +250,6 @@ Below you will find different button variations using the Soft UI style. All the
 **All button cards below require:**
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
-* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
 ### Button, No Text, No Border
 <p align="left">
@@ -243,7 +258,7 @@ Below you will find different button variations using the Soft UI style. All the
   <br/>
 </p>
 
-This card is a simple button with an icon. When the state of the entity is ```on```, the button will be pressed in (picture on the right). When the entity is ```off``` the button will be released (picture on the left). 
+This card is a simple button with an icon. When the state of the entity is `on`, the button will be pressed in (picture on the right). When the entity is `off` the button will be released (picture on the left). 
 
 <details><summary><b>Show code</b></summary>
 
@@ -255,26 +270,17 @@ entity: light.example
 icon: 'mdi:lamp'
 show_icon: true
 show_name: false
-style: |
-  * {
-    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-           inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
-         {% elif is_state('sun.sun', 'below_horizon') %}
-           inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
-         {% endif %}
-    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
-        {% elif is_state('sun.sun', 'below_horizon') %}
-          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
-        {% endif %}
-  }
 styles:
   card:
     - width: 60px
     - height: 60px
     - margin: 10px
     - border-radius: 15px
-    - box-shadow: var(--soft-ui-shadow)
+    - box-shadow: |
+        [[[ return states['sun.sun'].state == 'below_horizon'
+          ? '-5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08)'
+          : '-4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
+        ]]]
     - background-color: var(--primary-background-color)
   icon:
     - color: var(--primary-text-color)
@@ -282,7 +288,11 @@ state:
   - value: 'on'
     styles:
       card:
-        - box-shadow: var(--soft-ui-pressed)
+        - box-shadow: |
+            [[[ return states['sun.sun'].state == 'below_horizon'
+              ? 'inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3)'
+              : 'inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035)';
+            ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
 tap_action:
@@ -314,19 +324,8 @@ entity: light.example
 icon: 'mdi:light-switch'
 show_icon: true
 show_name: false
-style: |
-  * {
-    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
-         {% elif is_state('sun.sun', 'below_horizon') %}
-           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
-         {% endif %}
-    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-          -4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
-        {% elif is_state('sun.sun', 'below_horizon') %}
-          -5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08);
-        {% endif %}
-  }
+triggers_update:
+  - sun.sun
 styles:
   card:
     - width: 60px
@@ -336,7 +335,11 @@ styles:
     - border-width: 1px
     - border-style: solid
     - border-color: var(--primary-background-color)
-    - box-shadow: var(--soft-ui-shadow)
+    - box-shadow: |
+        [[[ return states['sun.sun'].state == 'below_horizon'
+          ? '-5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08)'
+          : '-4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
+        ]]]
     - background-color: var(--primary-background-color)
   icon:
     - color: var(--primary-text-color)
@@ -345,7 +348,11 @@ state:
     styles:
       card:
         - border-width: 2px
-        - box-shadow: var(--soft-ui-pressed)
+        - box-shadow: |
+            [[[ return states['sun.sun'].state == 'below_horizon'
+              ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
+              : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+            ]]]
         - border-color: var(--paper-item-icon-active-color)
       icon:
         - color: var(--paper-item-icon-active-color)
@@ -390,7 +397,11 @@ styles:
     - width: 100px
     - height: 100px
     - border-radius: 15px
-    - box-shadow: var(--soft-ui-shadow)
+    - box-shadow: |
+        [[[ return states['sun.sun'].state == 'below_horizon'
+          ? '-5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08)'
+          : '-5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
+        ]]]
     - background-color: var(--primary-background-color)
   icon:
     - color: var(--primary-text-color)
@@ -410,24 +421,15 @@ styles:
     - opacity: 0.6
     - padding: 0 15px 5px
 show_state: true
-style: |
-  * {
-    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-           inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
-         {% elif is_state('sun.sun', 'below_horizon') %}
-           inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
-         {% endif %}
-    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-          -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
-        {% elif is_state('sun.sun', 'below_horizon') %}
-          -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
-        {% endif %}
-  }
 state:
   - value: 'on'
     styles:
       card:
-        - box-shadow: var(--soft-ui-pressed)
+        - box-shadow: |
+            [[[ return states['sun.sun'].state == 'below_horizon'
+              ? 'inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3)'
+              : 'inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035)';
+            ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
 tap_action:
@@ -474,7 +476,11 @@ styles:
     - border-color: var(--primary-background-color)
     - border-width: 1px
     - margin: 10px
-    - box-shadow: var(--soft-ui-shadow)
+    - box-shadow: |
+        [[[ return states['sun.sun'].state == 'below_horizon'
+          ? '-5px -5px 8px rgba(50, 50, 50,.2),5px 5px 8px rgba(0,0,0,.08)'
+          : '-4px -4px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
+        ]]]
     - background-color: var(--primary-background-color)
   icon:
     - color: var(--primary-text-color)
@@ -494,26 +500,16 @@ styles:
     - opacity: 0.6
     - padding: 0 15px 5px
 show_state: true
-style: |
-  * {
-    --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-           inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08);
-         {% elif is_state('sun.sun', 'below_horizon') %}
-           inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5);
-         {% endif %}
-    --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-          -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
-        {% elif is_state('sun.sun', 'below_horizon') %}
-          -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
-        {% endif %}
-  }
-
 state:
   - value: 'on'
     styles:
       card:
         - border-width: 2px
-        - box-shadow: var(--soft-ui-pressed)
+        - box-shadow: |
+            [[[ return states['sun.sun'].state == 'below_horizon'
+              ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
+              : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+            ]]]
         - border-color: var(--paper-item-icon-active-color)
       icon:
         - color: var(--paper-item-icon-active-color)
@@ -534,7 +530,8 @@ type: 'custom:button-card'
   <br/>
 </p>
 
-The general gist of this card is the same as the other button cards. When the state of the entity is ```on```, the button will be pressed in (picture on the left). When the entity is ```off``` the button will be released (picture on the right). However, this card is different from all the other button cards as beside the big button, there are two lines of text that are customizable.
+This card requires [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven).  
+The general gist of this card is the same as the other button cards. When the state of the entity is `on`, the button will be pressed in (picture on the left). When the entity is `off` the button will be released (picture on the right). However, this card is different from all the other button cards as beside the big button, there are two lines of text that are customizable.
 
 <details><summary><b>Show code</b></summary>
 
@@ -547,24 +544,15 @@ cards:
     icon: 'mdi:lightbulb-multiple'
     show_icon: true
     show_name: false
-    style: |
-      * {
-        --soft-ui-pressed: {% if is_state('sun.sun', 'above_horizon') %}
-              inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
-            {% elif is_state('sun.sun', 'below_horizon') %}
-              inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
-            {% endif %}
-        --soft-ui-shadow: {% if is_state('sun.sun', 'above_horizon') %}
-              -5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03);
-            {% elif is_state('sun.sun', 'below_horizon') %}
-              -5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08);
-            {% endif %}
-      }
     state:
       - value: 'on'
         styles:
           card:
-            - box-shadow: var(--soft-ui-pressed)
+            - box-shadow: |
+                [[[ return states['sun.sun'].state == 'below_horizon'
+                  ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
+                  : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+                ]]]
           icon:
             - color: var(--paper-item-icon-active-color)
     styles:
@@ -573,7 +561,11 @@ cards:
         - height: 80px
         - margin: 10px
         - border-radius: 15px
-        - box-shadow: var(--soft-ui-shadow)
+        - box-shadow: |
+            [[[ return states['sun.sun'].state == 'below_horizon'
+              ? '-5px -5px 10px rgba(50, 50, 50,.2),6px 6px 10px rgba(0,0,0,.08)'
+              : '-5px -5px 8px rgba(255,255,255,.5),5px 5px 8px rgba(0,0,0,.03)';
+            ]]]
         - background-color: var(--primary-background-color)
       icon:
         - color: var(--primary-text-color)
