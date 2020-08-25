@@ -14,6 +14,7 @@
 ![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
 
 # Let's do it!
+OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots following these **3 simple steps**!
 
 ### Alternatives
 **[@Savjee](https://github.com/Savjee)'s [Button Text Card](https://github.com/Savjee/button-text-card).** If you are only looking to implement this style on a button, this is the way. It is very easy to install and set up. The downside, however, is that you will not be able to implement this style on any other card.
@@ -21,7 +22,7 @@
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
 ## 1. Install card-mod
-OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots following these 3 simple steps! First of all, if you want to apply styles to cards other than `button-card`, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
+First of all, if you want to apply styles to cards other than [**button-card**](https://github.com/custom-cards/button-card), you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
 
 ## 2. Custom Light and Dark Themes
 The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
@@ -95,8 +96,11 @@ style: |
         {% endif %}
    }
 ```
+### Alternative setup
 
-<details><summary>Alternative code for button cards</summary>
+If you only wish to use the styling on [**button-card**](https://github.com/custom-cards/button-card), you can add the following to your [**button-card**](https://github.com/custom-cards/button-card) configuration without needing to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod).
+
+<details><summary><b>Show code</b></summary>
 
 ```yaml
 triggers_update:
@@ -530,7 +534,10 @@ type: 'custom:button-card'
   <br/>
 </p>
 
-This card requires [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven).  
+**This card requires:**
+* [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
+* [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
+
 The general gist of this card is the same as the other button cards. When the state of the entity is `on`, the button will be pressed in (picture on the left). When the entity is `off` the button will be released (picture on the right). However, this card is different from all the other button cards as beside the big button, there are two lines of text that are customizable.
 
 <details><summary><b>Show code</b></summary>
