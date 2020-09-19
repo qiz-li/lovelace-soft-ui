@@ -294,8 +294,8 @@ state:
       card:
         - box-shadow: |
             [[[ return states['sun.sun'].state == 'below_horizon'
-              ? 'inset -3px -3px 5px rgba(50, 50, 50, .5), inset 3px 3px 5px rgba(0,0,0, .3)'
-              : 'inset -3px -3px 5px rgba(255, 255, 255, .65), inset 3px 3px 5px rgba(0,0,0, .035)';
+              ? 'inset -3px -3px 5px rgba(50, 50, 50, .5), inset 3px 3px 5px rgba(0, 0, 0, .3)'
+              : 'inset -3px -3px 5px rgba(255, 255, 255, .65), inset 3px 3px 5px rgba(0, 0, 0, .035)';
             ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
@@ -431,8 +431,8 @@ state:
       card:
         - box-shadow: |
             [[[ return states['sun.sun'].state == 'below_horizon'
-              ? 'inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3)'
-              : 'inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035)';
+              ? 'inset -3px -3px 5px rgba(50, 50, 50, .5), inset 3px 3px 5px rgba(0, 0, 0, .3)'
+              : 'inset -3px -3px 5px rgba(255, 255, 255, .65), inset 3px 3px 5px rgba(0, 0, 0, .035)';
             ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
@@ -511,8 +511,8 @@ state:
         - border-width: 2px
         - box-shadow: |
             [[[ return states['sun.sun'].state == 'below_horizon'
-              ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
-              : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+              ? 'inset -4px -4px 5px rgba(60, 60, 60, .6), inset 4px 4px 5px rgba(0, 0, 0, .5)'
+              : 'inset -3px -3px 5px rgba(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, .08)';
             ]]]
         - border-color: var(--paper-item-icon-active-color)
       icon:
@@ -557,8 +557,8 @@ cards:
           card:
             - box-shadow: |
                 [[[ return states['sun.sun'].state == 'below_horizon'
-                  ? 'inset -4px -4px 5px rgba(60, 60, 60,.6), inset 4px 4px 5px rgba(0,0,0,.5)'
-                  : 'inset -3px -3px 5px rgba(255,255,255), inset 3px 3px 5px rgba(0,0,0,.08)';
+                  ? 'inset -4px -4px 5px rgba(60, 60, 60, .6), inset 4px 4px 5px rgba(0, 0, 0, .5)'
+                  : 'inset -3px -3px 5px rgba(255, 255, 255), inset 3px 3px 5px rgba(0, 0, 0, .08)';
                 ]]]
           icon:
             - color: var(--paper-item-icon-active-color)
@@ -805,9 +805,9 @@ entities:
           ha-card {
             box-shadow:
               {% if is_state('sun.sun', 'above_horizon') %}
-                inset -3px -3px 5px rgba(255,255,255,.65), inset 3px 3px 5px rgba(0,0,0,.035);
+                inset -3px -3px 5px rgba(255, 255, 255, .65), inset 3px 3px 5px rgba(0, 0, 0, .035);
               {% elif is_state('sun.sun', 'below_horizon') %}
-                inset -3px -3px 5px rgba(50, 50, 50,.5), inset 3px 3px 5px rgba(0,0,0,.3);
+                inset -3px -3px 5px rgba(50, 50, 50, .5), inset 3px 3px 5px rgba(0, 0, 0, .3);
               {% endif %}
             border-radius: 30px;
             background-color: var(--primary-background-color)
