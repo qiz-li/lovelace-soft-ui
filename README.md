@@ -51,12 +51,13 @@ Light:
 
 ```yaml
 Dark:
-  primary-background-color: "#313438"
-  card-background-color: "#313438"
-  paper-card-background-color: "#313438"
-  secondary-background-color: "#313438"
-  divider-color: "#313438"
+  primary-background-color: "#222"
+  card-background-color: "#222"
+  paper-card-background-color: "#222"
+  secondary-background-color: "#222"
+  divider-color: "#222"
   primary-text-color: white
+  sidebar-icon-color: white
   ha-card-border-radius: 15px
   ha-card-box-shadow: -5px -5px 8px rgba(50, 50, 50, .2), 5px 5px 8px rgba(0, 0, 0, .08)
 ```
