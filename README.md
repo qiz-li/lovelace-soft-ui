@@ -21,18 +21,9 @@ OK so you've decided to redo your UI, don't worry, your UI will look as great as
 
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
-## 1. Install card-mod
-First of all, if you want to apply styles to cards other than [**button-card**](https://github.com/custom-cards/button-card), you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
+Here is the most stripped down versions of **[@KTibow](https://github.com/KTibow)**'s themes that will have pretty much all of the styles implemented universally. You will need to add the following to your themes directory (located at `config/themes/`). Fore more refined versions of these themes, check out the links above.
 
-## 2. Custom Light and Dark Themes
-The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
-
-You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well.
-
-The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
-
-Here's some simple light and dark themes you can add to your themes directory that have all of the styles implemented except for `margin`:
-<details><summary>Light</summary>
+<details><summary><b>Light</b></summary>
 
 ```yaml
 Light:
@@ -47,8 +38,8 @@ Light:
 
 </details>
 
-<details><summary>Dark</summary>
-
+<details><summary><b>Dark</b></summary>
+  
 ```yaml
 Dark:
   primary-background-color: "#222"
@@ -63,6 +54,16 @@ Dark:
 ```
 
 </details>
+
+## 1. Install card-mod
+First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
+
+## 2. Custom Light and Dark Themes
+The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
+
+You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well.
+
+The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
 
 Now that you have picked out your light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
 
@@ -129,25 +130,6 @@ style: |
         {% endif %}
    }
 ```
-### Alternative setup
-
-If you only wish to use the styling on [**button-card**](https://github.com/custom-cards/button-card), you can add the following to your [**button-card**](https://github.com/custom-cards/button-card) configuration without needing to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod).
-
-<details><summary><b>Show code</b></summary>
-
-```yaml
-triggers_update:
-  - sun.sun
-styles:
-  card:
-    - box-shadow: |
-        [[[ return states['sun.sun'].state == 'below_horizon'
-          ? '-4px -4px 8px rgba(255, 255, 255, .5), 5px 5px 8px rgba(0, 0, 0, .03)'
-          : '-5px -5px 8px rgba(50, 50, 50, .2), 5px 5px 8px rgba(0, 0, 0, .08)';
-        ]]]
-```
-
-</details>
 
 # Advanced Usage
 Here are some cards I created using this style. All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
