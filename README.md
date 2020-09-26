@@ -27,9 +27,42 @@ First of all, if you want to apply styles to cards other than [**button-card**](
 ## 2. Custom Light and Dark Themes
 The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
 
-You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well. 
+You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well.
 
 The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
+
+Here's some simple light and dark themes you can add to your themes directory that have all of the styles implemented except for `margin`:
+<details><summary>Light</summary>
+
+```yaml
+Light:
+  primary-background-color: "#F3F5F7"
+  card-background-color: "#F3F5F7"
+  paper-card-background-color: "#F3F5F7"
+  secondary-background-color: "#F3F5F7"
+  divider-color: "#F3F5F7"
+  ha-card-border-radius: 15px
+  ha-card-box-shadow: -4px -4px 8px rgba(255, 255, 255, .5), 5px 5px 8px rgba(0, 0, 0, .03)
+```
+
+</details>
+
+<details><summary>Dark</summary>
+
+```yaml
+Dark:
+  primary-background-color: "#222"
+  card-background-color: "#222"
+  paper-card-background-color: "#222"
+  secondary-background-color: "#222"
+  divider-color: "#222"
+  primary-text-color: white
+  sidebar-icon-color: white
+  ha-card-border-radius: 15px
+  ha-card-box-shadow: -5px -5px 8px rgba(50, 50, 50, .2), 5px 5px 8px rgba(0, 0, 0, .08)
+```
+
+</details>
 
 Now that you have picked out your light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
 
