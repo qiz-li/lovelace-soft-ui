@@ -283,10 +283,8 @@ This card is a simple button with an icon. When the state of the entity is `on`,
 
 ```yaml
 # Example entry
-# Change this to the entity you want to control
-entity: light.example
-# Change this to the icon you want to display
-icon: 'mdi:lamp'
+entity: light.example # Change this to the entity you want to control
+icon: 'mdi:lamp' # Change this to the icon you want to display
 show_icon: true
 show_name: false
 styles:
@@ -337,10 +335,8 @@ This card is almost identical to the one above. The only difference between the 
 
 ```yaml
 # Example entry
-# Change this to the entity you want to control
-entity: light.example
-# Change this to the icon you want to display
-icon: 'mdi:light-switch'
+entity: light.example # Change this to the entity you want to control
+icon: 'mdi:light-switch' # Change this to the icon you want to display
 show_icon: true
 show_name: false
 triggers_update:
@@ -398,18 +394,13 @@ This button will display, in addition to the icon, the name, and the state of th
 
 ```yaml
 # Example entry
-# Change this to the entity you want to control
-entity: light.example
-# Change this to the icon you want to display
-icon: 'mdi:ceiling-light'
-# Change this to the name you want to display
-name: Bedroom
-# You can adjust the size of the icon
-size: 35%
+entity: light.example # Change this to the entity you want to control
+icon: 'mdi:ceiling-light' # Change this to the icon you want to display
+name: Bedroom # Change this to the name you want to display
+size: 35% # You can adjust the size of the icon
 styles:
   img_cell:
-# You can adjust padding of the icon
-    - padding-left: 15px
+    - padding-left: 15px # You can adjust padding of the icon
     - justify-content: start
   card:
     - margin: 10px
@@ -474,18 +465,13 @@ This card is almost identical to the one above. The only difference between the 
 
 ```yaml
 # Example entry
-# Change this to the entity you want to control
-entity: light.example
-# Change this to the icon you want to display
-icon: 'mdi:vanity-light'
-# Change this to the name you want to display
-name: Island
-# You can adjust the size of the icon
-size: 30%
+entity: light.example # Change this to the entity you want to control
+icon: 'mdi:vanity-light' # Change this to the icon you want to display
+name: Island # Change this to the name you want to display
+size: 30% # You can adjust the size of the icon
 styles:
   img_cell:
-# You can adjust padding of the icon
-    - padding-left: 25px
+    - padding-left: 25px # You can adjust padding of the icon
     - justify-content: start
   card:
     - width: 100px
@@ -560,10 +546,8 @@ The general gist of this card is the same as the other button cards. When the st
 ```yaml
 # Example entry
 cards:
-    # Change this to the entity you want to control
-  - entity: light.example
-    # Change this to the icon you want to display
-    icon: 'mdi:lightbulb-multiple'
+  - entity: light.example # Change this to the entity you want to control
+    icon: 'mdi:lightbulb-multiple' # Change this to the icon you want to display
     show_icon: true
     show_name: false
     state:
@@ -591,7 +575,7 @@ cards:
         - background-color: var(--primary-background-color)
       icon:
         - color: var(--primary-text-color)
-# Actions to perform
+      # Actions to perform
       tap_action:
         action: toggle
         haptic: light
@@ -600,9 +584,8 @@ cards:
         haptic: medium
     type: 'custom:button-card'
   - cards:
-# Big text to display
       - content: |
-          # Big Text
+          # Big text to display
         style:
           .: |
             ha-card {
@@ -620,9 +603,8 @@ cards:
                 letter-spacing: '-0.01em';
               }
         type: markdown
-# Small text to display
       - content: >
-          # Lorum ipsum small text
+          # Small text to display
         style:
           .: |
             ha-card {
@@ -684,9 +666,8 @@ entities:
             - background-color: var(--primary-background-color)
           icon:
             - color: var(--primary-text-color)
-        tap_action:
+        tap_action: # Please change this to a service you call to toggle the TV/device
           action: call-service
-# Please change this to a service you call to toggle the TV/device
           service: remote.send_command
           service_data:
             command: power
@@ -709,9 +690,8 @@ entities:
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
-                tap_action:
+                tap_action: # Please change this to a service you call to go 'up' on the TV/device
                   action: call-service
-# Please change this to a service you call to go 'up' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: up
@@ -732,9 +712,8 @@ entities:
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
-                tap_action:
+                tap_action: # Please change this to a service you call to go 'left' on the TV/device
                   action: call-service
-# Please change this to a service you call to go 'left' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: left
@@ -763,8 +742,7 @@ entities:
                     - font-weight: bold
                     - font-family: Helvetica
                     - letter-spacing: '-0.01em'
-                tap_action:
-# Please change this to a service you call to 'enter' on the TV/device
+                tap_action: # Please change this to a service you call to 'enter' on the TV/device
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -783,9 +761,8 @@ entities:
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
-                tap_action:
+                tap_action: # Please change this to a service you call to go 'right' on the TV/device
                   action: call-service
-# Please change this to a service you call to go 'right' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: right
@@ -806,9 +783,8 @@ entities:
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
-                tap_action:
+                tap_action: # Please change this to a service you call to go 'down' on the TV/device
                   action: call-service
-# Please change this to a service you call to go 'down' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: down
@@ -857,9 +833,8 @@ entities:
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
-                tap_action:
+                tap_action: # Please change this to a service you call to 'volume down' on the TV/device
                   action: call-service
-# Please change this to a service you call to 'volume down' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: volume_down_sony
@@ -895,9 +870,8 @@ entities:
                     - background-color: var(--primary-background-color)
                   icon:
                     - color: var(--primary-text-color)
-                tap_action:
+                tap_action: # Please change this to a service you call to 'volume up' on the TV/device
                   action: call-service
-# Please change this to a service you call to 'volume up' on the TV/device
                   service: remote.send_command
                   service_data:
                     command: volume_up_sony
@@ -919,8 +893,7 @@ entities:
         type: 'custom:hui-entities-card'
     type: 'custom:hui-horizontal-stack-card'
   - cards:
-# The first button in the bottom, you can change the icon here. In my case it is 'home'
-      - icon: 'mdi:home'
+      - icon: 'mdi:home' # The first button in the bottom, you can change the icon here. In my case it is 'home'
         show_icon: true
         show_name: false
         style: |
@@ -942,16 +915,14 @@ entities:
             - background-color: var(--primary-background-color)
           icon:
             - color: var(--primary-text-color)
-        tap_action:
+        tap_action: # Please change this to a service you want to call on the first button
           action: call-service
-# Please change this to a service you want to call on the first button
           service: remote.send_command
           service_data:
             command: home
             entity_id: remote.xiaomi
         type: 'custom:button-card'
-# The second button in the bottom, you can change the icon here. In my case it is 'return'
-      - icon: 'mdi:keyboard-return'
+      - icon: 'mdi:keyboard-return' # The second button in the bottom, you can change the icon here. In my case it is 'return'
         show_icon: true
         show_name: false
         style: |
@@ -973,16 +944,14 @@ entities:
             - background-color: var(--primary-background-color)
           icon:
             - color: var(--primary-text-color)
-        tap_action:
+        tap_action: # Please change this to a service you want to call on the second button
           action: call-service
-# Please change this to a service you want to call on the second button
           service: remote.send_command
           service_data:
             command: return
             entity_id: remote.xiaomi
         type: 'custom:button-card'
-# The third button in the bottom, you can change the icon here. In my case it is a set top box.
-      - icon: 'mdi:set-top-box'
+      - icon: 'mdi:set-top-box' # The third button in the bottom, you can change the icon here. In my case it is a set top box.
         show_icon: true
         show_name: false
         style: |
@@ -1004,9 +973,8 @@ entities:
             - background-color: var(--primary-background-color)
           icon:
             - color: var(--primary-text-color)
-        tap_action:
+        tap_action: # Change this to a service you want to call on the third button
           action: call-service
-# Please change this to a service you want to call on the third button
           service: script.turn_on
           service_data:
             entity_id: script.mi_box
