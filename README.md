@@ -98,8 +98,7 @@ Alternatively, after you've picked out custom light and dark themes, you can jus
       sequence:
       - service: frontend.set_theme
         data:
-# Change this to the name of your light theme
-          name: Name of your light theme
+          name: Change this to the name of your light theme
     - conditions:
       - condition: state
         entity_id: sun.sun
@@ -107,8 +106,7 @@ Alternatively, after you've picked out custom light and dark themes, you can jus
       sequence:
       - service: frontend.set_theme
         data:
-# Change this to the name of your dark theme
-          name: Name of your dark theme
+          name: Change this to the name of your dark theme
 ```
 </details>
 
