@@ -21,7 +21,7 @@ OK so you've decided to redo your UI, don't worry, your UI will look as great as
 
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
-Here is the most stripped down versions of **[@KTibow](https://github.com/KTibow)**'s themes that will have pretty much all of the styles implemented universally. You will need to add the following to your themes directory (located at `config/themes/`). Fore more refined versions of these themes, check out the links above.
+Here is the most stripped down versions of KTibow's themes that will have pretty much all of the styles implemented universally. You'll need to add the following to your themes directory (located at `config/themes/`). Fore more refined versions of these themes, check out the links above.
 
 <details><summary><b>Light</b></summary>
 
