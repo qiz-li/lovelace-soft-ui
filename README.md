@@ -21,40 +21,6 @@ OK so you've decided to redo your UI, don't worry, your UI will look as great as
 
 **[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
-Here is the most stripped down versions of KTibow's themes that will have pretty much all of the styles implemented universally. You'll need to add the following to your themes directory (located at `config/themes/`). For more refined versions of these themes, check out the links above.
-
-<details><summary><b>Light</b></summary>
-
-```yaml
-Light:
-  primary-background-color: "#F3F5F7"
-  card-background-color: "#F3F5F7"
-  paper-card-background-color: "#F3F5F7"
-  secondary-background-color: "#F3F5F7"
-  divider-color: "#F3F5F7"
-  ha-card-border-radius: 15px
-  ha-card-box-shadow: -4px -4px 8px rgba(255, 255, 255, .5), 5px 5px 8px rgba(0, 0, 0, .03)
-```
-
-</details>
-
-<details><summary><b>Dark</b></summary>
-  
-```yaml
-Dark:
-  primary-background-color: "#222"
-  card-background-color: "#222"
-  paper-card-background-color: "#222"
-  secondary-background-color: "#222"
-  divider-color: "#222"
-  primary-text-color: white
-  sidebar-icon-color: white
-  ha-card-border-radius: 15px
-  ha-card-box-shadow: -5px -5px 8px rgba(50, 50, 50, .2), 5px 5px 8px rgba(0, 0, 0, .08)
-```
-
-</details>
-
 ## 1. Install card-mod
 First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
 
@@ -131,43 +97,6 @@ style: |
 
 # Advanced Usage
 Here are some cards I created using this style. All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
-
-## Compact Header
-<p align="left">
-  <img src="docs/images/normal_header.png" alt="Normal header" width="400">
-  <img src="docs/images/compact_header.png" alt="compact header" width="400">
-  <br/>
- The <b>default</b> header VS the <b>compact</b> header.
-</p>
-
-This makes the original Home Assistant header "compact" while also matching it with the background color. To add this card, click on the three dots on the top right, then go to `Configure UI` then `Raw config editor` and add the following to the top:
-
-**Required Custom Cards:**
-
-* [**Custom Header**](https://maykar.github.io/custom-header), by [**@maykar**](https://github.com/maykar)
-
-
-<details><summary><b>Show code</b></summary>
-
-```yaml
-# Example entry
-custom_header:
-  # Makes header compact
-  compact_mode: true
-  # Makes background transparent
-  background: transparent
-  # Hide help entry
-  hide_help: true
-  # Makes tabs the same color as the text color
-  elements_color: var(--primary-text-color)
-  # Makes line under selected tab color same as sidebar selected panel color
-  tab_indicator_color: var(--sidebar-selected-icon-color)
-  # Makes selected tab color same as sidebar selected panel color
-  active_tab_color: var(--sidebar-selected-icon-color)
-  # Make mobile view notification dot color same as selected panel color
-  notification_dot_color: var(--sidebar-selected-icon-color)
-```
-</details>
 
 ## Text Cards
 **All text cards below require:**
