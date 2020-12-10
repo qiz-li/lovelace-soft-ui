@@ -927,4 +927,4 @@ type: entities
 
 ## Thank you!
 
-Developed, maintained, and based on the Lovelace of [**@N-l1**](https://github.com/N-l1) ✨
+Developed, maintained, and based on the Lovelace of [**@N-l1**](https://github.com/N-l1) & [**@KTibow**](https://github.com/KTibow) ✨
