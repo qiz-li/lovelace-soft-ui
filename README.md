@@ -4,36 +4,33 @@
 [![This is new user friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
 [![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
-**Hey there!** First and foremost, thank you for finding your way to my Home Assistant repo. Here you will find my custom Neumorphic/Soft UI styled Lovelace (UI of Home Assistant). I hope you like it!
+**Hello there!** Thank you for finding your way to my Home Assistant repo. Here you will find a simple, good looking, yet highly functional custom Neumorphic/Soft UI styled Lovelace. Enjoy!
 
-**Click** [**here**](docs/inspiration.md) **for some examples and inspiration** 
-
-**Don't hesitate to ask for help [**here**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) on the Home Assistant forum** 
+[**Inspiration & examples!**](docs/inspiration.md) **|** [**Questions, help & discussions**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)
 
 ![Lovelace Soft UI light theme](docs/images/soft_ui_light.jpg)
 ![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
 
 # Let's do it!
-OK so you've decided to redo your UI, don't worry, your UI will look as great as the screenshots following these **3 simple steps**!
 
 ### Alternatives
 **[@Savjee](https://github.com/Savjee)'s [Button Text Card](https://github.com/Savjee/button-text-card).** If you are only looking to implement this style on a button, this is the way. It is very easy to install and set up. The downside, however, is that you will not be able to implement this style on any other card.
 
-**[@KTibow](https://github.com/KTibow)'s [dark](https://github.com/KTibow/lovelace-dark-soft-ui-theme/) and [light](https://github.com/KTibow/lovelace-light-soft-ui-theme/) Soft UI themes.** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
+**[@KTibow](https://github.com/KTibow)'s [Soft UI themes](https://github.com/KTibow/lovelace-light-soft-ui-theme/).** If you are looking for a quick and simple way to implement this style universally to all your cards, this is the way. KTibow's themes are easier to implement, faster to set up, and will still work with any of the custom cards inside this repo. However, using the way described in this repo provides more flexibility and customizability. 
 
 ## 1. Install card-mod
-First of all, you will need to install [**card-mod**](https://github.com/thomasloven/lovelace-card-mod). It's a custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Please read the HACS [documentation](https://hacs.xyz) and install it.
+First of all, you will need to install [card-mod](https://github.com/thomasloven/lovelace-card-mod). A custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Card-mod is what we will use to style all the cards. Please follow HACS [documentation](https://hacs.xyz) and install it.
 
 ## 2. Custom Light and Dark Themes
-The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant, by default, provides a light and dark theme, this style works best with custom themes.
+The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant provides a light and dark theme by default, this style works best with custom themes.
 
-You might of already installed [HACS](https://hacs.xyz) from the previous step, and conveniently, besides custom-cards, there are also tons of customs themes available on HACS. Pick out both a light and dark theme you like,  but **please note that themes with pure white/black backgrounds will not work.** Light themes with a milky white background work well, and dark themes with a dark gray background work well.
+There are also custom themes available on [HACS](https://hacs.xyz). However, **please note that themes with pure white/black backgrounds will not work**. Light themes with a milky white background work well, and dark themes with a dark gray background work well.
 
-The themes used in the screenshots of this repo are the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (they are both available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
+All screenshots here are made with the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (both are available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
 
-Now that you have picked out your light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
+Now that you have custom light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
 
-If your device does match the requirements, you will now need to make a service call in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select `frontend.set_theme` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
+You will now need to make two service calls in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select `frontend.set_theme` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
 
 ```yaml
 name: name of your theme
@@ -42,7 +39,7 @@ mode: light # or dark
 
 ### Alternative setup
 
-Alternatively, after you've picked out custom light and dark themes, you can just add the following into your `automations.yaml`.
+Alternatively, after picking out custom light and dark themes, you can just add the following into your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
@@ -96,7 +93,7 @@ style: |
 ```
 
 # Advanced Usage
-Here are some cards I created using this style. All cards are added using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
+Here are some cards created using this style. Add them using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
 
 ## Text Cards
 **All text cards below require:**
@@ -191,7 +188,7 @@ type: vertical-stack
 </details>
 
 ## Button Cards
-Below you will find different button variations using the Soft UI style. All the buttons can be placed in a ```horizontal-stack``` or ```vertical-stack``` card to form a row or column of buttons (as seen in some of the screenshots). The button cards with borders are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
+Below you will find different button variations using the Soft UI style. All the buttons can be placed in a ```horizontal-stack```,```vertical-stack```, or ```grid``` card to form rows or columns of buttons (as seen in some of the screenshots). The button cards with borders are inspired by [**@hawk**](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
 
 **All button cards below require:**
 
@@ -256,7 +253,7 @@ type: 'custom:button-card'
   <br/>
 </p>
 
-This card is almost identical to the one above. The only difference between the two is when this button is pressed there is a border surrounding it (picture on the left).
+This card is almost identical to the one above. The only difference being when it is pressed, there is a border surrounding it (picture on the left).
 
 <details><summary><b>Show code</b></summary>
 
@@ -315,7 +312,7 @@ type: 'custom:button-card'
   <br/>
 </p>
 
-This button will display, in addition to the icon, the name, and the state of the entity. It acts the same as the first button.
+This button will display the icon, the name, and the state of the entity. It acts the same as the first button.
 
 <details><summary><b>Show code</b></summary>
 
@@ -386,7 +383,7 @@ type: 'custom:button-card'
   <br/>
 </p>
 
-This card is almost identical to the one above. The only difference between the two is when this button is pressed there is a border surrounding it (picture on the right).
+This card is almost identical to the one above. The only difference being when it is pressed, there is a border surrounding it (picture on the right).
 
 <details><summary><b>Show code</b></summary>
 
@@ -466,7 +463,7 @@ type: 'custom:button-card'
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 * [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
 
-The general gist of this card is the same as the other button cards. When the state of the entity is `on`, the button will be pressed in (picture on the left). When the entity is `off` the button will be released (picture on the right). However, this card is different from all the other button cards as beside the big button, there are two lines of text that are customizable.
+Same pressed in and released function as the other button cards. However, this button is bigger, along with two lines of text next to it that are customizable.
 
 <details><summary><b>Show code</b></summary>
 
