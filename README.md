@@ -122,11 +122,11 @@ style:
     }
   ha-markdown:
     $: |
+      ha-markdown-element {
+        letter-spacing: 0;
+      }
       h1 {
-        font-size: 20px;
-        font-weight: bold;
-        font-family: Helvetica;
-        letter-spacing: '-0.01em';
+        font-size: 20px !important;
       }
 type: markdown
 ```
@@ -146,44 +146,27 @@ This card displays texts with smaller texts underneath with transparent backgrou
 
 ```yaml
 # Example entry
-cards:
-  - content: |
-      # Enter what you want to display here
-    style:
-      .: |
-        ha-card {
-          --ha-card-background: none !important;
-          box-shadow: none !important;
-          height: 20px;
-        }
-      ha-markdown:
-        $: |
-          h1 {
-            font-size: 20px;
-            font-weight: bold;
-            font-family: Helvetica;
-            letter-spacing: '-0.01em';
-          }
-    type: markdown
-  - content: |
-      # Enter what you want to display in the small text
-    style:
-      .: |
-        ha-card {
-          --ha-card-background: none !important;
-          box-shadow: none !important;
-          height: 50px;
-        }
-      ha-markdown:
-        $: |
-          h1 {
-            font-size: 15px;
-            font-weight: thin;
-            font-family: Helvetica;
-            letter-spacing: '-0.01em';
-          }
-    type: markdown
-type: vertical-stack
+content: |
+  # Enter what you want to display here
+  ## Enter what you want to display in the small text
+style:
+  .: |
+    ha-card {
+      --ha-card-background: none !important;
+      box-shadow: none !important;
+    }
+  ha-markdown:
+    $: |
+      ha-markdown-element {
+        letter-spacing: 0;
+      }
+      h1 {
+        font-size: 20px !important;
+      }
+      h2 {
+        font-size: 15px !important;
+      }
+type: markdown
 ```
 </details>
 
@@ -507,44 +490,28 @@ cards:
         action: more-info
         haptic: medium
     type: 'custom:button-card'
-  - cards:
-      - content: |
-          # Big text to display
-        style:
-          .: |
-            ha-card {
-              --ha-card-background: none !important;
-              box-shadow: none !important;
-              height: 20px;
-              margin-top: 15px;
-            }
-          ha-markdown:
-            $: |
-              h1 {
-                font-size: 20px;
-                font-weight: bold;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
-        type: markdown
-      - content: >
-          # Small text to display
-        style:
-          .: |
-            ha-card {
-              --ha-card-background: none !important;
-              box-shadow: none !important;
-            }
-          ha-markdown:
-            $: |
-              h1 {
-                font-size: 15px;
-                font-weight: thin;
-                font-family: Helvetica;
-                letter-spacing: '-0.01em';
-              }
-        type: markdown
-    type: vertical-stack
+  - content: |
+      # Enter what you want to display here
+      ## Enter what you want to display in the small text
+    style:
+      .: |
+        ha-card {
+          --ha-card-background: none !important;
+          box-shadow: none !important;
+          margin-top: 5px;
+        }
+      ha-markdown:
+        $: |
+          ha-markdown-element {
+            letter-spacing: 0;
+          }
+          h1 {
+            font-size: 20px !important;
+          }
+          h2 {
+            font-size: 15px !important;
+          }
+    type: markdown
 type: horizontal-stack
 ```
 </details>
