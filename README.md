@@ -28,7 +28,7 @@ There are also custom themes available on [HACS](https://hacs.xyz). However, **p
 
 All screenshots here are made with the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (both are available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
 
-Now that you have custom light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative setup** section below. 
+Now that you have custom light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative Automation** section below. 
 
 You will now need to make two service calls in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select `frontend.set_theme` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
 
@@ -37,11 +37,9 @@ name: name of your theme
 mode: light # or dark
 ```
 
-### Alternative setup: sun.sun automation
+### Alternative Automation
 
-Alternatively, after picking out custom light and dark themes, you can create an automation to switch to dark theme when the sun goes down, and vice versa.  
-You can import this blueprint: https://community.home-assistant.io/t/light-dark-theme-switcher-based-on-sun/255455  
-Or add the following into your `automations.yaml`.
+Alternatively, after picking out custom light and dark themes, you can create an theme switching automation. You can import this [blueprint](https://community.home-assistant.io/t/light-dark-theme-switcher-based-on-sun/255455) or add the following into your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
