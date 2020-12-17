@@ -39,7 +39,7 @@ mode: light # or dark
 
 ### Alternative Automation
 
-Alternatively, after picking out custom light and dark themes, you can create an theme switching automation. You can import this [blueprint](https://community.home-assistant.io/t/light-dark-theme-switcher-based-on-sun/255455) or add the following into your `automations.yaml`.
+Alternatively, after picking out custom light and dark themes, you can create a theme switching automation. You can import this [blueprint](https://community.home-assistant.io/t/light-dark-theme-switcher-based-on-sun/255455) or add the following into your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
