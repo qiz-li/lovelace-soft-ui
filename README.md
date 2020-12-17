@@ -37,9 +37,11 @@ name: name of your theme
 mode: light # or dark
 ```
 
-### Alternative setup
+### Alternative setup: sun.sun automation
 
-Alternatively, after picking out custom light and dark themes, you can just add the following into your `automations.yaml`.
+Alternatively, after picking out custom light and dark themes, you can create an automation to switch to dark theme when the sun goes down, and vice versa.  
+You can import this blueprint: https://community.home-assistant.io/t/light-dark-theme-switcher-based-on-sun/255455  
+Or add the following into your `automations.yaml`.
 
 <details><summary><b>Show code</b></summary>
 
