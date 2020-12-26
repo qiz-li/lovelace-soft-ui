@@ -4,7 +4,7 @@
 [![This is new user friendly](https://img.shields.io/badge/new%20user-friendly-brightgreen?style=flat-square&)](#) 
 [![The maintainer is N-l1](https://img.shields.io/badge/maintainer-N--l1-blue?style=flat-square)](https://github.com/N-l1)
 
-**Hello there!** Thank you for finding your way to my Home Assistant repo. Here you will find a simple, good looking, yet highly functional custom Neumorphic/Soft UI styled Lovelace. Enjoy!
+**Hello there!** Thank you for finding your way to my Home Assistant repo. Here you will find a simple, good looking, yet highly functional custom Neumorphic/Soft UI styled Lovelace package (with easy steps on how to set it up). Enjoy!
 
 [**Inspiration & examples!**](docs/inspiration.md) **|** [**Questions, help & discussions**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)
 
@@ -22,7 +22,7 @@
 First of all, you will need to install [card-mod](https://github.com/thomasloven/lovelace-card-mod). A custom card available on [HACS](https://hacs.xyz) (the Home Assistant Community Store). Card-mod is what we will use to style all the cards. Please follow HACS [documentation](https://hacs.xyz) and install it.
 
 ## 2. Custom Light and Dark Themes
-The cards and styling in this repo are coded to be used with a light theme when the sun is up and a dark theme when the sun is down. Although Home Assistant provides a light and dark theme by default, this style works best with custom themes.
+The cards and styling in this repo are coded with a light and dark version. The light version is used with a light theme when the sun is up and the dark version is used with a dark theme when the sun is down. Although Home Assistant provides a light and dark theme by default, this style works best with custom themes.
 
 There are also custom themes available on [HACS](https://hacs.xyz). However, **please note that themes with pure white/black backgrounds will not work**. Light themes with a milky white background work well, and dark themes with a dark gray background work well.
 
