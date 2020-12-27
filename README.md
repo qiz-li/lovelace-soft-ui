@@ -28,6 +28,7 @@ There are also custom themes available on [HACS](https://hacs.xyz). However, **p
 
 All screenshots here are made with the [Clear](https://github.com/naofireblade/clear-theme) and [Slate](https://github.com/seangreen2/slate_theme) theme by [**@naofireblade**](https://github.com/naofireblade) and [**@seangreen2**](https://github.com/seangreen2) (both are available on HACS). If you decide to use the Clear theme, please make sure to remove the `lovelace-background` line from the theme's source code (located at `config/themes/clear/clear.yaml`).
 
+## 3. Theme Automation
 Now that you have custom light and dark themes, we have to tell Home Assistant to switch to them at sunset and sunrise. To do this, first, make sure that your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above. If not, see the **Alternative Automation** section below. 
 
 You will now need to make two service calls in Home Assistant. In the sidebar select Developer Tools and then navigate to the services tab and select `frontend.set_theme` from the service dropdown. In the Service Data field enter the following and modify as required. You will have to call the service twice, once for your light theme and once for your dark theme.
@@ -73,7 +74,7 @@ Alternatively, after picking out custom light and dark themes, you can create a 
 ```
 </details>
 
-## 3. Done!
+## Done!
 We are done! Add this code to any card config to style it with Soft UI. 
 
 ```yaml
@@ -92,11 +93,14 @@ style: |
    }
 ```
 
-# Advanced Usage
+# Cards
 Here are some cards created using this style. Add them using the UI. Click on the three dots on the top right, go to `Configure UI`, then click on the `+` on the bottom right, and select `Manual`. Paste in the appropriate code for each card.
 
 ## Text Cards
+Text cards are great ways to label things. It can help you define sections inside your UI.
+
 **All text cards below require:**
+
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
 ### Heading
@@ -525,7 +529,7 @@ type: horizontal-stack
 
 This card mimics a TV remote. Each button is customizable to execute your desired actions. 
 
-**Required Custom Cards:**
+**This card requires:**
 
 * [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
