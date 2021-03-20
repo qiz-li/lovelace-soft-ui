@@ -1,0 +1,25 @@
+#  _____       _
+# /  ___|     | |
+# \ `--. _   _| |__
+#  `--. \ | | | '_ \
+# /\__/ / |_| | |_) |
+# \____/ \__,_|_.__/
+
+content: |
+  # Display in big text 
+  ## Display in the small text
+style:
+  .: |
+    ha-card {
+        --ha-card-background: none !important;
+        box-shadow: none !important;
+    }
+  ha-markdown:
+    $: |
+      h1 {
+          font-size: 20px !important;
+      }
+      h2 {
+          font-size: 15px !important;
+      }
+type: markdown

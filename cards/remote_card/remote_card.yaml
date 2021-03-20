@@ -1,0 +1,365 @@
+# ______                     _
+# | ___ \                   | |
+# | |_/ /___ _ __ ___   ___ | |_ ___
+# |    // _ \ '_ ` _ \ / _ \| __/ _ \
+# | |\ \  __/ | | | | | (_) | ||  __/
+# \_| \_\___|_| |_| |_|\___/ \__\___|
+
+entities:
+  - cards:
+      - tap_action: # The main power button
+          action: call-service
+          service: remote.send_command
+          service_data:
+            command: power
+            entity_id: remote.xiaomi
+        icon: "mdi:power"
+        show_icon: true
+        show_name: false
+        styles:
+          card:
+            - width: 60px
+            - height: 60px
+            - margin: 10px 10px 10px 155px
+            - border-radius: 100px
+            - background-color: var(--primary-background-color)
+            - box-shadow: >
+                [[[
+                  if (states['sun.sun'].state == "below_horizon")
+                    return '-5px -5px 15px #2c2c2c, 5px 5px 15px #191919';
+                  else if (states['sun.sun'].state == "above_horizon")
+                    return '-5px -5px 15px #ffffff, 5px 5px 15px #ebebeb';
+                ]]]
+          icon:
+            - color: var(--primary-text-color)
+        type: "custom:button-card"
+    type: "custom:hui-horizontal-stack-card"
+
+  - cards:
+      - entities:
+          - cards:
+              - tap_action: # The "Up" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: up
+                    entity_id: remote.xiaomi
+                icon: "mdi:menu-up"
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - width: 50px
+                    - height: 50px
+                    - margin-left: 69px
+                    - box-shadow: none
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                type: "custom:button-card"
+            type: "custom:hui-horizontal-stack-card"
+
+          - cards:
+              - tap_action: # The "Left" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: left
+                    entity_id: remote.xiaomi
+                icon: "mdi:menu-left"
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - width: 50px
+                    - height: 50px
+                    - margin-left: 11px
+                    - box-shadow: none
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                type: "custom:button-card"
+
+              - tap_action: # The "Enter" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: enter
+                    entity_id: remote.xiaomi
+                name: OK
+                show_icon: false
+                show_name: true
+                styles:
+                  card:
+                    - width: 50px
+                    - height: 50px
+                    - border-radius: 100px
+                    - background-color: var(--primary-background-color)
+                    - box-shadow: >
+                        [[[
+                          if (states['sun.sun'].state == "below_horizon")
+                            return '-5px -5px 15px #2c2c2c, 5px 5px 15px #191919';
+                          else if (states['sun.sun'].state == "above_horizon")
+                            return '-5px -5px 15px #ffffff, 5px 5px 15px #ebebeb';
+                        ]]]
+                  name:
+                    - font-size: 20px
+                    - font-weight: bold
+                type: "custom:button-card"
+
+              - tap_action: # The "Right" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: right
+                    entity_id: remote.xiaomi
+                icon: "mdi:menu-right"
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - box-shadow: none
+                    - width: 50px
+                    - height: 50px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                type: "custom:button-card"
+            type: "custom:hui-horizontal-stack-card"
+
+          - cards:
+              - tap_action: # The "Down" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: down
+                    entity_id: remote.xiaomi
+                icon: "mdi:menu-down"
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - margin-left: 69px
+                    - box-shadow: none
+                    - width: 50px
+                    - height: 50px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                type: "custom:button-card"
+            type: "custom:hui-horizontal-stack-card"
+
+        show_header_toggle: false
+        style: |
+          ha-card {
+            box-shadow:
+              {% if is_state('sun.sun', 'above_horizon') %}
+                inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb;
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919;
+              {% endif %}
+            border-radius: 30px;
+            background-color: var(--primary-background-color)
+          }
+        type: "custom:hui-entities-card"
+    type: "custom:hui-horizontal-stack-card"
+
+  - show_icon: false
+    show_name: false
+    styles:
+      card:
+        - width: 5px
+        - height: 5px
+        - box-shadow: none
+        - background-color: var(--primary-background-color)
+    type: "custom:button-card"
+
+  - cards:
+      - entities:
+          - cards:
+              - tap_action: # The "Volume down" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: volume_down_sony
+                    entity_id: remote.xiaomi
+                icon: "mdi:minus"
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - margin-left: 30px
+                    - box-shadow: none
+                    - width: 30px
+                    - height: 30px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                type: "custom:button-card"
+
+              - name: VOL
+                show_icon: false
+                show_name: true
+                styles:
+                  card:
+                    - margin-left: 10px
+                    - box-shadow: none
+                    - width: 30px
+                    - height: 30px
+                    - border-radius: 100px
+                    - background-color: var(--primary-background-color)
+                  name:
+                    - font-size: 13px
+                    - font-weight: bold
+                    - font-family: Helvetica
+                    - letter-spacing: "-0.01em"
+                type: "custom:button-card"
+
+              - tap_action: # The "Volume up" button
+                  action: call-service
+                  service: remote.send_command
+                  service_data:
+                    command: volume_up_sony
+                    entity_id: remote.xiaomi
+                icon: "mdi:plus"
+                show_icon: true
+                show_name: false
+                size: 100%
+                styles:
+                  card:
+                    - margin-left: 10px
+                    - box-shadow: none
+                    - width: 30px
+                    - height: 30px
+                    - background-color: var(--primary-background-color)
+                  icon:
+                    - color: var(--primary-text-color)
+                type: "custom:button-card"
+            type: "custom:hui-horizontal-stack-card"
+
+        show_header_toggle: false
+        style: |
+          ha-card {
+            box-shadow:
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+              {% endif %}
+            border-radius: 15px;
+            background-color: var(--primary-background-color);
+          }
+        type: "custom:hui-entities-card"
+    type: "custom:hui-horizontal-stack-card"
+
+  - cards:
+      - icon: "mdi:home" # First button on the bottom
+        tap_action:
+          action: call-service
+          service: remote.send_command
+          service_data:
+            command: home
+            entity_id: remote.xiaomi
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow:
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+              {% endif %}
+          }
+        styles:
+          card:
+            - margin-top: 10px
+            - margin-left: 5px
+            - width: 60px
+            - height: 60px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        type: "custom:button-card"
+
+      - icon: "mdi:keyboard-return" # Second button on the bottom
+        tap_action:
+          action: call-service
+          service: remote.send_command
+          service_data:
+            command: return
+            entity_id: remote.xiaomi
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow:
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+              {% endif %}
+          }
+        styles:
+          card:
+            - margin-top: 10px
+            - margin-left: 8px
+            - width: 60px
+            - height: 60px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        type: "custom:button-card"
+
+      - icon: "mdi:set-top-box" # Third button on the bottom
+        tap_action:
+          action: call-service
+          service: script.turn_on
+          service_data:
+            entity_id: script.mi_box
+        show_icon: true
+        show_name: false
+        style: |
+          ha-card {
+            box-shadow:
+              {% if is_state('sun.sun', 'above_horizon') %}
+                -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+              {% elif is_state('sun.sun', 'below_horizon') %}
+                -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+              {% endif %}
+          }
+        styles:
+          card:
+            - margin-top: 10px
+            - margin-left: 8px
+            - width: 60px
+            - height: 60px
+            - border-radius: 15px
+            - background-color: var(--primary-background-color)
+          icon:
+            - color: var(--primary-text-color)
+        type: "custom:button-card"
+    type: "custom:hui-horizontal-stack-card"
+show_header_toggle: false
+
+style: |
+  ha-card {
+    box-shadow:
+      {% if is_state('sun.sun', 'above_horizon') %}
+        -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+      {% elif is_state('sun.sun', 'below_horizon') %}
+        -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+      {% endif %}
+    background-color: var(--primary-background-color);
+    width: 250px;
+    border-radius: 10px;
+    margin: 10px auto;
+  }
+type: entities
