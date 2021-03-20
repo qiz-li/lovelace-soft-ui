@@ -1,0 +1,21 @@
+#  _   _                _
+# | | | |              | |
+# | |_| | ___  __ _  __| |
+# |  _  |/ _ \/ _` |/ _` |
+# | | | |  __/ (_| | (_| |
+# \_| |_/\___|\__,_|\__,_|
+
+content: |
+  # Display in big text
+style:
+  .: |
+    ha-card {
+        --ha-card-background: none !important;
+        box-shadow: none !important;
+    }
+  ha-markdown:
+    $: |
+      h1 {
+          font-size: 20px !important;
+      }
+type: markdown
