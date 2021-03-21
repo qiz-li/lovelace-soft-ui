@@ -8,8 +8,7 @@
 
 [**Inspiration & examples!**](docs/inspiration.md) **|** [**Questions, help & discussions**](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)
 
-![Lovelace Soft UI light theme](docs/images/soft_ui_light.jpg)
-![Lovelace Soft UI dark theme](docs/images/soft_ui_dark.jpg)
+![Lovelace Soft UI light theme](docs/images/screenshot.png)
 
 # Let's do it!
 
@@ -104,11 +103,8 @@ Text cards are great ways to label things. It can help you define sections insid
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
 
 ### Heading
-<p align="left">
-  <img src="docs/images/text_header_card_light.png" alt="Text header card light theme" width="400">
-  <img src="docs/images/text_header_card_dark.png" alt="Text header card dark theme" width="400">
-  <br/>
-</p>
+
+![Heading card](docs/images/heading.png)
 
 This card displays texts with transparent background.
 
@@ -116,11 +112,7 @@ Get card [here](/cards/text_card/heading.yaml)
 
 ### Heading and Subheading
 
-<p align="left">
-  <img src="docs/images/text_subheader_card_light.png" alt="Text subheader card light theme" width="400">
-  <img src="docs/images/text_subheader_card_dark.png" alt="Text subheader card dark theme" width="400">
-  <br/>
-</p>
+![Heading subheading card](docs/images/heading_subheading.png)
 
 This card displays texts with smaller texts underneath with transparent background.
 
@@ -134,55 +126,40 @@ Below you will find different button variations using the Soft UI style. All the
 * [**Button Card**](https://github.com/custom-cards/button-card), by [**@RomRider**](https://github.com/RomRider)
 
 ### Button, No Text, No Border
-<p align="left">
-  <img src="docs/images/button_card.png" alt="Button card" width="400">
-  <img src="docs/images/button_card_pressed.png" alt="Button card pressed" width="400">
-  <br/>
-</p>
+
+![Button card](docs/images/button.png)
 
 This card is a simple button with an icon. When the state of the entity is `on`, the button will be pressed in (picture on the right). When the entity is `off` the button will be released (picture on the left). 
 
 Get card [here](/cards/button_card/button.yaml)
 
 ### Button, No Text, With Border
-<p align="left">
-  <img src="docs/images/button_card_with_border_pressed.png" alt="Button card with border" width="400">
-  <img src="docs/images/button_card_with_border.png" alt="Button card with border pressed" width="400">
-  <br/>
-</p>
+
+![Button border card](docs/images/button_border.png)
 
 This card is almost identical to the one above. The only difference being when it is pressed, there is a border surrounding it (picture on the left).
 
 Get card [here](/cards/button_card/button_border.yaml)
 
 ### Button, With Text, No Border
-<p align="left">
-  <img src="docs/images/button_card_with_text_pressed.png" alt="Button card with text no border" width="400">
-  <img src="docs/images/button_card_with_text.png" alt="Button card with text no border pressed" width="400">
-  <br/>
-</p>
+
+![Button text card](docs/images/button_text.png)
 
 This button will display the icon, the name, and the state of the entity. It acts the same as the first button.
 
 Get card [here](/cards/button_card/button_text.yaml)
 
 ### Button, With Text and Border
-<p align="left">
-  <img src="docs/images/button_card_with_text_and_border.png" alt="Button card with text and border" width="400">
-  <img src="docs/images/button_card_with_text_and_border_pressed.png" alt="Button card with text and border pressed" width="400">
-  <br/>
-</p>
+
+![Button border text card](docs/images/button_border_text.png)
 
 This card is almost identical to the one above. The only difference being when it is pressed, there is a border surrounding it (picture on the right).
 
 Get card [here](/cards/button_card/button_border_text.yaml)
 
 ### Button, With Description
-<p align="left">
-  <img src="docs/images/button_card_with_description_pressed.png" alt="Button card with description pressed" width="400">
-  <img src="docs/images/button_card_with_description.png" alt="Button card with description" width="400">
-  <br/>
-</p>
+
+![Button description card](docs/images/button_description.png)
 
 **This card requires:**
 * [**Card Mod**](https://github.com/thomasloven/lovelace-card-mod), by [**@thomasloven**](https://github.com/thomasloven)
@@ -193,11 +170,8 @@ Same pressed in and released function as the other button cards. However, this b
 Get card [here](/cards/button_card/button_description.yaml)
 
 ## Remote Card
-<p align="left">
-  <img src="docs/images/remote_card_light.png" alt="Remote card light theme" width="400">
-  <img src="docs/images/remote_card_dark.png" alt="Remote card dark theme" width="400">
-  <br/>
-</p>
+
+![Remote card](docs/images/remote.png)
 
 This card mimics a TV remote. Each button is customizable to execute your desired actions. 
 
