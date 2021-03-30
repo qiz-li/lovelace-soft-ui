@@ -1,3 +1,4 @@
+---
 # ______       _   _
 # | ___ \     | | | |
 # | |_/ /_   _| |_| |_ ___  _ __
@@ -5,8 +6,10 @@
 # | |_/ / |_| | |_| || (_) | | | |
 # \____/ \____|\__|\__\___/|_| |_|
 
-entity: light.example # Light to control
-icon: "mdi:lamp" # Icon to display
+# Light to control
+entity: light.example
+# Icon to display
+icon: "mdi:lamp"
 # Button actions
 tap_action:
   action: toggle

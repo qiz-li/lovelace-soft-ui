@@ -1,3 +1,4 @@
+---
 #  _____       _
 # /  ___|     | |
 # \ `--. _   _| |__
@@ -6,7 +7,7 @@
 # \____/ \__,_|_.__/
 
 content: |
-  # Display in big text 
+  # Display in big text
   ## Display in the small text
 style:
   .: |

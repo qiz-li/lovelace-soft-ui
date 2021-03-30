@@ -1,3 +1,4 @@
+---
 # ______                     _
 # | ___ \                   | |
 # | |_/ /___ _ __ ___   ___ | |_ ___
@@ -7,7 +8,8 @@
 
 entities:
   - cards:
-      - tap_action: # The main power button
+      # The main power button
+      - tap_action:
           action: call-service
           service: remote.send_command
           service_data:
@@ -38,7 +40,8 @@ entities:
   - cards:
       - entities:
           - cards:
-              - tap_action: # The "Up" button
+              # The "Up" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -61,7 +64,8 @@ entities:
             type: "custom:hui-horizontal-stack-card"
 
           - cards:
-              - tap_action: # The "Left" button
+              # The "Left" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -82,7 +86,8 @@ entities:
                     - color: var(--primary-text-color)
                 type: "custom:button-card"
 
-              - tap_action: # The "Enter" button
+              # The "Enter" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -100,16 +105,19 @@ entities:
                     - box-shadow: >
                         [[[
                           if (states['sun.sun'].state == "below_horizon")
-                            return '-5px -5px 15px #2c2c2c, 5px 5px 15px #191919';
+                            return '-5px -5px 15px #2c2c2c,' +
+                                   '5px 5px 15px #191919';
                           else if (states['sun.sun'].state == "above_horizon")
-                            return '-5px -5px 15px #ffffff, 5px 5px 15px #ebebeb';
+                            return '-5px -5px 15px #ffffff,' +
+                                   '5px 5px 15px #ebebeb';
                         ]]]
                   name:
                     - font-size: 20px
                     - font-weight: bold
                 type: "custom:button-card"
 
-              - tap_action: # The "Right" button
+              # The "Right" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -131,7 +139,8 @@ entities:
             type: "custom:hui-horizontal-stack-card"
 
           - cards:
-              - tap_action: # The "Down" button
+              # The "Down" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -181,7 +190,8 @@ entities:
   - cards:
       - entities:
           - cards:
-              - tap_action: # The "Volume down" button
+              # The "Volume down" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -220,7 +230,8 @@ entities:
                     - letter-spacing: "-0.01em"
                 type: "custom:button-card"
 
-              - tap_action: # The "Volume up" button
+              # The "Volume up" button
+              - tap_action:
                   action: call-service
                   service: remote.send_command
                   service_data:
@@ -258,7 +269,8 @@ entities:
     type: "custom:hui-horizontal-stack-card"
 
   - cards:
-      - icon: "mdi:home" # First button on the bottom
+      # First button on the bottom
+      - icon: "mdi:home"
         tap_action:
           action: call-service
           service: remote.send_command
@@ -288,7 +300,8 @@ entities:
             - color: var(--primary-text-color)
         type: "custom:button-card"
 
-      - icon: "mdi:keyboard-return" # Second button on the bottom
+      # Second button on the bottom
+      - icon: "mdi:keyboard-return"
         tap_action:
           action: call-service
           service: remote.send_command
@@ -318,7 +331,8 @@ entities:
             - color: var(--primary-text-color)
         type: "custom:button-card"
 
-      - icon: "mdi:set-top-box" # Third button on the bottom
+      # Third button on the bottom
+      - icon: "mdi:set-top-box"
         tap_action:
           action: call-service
           service: script.turn_on

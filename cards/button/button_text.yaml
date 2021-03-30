@@ -1,3 +1,4 @@
+---
 #  _____         _
 # |_   _|       | |
 #   | | _____  _| |_
@@ -5,10 +6,14 @@
 #   | |  __/>  <| |_
 #   \_/\___/_/\_\\__|
 
-entity: light.example # Entity to control
-icon: "mdi:vanity-light" # Icon to display
-name: Island # Name to display
-size: 30% # Size of the icon
+# Entity to control
+entity: light.example
+# Icon to display
+icon: "mdi:vanity-light"
+# Name to display
+name: Island
+# Size of the icon
+size: 30%
 # Button actions
 tap_action:
   action: toggle
@@ -18,10 +23,11 @@ hold_action:
   haptic: medium
 styles:
   img_cell:
-    - padding-left: 25px # Adjust padding of the icon
+    # Padding of the icon
+    - padding-left: 25px
     - justify-content: start
   card:
-    # Feel free to change the size here
+    # Size of the card
     - width: min(25vw, 100px)
     - height: min(25vw, 100px)
 

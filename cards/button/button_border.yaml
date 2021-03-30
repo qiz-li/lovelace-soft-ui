@@ -1,14 +1,15 @@
-# ______ _____         _
-# | ___ \_   _|       | |
-# | |_/ / | | _____  _| |_
-# | ___ \ | |/ _ \ \/ / __|
-# | |_/ / | |  __/>  <| |_
-# \____/  \_/\___/_/\_\\__|
+---
+# ______               _
+# | ___ \             | |
+# | |_/ / ___  _ __ __| | ___ _ __
+# | ___ \/ _ \| '__/ _` |/ _ \ '__|
+# | |_/ / (_) | | | (_| |  __/ |
+# \____/ \___/|_|  \____|\___|_|
 
-entity: light.example # Entity to control
-icon: "mdi:vanity-light" # Icon to display
-name: Island # Name to display
-size: 30% # Size of the icon
+# Entity to control
+entity: light.example
+# Icon to display
+icon: "mdi:lamp"
 # Button actions
 tap_action:
   action: toggle
@@ -17,13 +18,10 @@ hold_action:
   action: more-info
   haptic: medium
 styles:
-  img_cell:
-    - padding-left: 25px # Adjust padding of the icon
-    - justify-content: start
   card:
     # Feel free to change the size here
-    - width: min(25vw, 100px)
-    - height: min(25vw, 100px)
+    - width: min(20vw, 60px)
+    - height: min(20vw, 60px)
 
     - margin: 20px
     - border-radius: 15px
@@ -35,23 +33,8 @@ styles:
           else if (states['sun.sun'].state == "above_horizon")
             return '-5px -5px 15px #ffffff, 5px 5px 15px #ebebeb';
         ]]]
-  grid:
-    - grid-template-areas: '"i" "n" "s"'
-    - grid-template-columns: 1fr
-    - grid-template-rows: 1fr min-content min-content
   icon:
     - color: var(--primary-text-color)
-  name:
-    - justify-self: start
-    - font-weight: bold
-    - font-size: 15px
-    - padding-left: 15px
-  state:
-    - justify-self: start
-    - font-weight: bold
-    - font-size: 15px
-    - opacity: 0.6
-    - padding: 0 15px 5px
 state:
   - value: "on"
     styles:
@@ -68,5 +51,8 @@ state:
             ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
-show_state: true
+show_icon: true
+show_name: false
+triggers_update:
+  - sun.sun
 type: "custom:button-card"

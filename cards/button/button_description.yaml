@@ -1,3 +1,4 @@
+---
 #   _____
 #  |  __ \
 #  | |  | | ___  ___  ___
@@ -6,8 +7,10 @@
 #  |_____/ \___||___/\___|
 
 cards:
-  - entity: light.example # Entity to control
-    icon: "mdi:television" # Icon to display
+  # Entity to control
+  - entity: light.example
+    # Icon to display
+    icon: "mdi:television"
     # Button actions
     tap_action:
       action: toggle
@@ -43,9 +46,11 @@ cards:
             - box-shadow: >
                 [[[
                   if (states['sun.sun'].state == "below_horizon")
-                    return 'inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919';
+                    return 'inset -4px -4px 5px #2c2c2c,' +
+                           'inset 4px 4px 5px #191919';
                   else if (states['sun.sun'].state == "above_horizon")
-                    return 'inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb';
+                    return 'inset -4px -4px 5px #ffffff,' +
+                           'inset 4px 4px 5px #ebebeb';
                 ]]]
           icon:
             - color: var(--paper-item-icon-active-color)
@@ -56,7 +61,7 @@ cards:
     type: "custom:button-card"
 
   - content: |
-      # Display in big text 
+      # Display in big text
       ## Display in the small text
     style:
       .: |
