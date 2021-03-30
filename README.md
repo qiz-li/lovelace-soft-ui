@@ -2,7 +2,7 @@
 
 > Simple yet functional, “Neumorphic” Lovelace package.
 
-![Soft UI light/dark screenshots](docs/images/screenshot.png)
+![Soft UI light/dark screenshots](images/screenshot.png)
 
 ## Overview
 
@@ -121,15 +121,15 @@ Add the following cards using the Lovelace UI.
 
 #### `Heading`
 
-> Get card [here](/cards/text/heading.yaml)
+> Get card [here](cards/text/heading.yaml)
 
-![Heading card](docs/images/heading.png)
+![Heading card](images/heading.png)
 
 #### `Heading Subheading`
 
-> Get card [here](/cards/text/heading_subheading.yaml)
+> Get card [here](cards/text/heading_subheading.yaml)
 
-![Heading subheading card](docs/images/heading_subheading.png)
+![Heading subheading card](images/heading_subheading.png)
 
 ### Button Cards
 
@@ -140,33 +140,33 @@ Inspired by [`@hawk`](https://community.home-assistant.io/u/hawk/summary)'s beau
 
 #### `Button`
 
-> Get card [here](/cards/button/button.yaml)
+> Get card [here](cards/button/button.yaml)
 
-![Button card](docs/images/button.png)
+![Button card](images/button.png)
 
 #### `Button Border`
 
-> Get card [here](/cards/button/button_border.yaml)
+> Get card [here](cards/button/button_border.yaml)
 
-![Button border card](docs/images/button_border.png)
+![Button border card](images/button_border.png)
 
 #### `Button Text`
 
-> Get card [here](/cards/button/button_text.yaml)
+> Get card [here](cards/button/button_text.yaml)
 
-![Button text card](docs/images/button_text.png)
+![Button text card](images/button_text.png)
 
 #### `Button Border Text`
 
-> Get card [here](/cards/button/button_border_text.yaml)
+> Get card [here](cards/button/button_border_text.yaml)
 
-![Button border text card](docs/images/button_border_text.png)
+![Button border text card](images/button_border_text.png)
 
 #### `Button Description`
 
-> Get card [here](/cards/button/button_description.yaml)
+> Get card [here](cards/button/button_description.yaml)
 
-![Button description card](docs/images/button_description.png)
+![Button description card](images/button_description.png)
 
 ### Remote Card
 
@@ -176,9 +176,9 @@ This card mimics a TV remote. Every single button is customizable.
 
 #### `Simple Remote`
 
-> Get card [here](/cards/remote/remote_card.yaml)
+> Get card [here](cards/remote/remote_card.yaml)
 
-![Remote card](docs/images/remote.png)
+![Remote card](images/remote.png)
 
 ### Thank you!
 
