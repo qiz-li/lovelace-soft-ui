@@ -8,15 +8,16 @@
 
 content: |
   # Display in big text
-style:
-  .: |
-    ha-card {
-        --ha-card-background: none !important;
-        box-shadow: none !important;
-    }
-  ha-markdown:
-    $: |
-      h1 {
-          font-size: 20px !important;
+card_mod:
+  style:
+    .: |
+      ha-card {
+          --ha-card-background: none !important;
+          box-shadow: none !important;
       }
+    ha-markdown:
+      $: |
+        h1 {
+            font-size: 20px !important;
+        }
 type: markdown

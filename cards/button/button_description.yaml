@@ -23,17 +23,6 @@ cards:
         # Feel free to change the size here
         - width: min(20vw, 80px)
         - height: min(20vw, 80px)
-
-        - margin: 20px
-        - border-radius: 15px
-        - background-color: var(--primary-background-color)
-        - box-shadow: >
-            [[[
-              if (states['sun.sun'].state == "below_horizon")
-                return '-5px -5px 15px #2c2c2c, 5px 5px 15px #191919';
-              else if (states['sun.sun'].state == "above_horizon")
-                return '-5px -5px 15px #ffffff, 5px 5px 15px #ebebeb';
-            ]]]
       icon:
         - color: var(--primary-text-color)
     state:
@@ -43,21 +32,12 @@ cards:
             - border-style: solid
             - border-width: 2px
             - border-color: var(--paper-item-icon-active-color)
-            - box-shadow: >
-                [[[
-                  if (states['sun.sun'].state == "below_horizon")
-                    return 'inset -4px -4px 5px #2c2c2c,' +
-                           'inset 4px 4px 5px #191919';
-                  else if (states['sun.sun'].state == "above_horizon")
-                    return 'inset -4px -4px 5px #ffffff,' +
-                           'inset 4px 4px 5px #ebebeb';
-                ]]]
           icon:
             - color: var(--paper-item-icon-active-color)
     show_icon: true
     show_name: false
-    triggers_update:
-      - sun.sun
+    card_mod:
+      class: soft-ui
     type: "custom:button-card"
 
   - content: |

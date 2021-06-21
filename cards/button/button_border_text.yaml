@@ -30,17 +30,6 @@ styles:
     # Size of the card
     - width: min(25vw, 100px)
     - height: min(25vw, 100px)
-
-    - margin: 20px
-    - border-radius: 15px
-    - background-color: var(--primary-background-color)
-    - box-shadow: >
-        [[[
-          if (states['sun.sun'].state == "below_horizon")
-            return '-5px -5px 15px #2c2c2c, 5px 5px 15px #191919';
-          else if (states['sun.sun'].state == "above_horizon")
-            return '-5px -5px 15px #ffffff, 5px 5px 15px #ebebeb';
-        ]]]
   grid:
     - grid-template-areas: '"i" "n" "s"'
     - grid-template-columns: 1fr
@@ -65,14 +54,9 @@ state:
         - border-style: solid
         - border-width: 2px
         - border-color: var(--paper-item-icon-active-color)
-        - box-shadow: >
-            [[[
-              if (states['sun.sun'].state == "below_horizon")
-                return 'inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919';
-              else if (states['sun.sun'].state == "above_horizon")
-                return 'inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb';
-            ]]]
       icon:
         - color: var(--paper-item-icon-active-color)
 show_state: true
+card_mod:
+  class: soft-ui
 type: "custom:button-card"

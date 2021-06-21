@@ -1,14 +1,19 @@
 # Lovelace Soft UI
 
-> Simple yet functional, “Neumorphic” Lovelace package.
-
 ![Soft UI light/dark screenshots](images/screenshot.png)
 
 ## Overview
 
-This is not a theme. It is a collection of custom card configurations and a set of custom styling applied through card-mod.
-We love to help on the [community forums](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) or the issues tab and welcome any new contributions.
-Some other great alternatives:
+This project originally stemmed from just me redoing my UI.
+However, it has evolved into something much bigger.
+Today, in this repo, you will find detailed instructions on applying
+this style to your cards and a collection of custom-configured cards that match best with this style.
+
+This would have not been possible without the support of the Home Assistant community.
+If you need help, please consult the
+[community forums](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)
+or the issues tab. New contributions are most welcomed.
+Thank you, and please check out other great alternatives:
 
 - [**`Savjee`**](https://github.com/Savjee)/[`button-text-card`](https://github.com/Savjee/button-text-card)
 
@@ -16,108 +21,115 @@ Some other great alternatives:
 
 ## Installation
 
-#### `1. Install card-mod 🔹`
+First, we will need
+[card-mod](https://github.com/thomasloven/lovelace-card-mod)
+to style our cards. The easiest way to install card-mod is via
+[HACS](https://hacs.xyz).
 
-[`card-mod`](https://github.com/thomasloven/lovelace-card-mod) is needed to style the cards.
-It available via [HACS](https://hacs.xyz).
+Second, we will need to apply our card-mod style through themes.
+We first need to install custom themes (can also be found via HACS),
+then we will add our card-mod style to the theme YAML files, typically found at:
+`config/themes/{theme_name}/{theme_name}.yaml`
 
-#### `2. Custom themes 🎨`
+There are two ways to style our cards:
+the Universal method, which styles _all_ cards,
+and the Individual method, which only styles _specific_ cards.
 
-The shadows are coded to be used in a light theme and a dark theme.
-The card will automatically switch between the light and dark shadow based on the state of the `sun.sun` entity.
+#### `Universal`
 
-They will work with the default Home Assistant themes. However, this style works best with custom themes.
-Many themes are available on HACS, the ones used in the screenshots are the [`clear`](https://github.com/naofireblade/clear-theme) and [`slate`](https://github.com/seangreen2/slate_theme) theme.
+To universally style all cards, add the following to your theme YAML file:
 
-#### `3. Theme automation 🌗`
+<details>
+    <summary><i>Show code</i></summary>
 
-Now that we have a custom light & dark theme, we have to tell Home Assistant to automatically switch between them at sunset and sunrise.
-There are three ways to do this:
-
-- <details>
-    <summary><code><i>Automation</i> 🤖</code></summary>
-
-  Add the following to your `automations.yaml`
-
-  ```yaml
-  # Example automations.yaml entry
-  - id: set_theme
-    alias: Set Theme
-    trigger:
-      - platform: state
-        entity_id: sun.sun
-    action:
-      - choose:
-          - conditions:
-              - condition: state
-                entity_id: sun.sun
-                state: "above_horizon"
-            sequence:
-              - service: frontend.set_theme
-                data:
-                  name: name of your light theme
-          - conditions:
-              - condition: state
-                entity_id: sun.sun
-                state: "below_horizon"
-            sequence:
-              - service: frontend.set_theme
-                data:
-                  name: name of your dark theme
-  ```
-
-  </details>
-
-- <details>
-  <summary><code>Blueprint 📐</code></summary>
-
-  Import this [Blueprint](https://community.home-assistant.io/t/light-dark-theme-switcher-based-on-sun/255455)
-
-  </details>
-
-- <details>
-  <summary><code>Built-in ⚙️</code></summary>
-
-  _This is **not** the recommended method.
-  Only use if your device and browser support dark mode detection, and you are on Home Assistant 0.114 or above._
-
-  In the sidebar, select `Developer Tools` and then navigate to the `SERVICES` tab and select `frontend.set_theme` from the service dropdown.
-  In the `Service Data` field, enter the following. You will have to call the service twice, once for your light theme and once for your dark theme.
-
-  ```yaml
-  name: name of your theme
-  mode: light # or dark
-  ```
-
-  </details>
-
-#### `Done 🎉`
-
-Cheers! Add the following to _any_ card configuration to style it with Soft UI.
+**Light version:**
 
 ```yaml
-# Example entry
-style: |
-  ha-card {
-      box-shadow:
-        {% if is_state('sun.sun', 'above_horizon') %}
-          -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
-        {% elif is_state('sun.sun', 'below_horizon') %}
-          -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
-        {% endif %}
-      margin: 10px;
+# Example light_theme.yaml entry
+theme_name:
+  card-mod-theme: theme_name # Change to your theme name
+  card-mod-card: |
+    ha-card {
+      margin: 20px;
       border-radius: 15px;
       background-color: var(--primary-background-color);
-   }
+      box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+    }
+```
+
+**Dark version:**
+
+```yaml
+# Example dark_theme.yaml entry
+theme_name:
+  card-mod-theme: theme_name # Change to your theme name
+  card-mod-card: |
+    ha-card {
+      margin: 20px;
+      border-radius: 15px;
+      background-color: var(--primary-background-color);
+      box-shadow: -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+    }
+```
+
+</details>
+
+#### `Individual`
+
+To individually style cards,
+first, we will create a styling class in our theme YAML:
+
+<details>
+    <summary><i>Show code</i></summary>
+
+**Light version:**
+
+```yaml
+# Example light_theme.yaml entry
+theme_name:
+  card-mod-theme: theme_name # Change to your theme name
+  card-mod-card: |
+    ha-card.soft-ui {
+      margin: 20px;
+      border-radius: 15px;
+      background-color: var(--primary-background-color);
+      box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
+    }
+```
+
+**Dark version:**
+
+```yaml
+# Example dark_theme.yaml entry
+theme_name:
+  card-mod-theme: theme_name # Change to your theme name
+  card-mod-card: |
+    ha-card.soft-ui {
+      margin: 20px;
+      border-radius: 15px;
+      background-color: var(--primary-background-color);
+      box-shadow: -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
+    }
+```
+
+</details>
+
+Then to use the style, simply reference the `soft-ui` class in any card
+by adding the following to the YAML card configuration:
+
+```yaml
+# Example card configuration entry
+card_mod:
+  class: soft-ui
 ```
 
 ## Cards
 
-Add the following cards using the Lovelace UI.
-
-`Three dots on the top right` > `Edit Dashboard` > `+ ADD CARD` > `Manual` > Paste code
-
-### Text Cards
+All cards below have been made to work with both
+the Universal styling method and the Individual styling method.
+However, Button cards **require** the additional installation of the custom
+[button-card](https://github.com/custom-cards/button-card).
+Add cards via the _Manual_ card option in the Lovelace UI.
 
 #### `Heading`
 
@@ -125,18 +137,11 @@ Add the following cards using the Lovelace UI.
 
 ![Heading card](images/heading.png)
 
-#### `Heading Subheading`
+#### `Heading & Subheading`
 
 > Get card [here](cards/text/heading_subheading.yaml)
 
 ![Heading subheading card](images/heading_subheading.png)
-
-### Button Cards
-
-> Additionally require: [**`RomRider`**](https://github.com/RomRider)/[`button-card`](https://github.com/custom-cards/button-card)
-
-All Button Cards can be placed in a `horizontal-stack`, `vertical-stack`, or `grid` card (as seen in the screenshots).
-Inspired by [`@hawk`](https://community.home-assistant.io/u/hawk/summary)'s beautiful [dashboard](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration/159357/203).
 
 #### `Button`
 
@@ -167,21 +172,3 @@ Inspired by [`@hawk`](https://community.home-assistant.io/u/hawk/summary)'s beau
 > Get card [here](cards/button/button_description.yaml)
 
 ![Button description card](images/button_description.png)
-
-### Remote Card
-
-> Additionally require: [**`RomRider`**](https://github.com/RomRider)/[`button-card`](https://github.com/custom-cards/button-card)
-
-This card mimics a TV remote. Every single button is customizable.
-
-#### `Simple Remote`
-
-> Get card [here](cards/remote/remote_card.yaml)
-
-![Remote card](images/remote.png)
-
-### Thank you!
-
-> Built with ❤️ from the `Home Assistant community`.
-
-Maintained by [`@ilzq`](https://github.com/ilzq) & [`@KTibow`](https://github.com/KTibow).

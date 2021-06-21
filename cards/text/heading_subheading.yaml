@@ -9,18 +9,19 @@
 content: |
   # Display in big text
   ## Display in the small text
-style:
-  .: |
-    ha-card {
-        --ha-card-background: none !important;
-        box-shadow: none !important;
-    }
-  ha-markdown:
-    $: |
-      h1 {
-          font-size: 20px !important;
+card_mod:
+  style:
+    .: |
+      ha-card {
+          --ha-card-background: none !important;
+          box-shadow: none !important;
       }
-      h2 {
-          font-size: 15px !important;
-      }
+    ha-markdown:
+      $: |
+        h1 {
+            font-size: 20px !important;
+        }
+        h2 {
+            font-size: 15px !important;
+        }
 type: markdown
