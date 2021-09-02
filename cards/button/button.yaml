@@ -29,6 +29,8 @@ state:
     styles:
       icon:
         - color: var(--paper-item-icon-active-color)
+      card:
+        - box-shadow: var(--soft-ui-pressed)
 show_icon: true
 show_name: false
 card_mod:

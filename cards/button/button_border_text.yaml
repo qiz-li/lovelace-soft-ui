@@ -54,6 +54,7 @@ state:
         - border-style: solid
         - border-width: 2px
         - border-color: var(--paper-item-icon-active-color)
+        - box-shadow: var(--soft-ui-pressed)
       icon:
         - color: var(--paper-item-icon-active-color)
 show_state: true

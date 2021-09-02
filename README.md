@@ -55,6 +55,8 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
     }
+  # This is needed for the "pressed" buttons
+  soft-ui-pressed: 'inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb'
 ```
 
 **Dark version:**
@@ -70,6 +72,8 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
     }
+  # This is needed for the "pressed" buttons
+  soft-ui-pressed: 'inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919'
 ```
 
 </details>
@@ -95,6 +99,8 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
     }
+  # This is needed for the "pressed" buttons
+  soft-ui-pressed: 'inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb'
 ```
 
 **Dark version:**
@@ -110,6 +116,8 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
     }
+  # This is needed for the "pressed" buttons
+  soft-ui-pressed: 'inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919'
 ```
 
 </details>
