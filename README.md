@@ -17,7 +17,7 @@ Thank you, and please check out other great alternatives:
 
 - [**`Savjee`**](https://github.com/Savjee)/[`button-text-card`](https://github.com/Savjee/button-text-card)
 
-- [**`KTibow`**](https://github.com/KTibow)/[`lovelace-light-soft-ui-theme`](https://github.com/KTibow/lovelace-light-soft-ui-theme/)
+- [**`KTibow`**](https://github.com/KTibow)/[`lovelace-soft-theme`](https://github.com/KTibow/lovelace-soft-theme/)
 
 ## Installation
 
