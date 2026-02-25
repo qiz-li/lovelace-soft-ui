@@ -3,21 +3,18 @@
 ![Soft UI light/dark screenshots](images/screenshot.png)
 
 ## Overview
+This project began as a personal redesign of my Home Assistant UI and eventually grew into a collection of reusable styles, configurations, and card examples for achieving a neumorphic look in Lovelace.
 
-This project originally stemmed from just me redoing my UI.
-However, it has evolved into something much bigger.
-Today, in this repo, you will find detailed instructions on applying
-this style to your cards and a collection of custom-configured cards that match best with this style.
+**As of 2026, Lovelace Soft UI is archived and no longer actively maintained.**
 
-This would have not been possible without the support of the Home Assistant community.
-If you need help, please consult the
+Home Assistant’s frontend ecosystem has evolved significantly, and newer theming tools and card frameworks provide more flexible solutions.
+The repository will remain available as a reference for anyone who would like to explore or adapt the ideas, styles, or card configurations in their own setups.
+
+This project would not have been possible without the support and inspiration of the Home Assistant community. If you need help, please consult the
 [community forums](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)
-or the issues tab. New contributions are most welcomed.
-Thank you, and please check out other great alternatives:
+or browse existing issues.
 
-- [**`Savjee`**](https://github.com/Savjee)/[`button-text-card`](https://github.com/Savjee/button-text-card)
-
-- [**`KTibow`**](https://github.com/KTibow)/[`lovelace-soft-theme`](https://github.com/KTibow/lovelace-soft-theme/)
+Thank you to everyone who used, contributed, or shared feedback on this project ❤️
 
 ## Installation
 
