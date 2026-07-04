@@ -1,50 +1,27 @@
 # Lovelace Soft UI
+> **Note:** This project is archived and no longer maintained.
+> It remains available as a reference for anyone exploring neumorphic UI in Home Assistant.
+> See the [community forum thread](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration) for discussion and examples from other users.
+>
+> Thank you to everyone who used, contributed, or shared feedback on this project ❤️
 
 ![Soft UI light/dark screenshots](images/screenshot.png)
 
-## Overview
-This project began as a personal redesign of my Home Assistant UI and eventually grew into a collection of reusable styles, configurations, and card examples for achieving a neumorphic look in Lovelace.
-
-**As of 2026, Lovelace Soft UI is archived and no longer actively maintained.**
-
-Home Assistant’s frontend ecosystem has evolved significantly, and newer theming tools and card frameworks provide more flexible solutions.
-The repository will remain available as a reference for anyone who would like to explore or adapt the ideas, styles, or card configurations in their own setups.
-
-This project would not have been possible without the support and inspiration of the Home Assistant community. If you need help, please consult the
-[community forums](https://community.home-assistant.io/t/lovelace-soft-ui-simple-and-clean-lovelace-configuration)
-or browse existing issues.
-
-Thank you to everyone who used, contributed, or shared feedback on this project ❤️
+A neumorphic theme for [Home Assistant](https://www.home-assistant.io) Lovelace.
+Elegant soft shadows, light & dark modes, and a set of reusable card components.
 
 ## Installation
 
-First, we will need
-[card-mod](https://github.com/thomasloven/lovelace-card-mod)
-to style our cards. The easiest way to install card-mod is via
-[HACS](https://hacs.xyz).
-
-Second, we will need to apply our card-mod style through themes.
-We first need to install custom themes (can also be found via HACS),
-then we will add our card-mod style to the theme YAML files, typically found at:
-`config/themes/{theme_name}/{theme_name}.yaml`
-
-There are two ways to style our cards:
-the Universal method, which styles _all_ cards,
-and the Individual method, which only styles _specific_ cards.
-
-#### `Universal`
-
-To universally style all cards, add the following to your theme YAML file:
+Requires [card-mod](https://github.com/thomasloven/lovelace-card-mod) (install via [HACS](https://hacs.xyz)).
+Add the soft UI styles to your theme YAML (`config/themes/{theme_name}/{theme_name}.yaml`) using one of two methods:
 
 <details>
-    <summary><i>Show code</i></summary>
-
-**Light version:**
+<summary><b>Universal</b> — styles all cards</summary>
 
 ```yaml
-# Example light_theme.yaml entry
+# Light
 theme_name:
-  card-mod-theme: theme_name # Change to your theme name
+  card-mod-theme: theme_name
   card-mod-card: |
     ha-card {
       margin: 20px;
@@ -52,16 +29,13 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
     }
-  # This is needed for the "pressed" buttons
   soft-ui-pressed: 'inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb'
 ```
 
-**Dark version:**
-
 ```yaml
-# Example dark_theme.yaml entry
+# Dark
 theme_name:
-  card-mod-theme: theme_name # Change to your theme name
+  card-mod-theme: theme_name
   card-mod-card: |
     ha-card {
       margin: 20px;
@@ -69,26 +43,18 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
     }
-  # This is needed for the "pressed" buttons
   soft-ui-pressed: 'inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919'
 ```
 
 </details>
 
-#### `Individual`
-
-To individually style cards,
-first, we will create a styling class in our theme YAML:
-
 <details>
-    <summary><i>Show code</i></summary>
-
-**Light version:**
+<summary><b>Individual</b> — styles only cards with the <code>soft-ui</code> class</summary>
 
 ```yaml
-# Example light_theme.yaml entry
+# Light
 theme_name:
-  card-mod-theme: theme_name # Change to your theme name
+  card-mod-theme: theme_name
   card-mod-card: |
     ha-card.soft-ui {
       margin: 20px;
@@ -96,16 +62,13 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #ebebeb;
     }
-  # This is needed for the "pressed" buttons
   soft-ui-pressed: 'inset -4px -4px 5px #ffffff, inset 4px 4px 5px #ebebeb'
 ```
 
-**Dark version:**
-
 ```yaml
-# Example dark_theme.yaml entry
+# Dark
 theme_name:
-  card-mod-theme: theme_name # Change to your theme name
+  card-mod-theme: theme_name
   card-mod-card: |
     ha-card.soft-ui {
       margin: 20px;
@@ -113,67 +76,47 @@ theme_name:
       background-color: var(--primary-background-color);
       box-shadow: -5px -5px 15px #2c2c2c, 5px 5px 15px #191919;
     }
-  # This is needed for the "pressed" buttons
   soft-ui-pressed: 'inset -4px -4px 5px #2c2c2c, inset 4px 4px 5px #191919'
 ```
 
-</details>
-
-Then to use the style, simply reference the `soft-ui` class in any card
-by adding the following to the YAML card configuration:
+Then reference the class in any card:
 
 ```yaml
-# Example card configuration entry
 card_mod:
   class: soft-ui
 ```
 
+</details>
+
 ## Cards
 
-All cards below have been made to work with both
-the Universal styling method and the Individual styling method.
-However, Button cards **require** the additional installation of the custom
-[button-card](https://github.com/custom-cards/button-card).
-Add cards via the _Manual_ card option in the Lovelace UI.
+Button cards require [button-card](https://github.com/custom-cards/button-card).
+Add cards via the Manual card option in the Lovelace UI.
 
-#### `Heading`
+**Heading** ([heading.yaml](cards/text/heading.yaml))
 
-> Get card [here](cards/text/heading.yaml)
+![Heading](images/heading.png)
 
-![Heading card](images/heading.png)
+**Heading & Subheading** ([heading_subheading.yaml](cards/text/heading_subheading.yaml))
 
-#### `Heading & Subheading`
+![Heading & Subheading](images/heading_subheading.png)
 
-> Get card [here](cards/text/heading_subheading.yaml)
+**Button** ([button.yaml](cards/button/button.yaml))
 
-![Heading subheading card](images/heading_subheading.png)
+![Button](images/button.png)
 
-#### `Button`
+**Button Border** ([button_border.yaml](cards/button/button_border.yaml))
 
-> Get card [here](cards/button/button.yaml)
+![Button Border](images/button_border.png)
 
-![Button card](images/button.png)
+**Button Text** ([button_text.yaml](cards/button/button_text.yaml))
 
-#### `Button Border`
+![Button Text](images/button_text.png)
 
-> Get card [here](cards/button/button_border.yaml)
+**Button Border Text** ([button_border_text.yaml](cards/button/button_border_text.yaml))
 
-![Button border card](images/button_border.png)
+![Button Border Text](images/button_border_text.png)
 
-#### `Button Text`
+**Button Description** ([button_description.yaml](cards/button/button_description.yaml))
 
-> Get card [here](cards/button/button_text.yaml)
-
-![Button text card](images/button_text.png)
-
-#### `Button Border Text`
-
-> Get card [here](cards/button/button_border_text.yaml)
-
-![Button border text card](images/button_border_text.png)
-
-#### `Button Description`
-
-> Get card [here](cards/button/button_description.yaml)
-
-![Button description card](images/button_description.png)
+![Button Description](images/button_description.png)
